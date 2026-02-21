@@ -405,6 +405,13 @@ h2 {
   padding: 0.72rem 0.95rem;
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
   z-index: 90;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
+  filter: brightness(1.05);
 }
 
 .reveal {
