@@ -19,7 +19,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", "Montserrat", "Poppins", sans-serif;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -71,9 +71,22 @@ ul {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.58rem;
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: 0.04em;
+}
+
+.brand-logo {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
+.brand-text {
+  line-height: 1;
 }
 
 .nav {
@@ -417,6 +430,14 @@ h2 {
 }
 
 @media (max-width: 760px) {
+  .brand-logo {
+    height: 34px;
+  }
+
+  .brand-text {
+    display: none;
+  }
+
   .menu-toggle {
     display: block;
   }

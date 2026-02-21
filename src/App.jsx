@@ -68,15 +68,15 @@ const content = {
           cta: "Haz crecer mi negocio de limpieza",
         },
         {
-          title: "Para dealers independientes de autos en Louisville",
-          desc: "Convierte vistas online en compradores calificados listos para financiar.",
+          title: "Para pequenos negocios en Louisville",
+          desc: "Convierte visitas online en clientes calificados listos para comprar o reservar.",
           bullets: [
-            "Landing pages de vehiculos de alta conversion",
-            "Formularios de pre-aprobacion",
+            "Landing pages de alta conversion para tus servicios",
+            "Formularios de contacto y cotizacion optimizados",
             "Optimizacion de autoridad en Google Business",
             "SEO local enfocado en intencion de compra",
           ],
-          cta: "Generar mas compradores de autos",
+          cta: "Generar mas clientes para mi negocio",
         },
       ],
     },
@@ -186,15 +186,15 @@ const content = {
           cta: "Grow My Cleaning Business",
         },
         {
-          title: "For Independent Car Dealers in Louisville",
-          desc: "Turn online views into qualified buyers ready to finance.",
+          title: "For Small Businesses in Louisville",
+          desc: "Turn online visits into qualified customers ready to buy or book.",
           bullets: [
-            "High-conversion vehicle landing pages",
-            "Pre-approval lead capture forms",
+            "High-conversion landing pages for your services",
+            "Optimized contact and quote forms",
             "Google Business authority optimization",
             "Local SEO targeting buyer intent",
           ],
-          cta: "Generate More Car Buyers",
+          cta: "Generate More Customers for My Business",
         },
       ],
     },
@@ -261,7 +261,8 @@ export default function App() {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       name: "Digital AM",
-      image: "https://digitalamwebsites.com/logo.png",
+      image: "https://digitalamwebsites.com/logo-digital-am.png",
+      logo: "https://digitalamwebsites.com/logo-digital-am.png",
       url: "https://digitalamwebsites.com",
       telephone: "+1-830-475-0779",
       email: "contact@digitalamwebsites.com",
@@ -332,7 +333,8 @@ export default function App() {
       <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>
         <div className="container nav-row">
           <a href="#top" className="brand" onClick={closeMobile}>
-            Digital AM
+            <img src="/logo-digital-am.png" alt="Digital AM" className="brand-logo" />
+            <span className="brand-text">Digital AM</span>
           </a>
 
           <button
