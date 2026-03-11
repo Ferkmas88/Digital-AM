@@ -517,6 +517,7 @@ export default function App() {
       payload.append("email", form.email);
       payload.append("business", form.business);
       payload.append("message", form.message);
+      payload.append("_replyto", form.email);
       payload.append("_subject", `Nuevo contacto desde Digital AM${form.business ? ` - ${form.business}` : ""}`);
       payload.append("_template", "table");
 
@@ -544,12 +545,15 @@ export default function App() {
       const message = error instanceof Error ? error.message : "No se pudo enviar el formulario.";
       const looksLikeActivationIssue =
         /activate|activation|confirm|verify|first form|first submission/i.test(message);
+      const looksLikeLocalFileIssue = /open this page through a web server|html files/i.test(message);
 
       setSubmitState("error");
       setSubmitMessage(
-        looksLikeActivationIssue
-          ? "FormSubmit todavía no está activado para este correo. Revisa el email de confirmación que envía el servicio y vuelve a probar."
-          : `${message} Si sigue fallando, escríbeme directo a ferkmas88@gmail.com.`
+        looksLikeLocalFileIssue
+          ? "Estás probando el formulario fuera del sitio publicado. Ábrelo desde la web ya desplegada en Hostinger y vuelve a intentarlo."
+          : looksLikeActivationIssue
+            ? "FormSubmit todavía no está activado para este correo. Revisa el email de confirmación que envía el servicio, incluyendo spam, y vuelve a probar."
+            : `${message} Si sigue fallando, revisa spam o escríbeme directo a ferkmas88@gmail.com.`
       );
     }
   };
@@ -948,7 +952,7 @@ export default function App() {
               <p className="mt-4 text-sm leading-6 text-slate-400">
                 {submitState === "success" && <span className="text-emerald-300">{submitMessage}</span>}
                 {submitState === "error" && <span className="text-rose-300">{submitMessage}</span>}
-                {submitState === "idle" && "Responderé por correo con contexto y siguientes pasos."}
+                {submitState === "idle" && "Prueba el formulario desde el sitio publicado. Si es el primer envío, FormSubmit puede pedir activación por email."}
               </p>
             </form>
           </div>
