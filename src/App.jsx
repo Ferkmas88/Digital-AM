@@ -512,35 +512,45 @@ export default function App() {
       setSubmitState("submitting");
       setSubmitMessage("");
 
+      const payload = new FormData();
+      payload.append("name", form.name);
+      payload.append("email", form.email);
+      payload.append("business", form.business);
+      payload.append("message", form.message);
+      payload.append("_subject", `Nuevo contacto desde Digital AM${form.business ? ` - ${form.business}` : ""}`);
+      payload.append("_template", "table");
+
       const response = await fetch("https://formsubmit.co/ajax/ferkmas88@gmail.com", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          business: form.business,
-          message: form.message,
-          _subject: `Nuevo contacto desde Digital AM${form.business ? ` - ${form.business}` : ""}`,
-          _captcha: "false",
-          _template: "table",
-        }),
+        body: payload,
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get("content-type") || "";
+      const data = contentType.includes("application/json") ? await response.json() : await response.text();
+      const serviceMessage =
+        typeof data === "string" ? data : data?.message || data?.error || data?.errors?.[0]?.message || "";
 
-      if (!response.ok || data.success === "false") {
-        throw new Error(data.message || "No se pudo enviar el formulario.");
+      if (!response.ok || (typeof data !== "string" && data?.success === "false")) {
+        throw new Error(serviceMessage || `FormSubmit devolvió un error (${response.status}).`);
       }
 
       setSubmitState("success");
       setSubmitMessage("Mensaje enviado. Te responderé por correo lo antes posible.");
       setForm({ name: "", email: "", business: "", message: "" });
-    } catch {
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "No se pudo enviar el formulario.";
+      const looksLikeActivationIssue =
+        /activate|activation|confirm|verify|first form|first submission/i.test(message);
+
       setSubmitState("error");
-      setSubmitMessage("No se pudo enviar desde la web. Puedes escribirme directo a ferkmas88@gmail.com.");
+      setSubmitMessage(
+        looksLikeActivationIssue
+          ? "FormSubmit todavía no está activado para este correo. Revisa el email de confirmación que envía el servicio y vuelve a probar."
+          : `${message} Si sigue fallando, escríbeme directo a ferkmas88@gmail.com.`
+      );
     }
   };
 
