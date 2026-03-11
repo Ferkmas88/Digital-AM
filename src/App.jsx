@@ -494,6 +494,7 @@ function MockCard({ title, subtitle, lines = [] }) {
 }
 
 export default function App() {
+  const web3FormsAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY?.trim() || "";
   const [form, setForm] = useState({ name: "", email: "", business: "", message: "" });
   const [submitState, setSubmitState] = useState("idle");
   const [submitMessage, setSubmitMessage] = useState("");
@@ -508,20 +509,28 @@ export default function App() {
       return;
     }
 
+    if (!web3FormsAccessKey) {
+      setSubmitState("error");
+      setSubmitMessage("Falta configurar Web3Forms. Agrega la clave VITE_WEB3FORMS_ACCESS_KEY y vuelve a publicar el sitio.");
+      return;
+    }
+
     try {
       setSubmitState("submitting");
       setSubmitMessage("");
 
       const payload = new FormData();
+      payload.append("access_key", web3FormsAccessKey);
       payload.append("name", form.name);
       payload.append("email", form.email);
       payload.append("business", form.business);
       payload.append("message", form.message);
-      payload.append("_replyto", form.email);
-      payload.append("_subject", `Nuevo contacto desde Digital AM${form.business ? ` - ${form.business}` : ""}`);
-      payload.append("_template", "table");
+      payload.append("subject", `Nuevo contacto desde Digital AM${form.business ? ` - ${form.business}` : ""}`);
+      payload.append("from_name", "Digital AM");
+      payload.append("replyto", form.email);
+      payload.append("botcheck", "");
 
-      const response = await fetch("https://formsubmit.co/ajax/ferkmas88@gmail.com", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -532,10 +541,12 @@ export default function App() {
       const contentType = response.headers.get("content-type") || "";
       const data = contentType.includes("application/json") ? await response.json() : await response.text();
       const serviceMessage =
-        typeof data === "string" ? data : data?.message || data?.error || data?.errors?.[0]?.message || "";
+        typeof data === "string"
+          ? data
+          : data?.body?.message || data?.message || data?.error || data?.errors?.[0]?.message || "";
 
-      if (!response.ok || (typeof data !== "string" && data?.success === "false")) {
-        throw new Error(serviceMessage || `FormSubmit devolvió un error (${response.status}).`);
+      if (!response.ok || (typeof data !== "string" && data?.success !== true)) {
+        throw new Error(serviceMessage || `Web3Forms devolvió un error (${response.status}).`);
       }
 
       setSubmitState("success");
@@ -543,17 +554,13 @@ export default function App() {
       setForm({ name: "", email: "", business: "", message: "" });
     } catch (error) {
       const message = error instanceof Error ? error.message : "No se pudo enviar el formulario.";
-      const looksLikeActivationIssue =
-        /activate|activation|confirm|verify|first form|first submission/i.test(message);
-      const looksLikeLocalFileIssue = /open this page through a web server|html files/i.test(message);
+      const looksLikeConfigIssue = /access key|unauthorized|invalid/i.test(message);
 
       setSubmitState("error");
       setSubmitMessage(
-        looksLikeLocalFileIssue
-          ? "Estás probando el formulario fuera del sitio publicado. Ábrelo desde la web ya desplegada en Hostinger y vuelve a intentarlo."
-          : looksLikeActivationIssue
-            ? "FormSubmit todavía no está activado para este correo. Revisa el email de confirmación que envía el servicio, incluyendo spam, y vuelve a probar."
-            : `${message} Si sigue fallando, revisa spam o escríbeme directo a ferkmas88@gmail.com.`
+        looksLikeConfigIssue
+          ? "La clave de Web3Forms no está bien configurada. Revisa VITE_WEB3FORMS_ACCESS_KEY y vuelve a publicar."
+          : `${message} Si sigue fallando, revisa spam o escríbeme directo a ferkmas88@gmail.com.`
       );
     }
   };
@@ -952,7 +959,7 @@ export default function App() {
               <p className="mt-4 text-sm leading-6 text-slate-400">
                 {submitState === "success" && <span className="text-emerald-300">{submitMessage}</span>}
                 {submitState === "error" && <span className="text-rose-300">{submitMessage}</span>}
-                {submitState === "idle" && "Prueba el formulario desde el sitio publicado. Si es el primer envío, FormSubmit puede pedir activación por email."}
+                {submitState === "idle" && "Cuando quede configurada la clave de Web3Forms, los mensajes deberían llegar directo a tu correo."}
               </p>
             </form>
           </div>
