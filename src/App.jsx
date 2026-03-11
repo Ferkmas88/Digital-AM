@@ -1,538 +1,890 @@
-﻿import { useEffect, useMemo, useState } from "react";
+﻿import React, { useEffect, useMemo, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Bot,
+  ChevronRight,
+  Code2,
+  Gem,
+  Globe,
+  Mail,
+  MapPin,
+  MessageSquare,
+  MonitorSmartphone,
+  QrCode,
+  Send,
+  ShieldCheck,
+  Sparkles,
+  Store,
+  Workflow,
+  Zap,
+} from "lucide-react";
 
-const content = {
-  es: {
-    metaTitle:
-      "Agencia de Marketing Digital en Louisville, KY | SEO Local y Generacion de Leads | Digital AM",
-    metaDescription:
-      "Digital AM ayuda a negocios en Louisville a crecer con SEO Local, optimizacion de Google Business y sitios web de alta conversion para generar leads calificados.",
-    ogTitle: "Agencia de Marketing Digital en Louisville, KY | Digital AM",
-    ogDescription:
-      "SEO local en Louisville, optimizacion de Google Business, diseno web y sistemas de generacion de leads para crecimiento real.",
-    twitterTitle: "Agencia de Marketing Digital en Louisville, KY | Digital AM",
-    twitterDescription:
-      "Sistemas de SEO local y generacion de leads para que negocios de Louisville dominen su visibilidad.",
-    schemaDescription:
-      "Digital AM es una agencia de marketing digital en Louisville, KY enfocada en SEO Local, optimizacion de Google Business, diseno web y generacion de leads.",
-    nav: {
-      services: "Servicios",
-      industries: "Industrias",
-      process: "Proceso",
-      results: "Resultados",
-      cta: "Agenda Llamada Gratis",
-    },
-    hero: {
-      eyebrow: "Agencia de Marketing Digital en Louisville, KY",
-      title: "Domina tu mercado local en Louisville.",
-      lead:
-        "Ayudamos a negocios locales en Louisville a generar leads calificados de forma constante con posicionamiento estrategico en Google, SEO y sistemas de conversion.",
-      primary: "Agenda Llamada Gratis",
-      secondary: "Solicita una Auditoria Gratis",
-    },
-    authority: {
-      title: "Construido para crecimiento local en Louisville, KY.",
-      copy:
-        "La mayoria de negocios locales son invisibles online. Digital AM crea sistemas estrategicos para posicionar tu negocio justo donde tus compradores ya estan buscando.",
-      services: [
-        {
-          title: "Dominio de SEO Local",
-          desc: "Posicionate donde tus clientes estan buscando en Louisville.",
-        },
-        {
-          title: "Optimizacion de Google Business",
-          desc: "Convierte tu perfil de Google en una maquina de leads.",
-        },
-        {
-          title: "Sitios Web Enfocados en Conversion",
-          desc: "Webs pensadas para generar leads, no solo verse bien.",
-        },
-        {
-          title: "Sistemas de Captura de Leads",
-          desc: "Seguimiento automatizado para no perder ningun prospecto.",
-        },
-      ],
-    },
-    industries: {
-      title: "Soluciones estrategicas para industrias locales de alta oportunidad",
-      cards: [
-        {
-          title: "Para empresas de limpieza en Louisville",
-          desc:
-            "Genera solicitudes de reserva cada mes con posicionamiento en Google y visibilidad basada en confianza.",
-          bullets: [
-            "Estrategia de posicionamiento en Google Maps",
-            "Landing pages optimizadas para reservas",
-            "Sistema de generacion de reseñas",
-            "Captura de leads y seguimiento automatizado",
-          ],
-          cta: "Haz crecer mi negocio de limpieza",
-        },
-        {
-          title: "Para pequenos negocios en Louisville",
-          desc: "Convierte visitas online en clientes calificados listos para comprar o reservar.",
-          bullets: [
-            "Landing pages de alta conversion para tus servicios",
-            "Formularios de contacto y cotizacion optimizados",
-            "Optimizacion de autoridad en Google Business",
-            "SEO local enfocado en intencion de compra",
-          ],
-          cta: "Generar mas clientes para mi negocio",
-        },
-      ],
-    },
-    process: {
-      title: "Un sistema claro. Sin adivinar.",
-      steps: [
-        { title: "Auditar", description: "Identificamos brechas de visibilidad e ingresos perdidos." },
-        { title: "Construir", description: "Implementamos una base digital estrategica." },
-        { title: "Optimizar", description: "Mejoramos segun datos reales de rendimiento." },
-        { title: "Escalar", description: "Aumentamos visibilidad y tasas de conversion." },
-      ],
-    },
-    results: {
-      title: "Crecimiento real. Impacto medible.",
-      metrics: [
-        { value: "+40%", label: "Aumento en visibilidad local" },
-        { value: "3X", label: "Mas consultas mensuales" },
-        { value: "30 Dias", label: "Framework de implementacion" },
-        { value: "Alta Intencion", label: "Generacion de leads" },
-      ],
-    },
-    contact: {
-      title: "Listo para liderar tu mercado en Louisville?",
-      copy: "Tus competidores ya estan invirtiendo en visibilidad. La pregunta es: tu tambien?",
-      primary: "Agenda tu llamada estrategica gratis",
-      formTitle: "Solicita tu estrategia",
-      fields: {
-        name: "Nombre",
-        businessType: "Tipo de negocio",
-        phone: "Telefono",
-        email: "Email",
-        message: "Mensaje",
-      },
-      submit: "Enviar solicitud",
-      success: "Gracias. Te contactaremos en breve.",
-    },
-    footer: {
-      line1: "Digital AM - Agencia de Marketing Digital en Louisville",
-      line2: "SEO Local | Google Business | Generacion de Leads",
-    },
-    whatsapp: "WhatsApp",
+const navItems = [
+  { label: "Servicios", href: "#services" },
+  { label: "Proyectos", href: "#projects" },
+  { label: "Proceso", href: "#process" },
+  { label: "Contacto", href: "#contact" },
+];
+
+const services = [
+  {
+    icon: QrCode,
+    title: "QR + SMS + Reviews",
+    description:
+      "Sistemas diseñados para captar clientes, solicitar reseñas y mantener el seguimiento por SMS con una operación más consistente.",
+    bullets: [
+      "Captura por QR",
+      "Solicitud de reviews",
+      "Seguimiento por SMS",
+      "Enfoque para negocios locales",
+    ],
   },
-  en: {
-    metaTitle:
-      "Digital Marketing Agency in Louisville, KY | Local SEO & Lead Generation | Digital AM",
-    metaDescription:
-      "Digital AM helps Louisville businesses grow with Local SEO, Google Business optimization, and conversion-focused websites that generate qualified leads.",
-    ogTitle: "Digital Marketing Agency in Louisville, KY | Digital AM",
-    ogDescription:
-      "Local SEO Louisville KY, Google Business optimization, website design, and lead generation systems for serious local business growth.",
-    twitterTitle: "Digital Marketing Agency in Louisville, KY | Digital AM",
-    twitterDescription:
-      "Lead generation and local SEO systems built to help Louisville businesses dominate local search visibility.",
-    schemaDescription:
-      "Digital AM is a digital marketing agency in Louisville, KY focused on Local SEO, Google Business optimization, website design, and lead generation.",
-    nav: {
-      services: "Services",
-      industries: "Industries",
-      process: "Process",
-      results: "Results",
-      cta: "Book Free Strategy Call",
-    },
-    hero: {
-      eyebrow: "Digital Marketing Agency in Louisville, KY",
-      title: "Dominate Your Local Market in Louisville.",
-      lead:
-        "We help local businesses in Louisville generate consistent, qualified leads using strategic Google positioning, SEO, and high-conversion systems.",
-      primary: "Book Free Strategy Call",
-      secondary: "Get a Free Audit",
-    },
-    authority: {
-      title: "Built for Local Growth in Louisville, KY.",
-      copy:
-        "Most local businesses are invisible online. Digital AM builds strategic systems that position your business where buyers are already searching.",
-      services: [
-        {
-          title: "Local SEO Domination",
-          desc: "Rank where your customers are searching in Louisville.",
-        },
-        {
-          title: "Google Business Optimization",
-          desc: "Turn your Google profile into a lead machine.",
-        },
-        {
-          title: "Conversion-Focused Websites",
-          desc: "Websites designed to generate leads, not just look good.",
-        },
-        {
-          title: "Lead Capture Systems",
-          desc: "Automated follow-up systems so no prospect is lost.",
-        },
-      ],
-    },
-    industries: {
-      title: "Strategic Solutions for High-Opportunity Local Industries",
-      cards: [
-        {
-          title: "For Cleaning Companies in Louisville",
-          desc:
-            "Generate consistent booking requests every month through optimized Google positioning and trust-based visibility.",
-          bullets: [
-            "Google Maps ranking strategy",
-            "Booking-optimized landing pages",
-            "Review generation system",
-            "Lead capture and follow-up automation",
-          ],
-          cta: "Grow My Cleaning Business",
-        },
-        {
-          title: "For Small Businesses in Louisville",
-          desc: "Turn online visits into qualified customers ready to buy or book.",
-          bullets: [
-            "High-conversion landing pages for your services",
-            "Optimized contact and quote forms",
-            "Google Business authority optimization",
-            "Local SEO targeting buyer intent",
-          ],
-          cta: "Generate More Customers for My Business",
-        },
-      ],
-    },
-    process: {
-      title: "A Clear System. No Guessing.",
-      steps: [
-        { title: "Audit", description: "Identify visibility gaps and missed revenue." },
-        { title: "Build", description: "Implement a strategic digital foundation." },
-        { title: "Optimize", description: "Improve based on performance data." },
-        { title: "Scale", description: "Increase visibility and conversion rates." },
-      ],
-    },
-    results: {
-      title: "Real Growth. Measurable Impact.",
-      metrics: [
-        { value: "+40%", label: "Local Visibility Increase" },
-        { value: "3X", label: "More Monthly Inquiries" },
-        { value: "30-Day", label: "Implementation Framework" },
-        { value: "High-Intent", label: "Lead Generation" },
-      ],
-    },
-    contact: {
-      title: "Ready to Lead Your Market in Louisville?",
-      copy: "Your competitors are already investing in visibility. The question is: are you?",
-      primary: "Book Your Free Strategy Call",
-      formTitle: "Request your strategy",
-      fields: {
-        name: "Name",
-        businessType: "Business Type",
-        phone: "Phone",
-        email: "Email",
-        message: "Message",
-      },
-      submit: "Send Request",
-      success: "Thanks. We will contact you shortly.",
-    },
-    footer: {
-      line1: "Digital AM - Louisville Digital Marketing Agency",
-      line2: "Local SEO | Google Business | Lead Generation",
-    },
-    whatsapp: "WhatsApp",
+  {
+    icon: Bot,
+    title: "Automatización conversacional",
+    description:
+      "Flujos conversacionales que ordenan la atención, filtran oportunidades y preparan una base sólida para automatizaciones más avanzadas.",
+    bullets: [
+      "Flujos personalizados",
+      "Respuestas más organizadas",
+      "Filtrado de leads",
+      "Base lista para evolucionar",
+    ],
   },
-};
+  {
+    icon: Code2,
+    title: "Software a medida",
+    description:
+      "Herramientas web desarrolladas alrededor del flujo real del negocio: formularios, paneles, procesos internos y operación.",
+    bullets: [
+      "Dashboards simples",
+      "Procesos personalizados",
+      "Menos trabajo manual",
+      "Construido según necesidad",
+    ],
+  },
+  {
+    icon: Globe,
+    title: "Sitios web que convierten",
+    description:
+      "Sitios con estructura estratégica, diseño cuidado y un enfoque claro en comunicar valor, generar confianza y convertir.",
+    bullets: [
+      "Mensajes claros",
+      "CTA correctos",
+      "Diseño limpio y rápido",
+      "Base lista para crecer",
+    ],
+  },
+  {
+    icon: MonitorSmartphone,
+    title: "Sistemas para negocio local",
+    description:
+      "Una combinación de web, automatización y estructura digital para que la operación gane orden, claridad y continuidad.",
+    bullets: [
+      "Captura de leads",
+      "Mejor presentación",
+      "Procesos más claros",
+      "Más orden comercial",
+    ],
+  },
+  {
+    icon: Gem,
+    title: "Ecommerce para joyería",
+    description:
+      "Tiendas con presentación refinada, catálogo claro y una experiencia visual alineada con marcas que necesitan vender mejor online.",
+    bullets: [
+      "Catálogo premium",
+      "Presentación elegante",
+      "Estructura ecommerce",
+      "Preparado para escalar",
+    ],
+  },
+];
 
-function setMetaByName(name, value) {
-  const el = document.querySelector(`meta[name='${name}']`);
-  if (el) el.setAttribute("content", value);
-}
+const projects = [
+  {
+    title: "Sistema QR + SMS + reseñas",
+    status: "En desarrollo",
+    text: "Una solución orientada a captar clientes, solicitar reseñas y dar seguimiento con una experiencia más ordenada y profesional.",
+    tech: ["QR", "SMS", "Lead capture", "Reviews"],
+  },
+  {
+    title: "Automatización conversacional",
+    status: "En evolución",
+    text: "Una base para organizar conversaciones, filtrar consultas y escalar después hacia automatizaciones más relevantes para el negocio.",
+    tech: ["Automation", "Flows", "Lead routing", "AI-ready"],
+  },
+  {
+    title: "Ecommerce para joyería",
+    status: "Implementación activa",
+    text: "Una tienda concebida para marcas de joyería que necesitan elevar su presentación de producto y ofrecer una experiencia de compra más cuidada.",
+    tech: ["Ecommerce", "Catalog", "Product UX", "Storefront"],
+  },
+];
 
-function setMetaByProperty(property, value) {
-  const el = document.querySelector(`meta[property='${property}']`);
-  if (el) el.setAttribute("content", value);
-}
+const process = [
+  {
+    step: "01",
+    title: "Diagnosticar",
+    text: "Entender dónde se pierde tiempo, oportunidades o claridad antes de definir cualquier solución.",
+  },
+  {
+    step: "02",
+    title: "Arquitectura",
+    text: "Diseñar la estructura correcta: landing, sistema, flujo, SaaS o software según la necesidad real.",
+  },
+  {
+    step: "03",
+    title: "Construcción",
+    text: "Desarrollar una base funcional, elegante y técnicamente sólida, pensada para sostenerse en el tiempo.",
+  },
+  {
+    step: "04",
+    title: "Iteración",
+    text: "Refinar a partir del uso real, la fricción detectada y la evolución natural del negocio o producto.",
+  },
+];
 
-export default function App() {
-  const [lang, setLang] = useState(() => localStorage.getItem("lang") || "es");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [formSent, setFormSent] = useState(false);
-  const t = content[lang] || content.es;
+const stats = [
+  { value: "01", label: "Enfoque actual", text: "Pasar de servicios aislados a sistemas con mayor profundidad y valor." },
+  { value: "04", label: "Áreas de trabajo", text: "SaaS, automatización, software a medida y ecommerce." },
+  { value: "∞", label: "Visión a largo plazo", text: "Soluciones concebidas para crecer, integrarse y madurar con el tiempo." },
+];
 
-  const localBusinessSchema = useMemo(
-    () => ({
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      name: "Digital AM",
-      image: "https://digitalamwebsites.com/logo-digital-am.png",
-      logo: "https://digitalamwebsites.com/logo-digital-am.png",
-      url: "https://digitalamwebsites.com",
-      telephone: "+1-830-475-0779",
-      email: "contact@digitalamwebsites.com",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Louisville",
-        addressRegion: "KY",
-        addressCountry: "US",
-      },
-      areaServed: "Louisville, Kentucky",
-      priceRange: "$$",
-      inLanguage: lang === "es" ? "es" : "en",
-      description: t.schemaDescription,
-    }),
-    [lang, t.schemaDescription]
-  );
+function AdvancedCanvas() {
+  const canvasRef = useRef(null);
+  const mouse = useRef({ x: 0, y: 0, active: false });
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 16);
-    window.addEventListener("scroll", onScroll, { passive: true });
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+    let width = 0;
+    let height = 0;
+    let frame = 0;
+    let t = 0;
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+    const nodes = [];
+    const sparks = [];
+    const orbs = [];
+    const labels = [];
+    const labelPool = ["QR", "SMS", "AI", "SHOP", "BOT", "SEO", "FLOW", "CRM"];
+
+    const roundedRect = (x, y, w, h, r) => {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    };
+
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
+      canvas.width = Math.floor(width * DPR);
+      canvas.height = Math.floor(height * DPR);
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+      nodes.length = 0;
+      sparks.length = 0;
+      orbs.length = 0;
+      labels.length = 0;
+
+      const cols = 8;
+      const rows = 6;
+      const gapX = width / (cols + 1);
+      const gapY = height / (rows + 1);
+
+      for (let y = 1; y <= rows; y++) {
+        for (let x = 1; x <= cols; x++) {
+          nodes.push({
+            x: x * gapX + (Math.random() - 0.5) * 34,
+            y: y * gapY + (Math.random() - 0.5) * 34,
+            baseX: x * gapX,
+            baseY: y * gapY,
+            size: 1.8 + Math.random() * 2.8,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.8 + Math.random() * 1.2,
+          });
+        }
+      }
+
+      for (let i = 0; i < 56; i++) {
+        sparks.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
+          size: 1 + Math.random() * 2,
+          alpha: 0.12 + Math.random() * 0.25,
+        });
+      }
+
+      for (let i = 0; i < 14; i++) {
+        labels.push({
+          x: 70 + Math.random() * (width - 140),
+          y: 70 + Math.random() * (height - 140),
+          drift: 0.2 + Math.random() * 0.3,
+          phase: Math.random() * 100,
+          text: labelPool[i % labelPool.length],
+          w: 54 + Math.random() * 18,
+          h: 28 + Math.random() * 10,
+        });
+      }
+
+      for (let i = 0; i < 5; i++) {
+        orbs.push({
+          x: width * (0.18 + i * 0.16),
+          y: height * (0.22 + (i % 2) * 0.18),
+          r: 90 + Math.random() * 40,
+          alpha: 0.06 + Math.random() * 0.06,
+        });
+      }
+    };
+
+    const onMove = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.current.x = e.clientX - rect.left;
+      mouse.current.y = e.clientY - rect.top;
+      mouse.current.active = true;
+    };
+
+    const onLeave = () => {
+      mouse.current.active = false;
+    };
+
+    const draw = () => {
+      t += 0.012;
+      ctx.clearRect(0, 0, width, height);
+
+      const base = ctx.createLinearGradient(0, 0, width, height);
+      base.addColorStop(0, "rgba(3,7,18,0)");
+      base.addColorStop(0.5, "rgba(37,99,235,0.06)");
+      base.addColorStop(1, "rgba(59,130,246,0.02)");
+      ctx.fillStyle = base;
+      ctx.fillRect(0, 0, width, height);
+
+      orbs.forEach((o, i) => {
+        const gx = o.x + Math.sin(t + i) * 18;
+        const gy = o.y + Math.cos(t * 0.9 + i) * 18;
+        const grad = ctx.createRadialGradient(gx, gy, 0, gx, gy, o.r);
+        grad.addColorStop(0, `rgba(59,130,246,${o.alpha})`);
+        grad.addColorStop(1, "rgba(59,130,246,0)");
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(gx, gy, o.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.save();
+      ctx.strokeStyle = "rgba(96,165,250,0.05)";
+      for (let x = 0; x < width; x += 38) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < height; y += 38) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      sparks.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(255,255,255,${p.alpha})`;
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      nodes.forEach((n, idx) => {
+        n.x = n.baseX + Math.sin(t * n.speed + n.phase) * 10;
+        n.y = n.baseY + Math.cos(t * n.speed + n.phase) * 10;
+
+        for (let j = idx + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dx = n.x - b.x;
+          const dy = n.y - b.y;
+          const d = Math.hypot(dx, dy);
+          if (d < 150) {
+            const alpha = (1 - d / 150) * 0.16;
+            const grad = ctx.createLinearGradient(n.x, n.y, b.x, b.y);
+            grad.addColorStop(0, `rgba(37,99,235,${alpha})`);
+            grad.addColorStop(1, `rgba(125,211,252,${alpha * 0.45})`);
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+      });
+
+      if (mouse.current.active) {
+        const mg = ctx.createRadialGradient(mouse.current.x, mouse.current.y, 0, mouse.current.x, mouse.current.y, 140);
+        mg.addColorStop(0, "rgba(59,130,246,0.22)");
+        mg.addColorStop(1, "rgba(59,130,246,0)");
+        ctx.fillStyle = mg;
+        ctx.beginPath();
+        ctx.arc(mouse.current.x, mouse.current.y, 140, 0, Math.PI * 2);
+        ctx.fill();
+
+        nodes.forEach((n) => {
+          const d = Math.hypot(mouse.current.x - n.x, mouse.current.y - n.y);
+          if (d < 180) {
+            ctx.strokeStyle = `rgba(96,165,250,${0.22 * (1 - d / 180)})`;
+            ctx.beginPath();
+            ctx.moveTo(mouse.current.x, mouse.current.y);
+            ctx.lineTo(n.x, n.y);
+            ctx.stroke();
           }
         });
-      },
-      { threshold: 0.2 }
-    );
+      }
 
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+      nodes.forEach((n) => {
+        const pulse = (Math.sin(t * 1.5 + n.phase) + 1) / 2;
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(96,165,250,${0.3 + pulse * 0.45})`;
+        ctx.arc(n.x, n.y, n.size + pulse * 2, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = "rgba(255,255,255,0.92)";
+        ctx.arc(n.x, n.y, Math.max(1, n.size - 0.4), 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      labels.forEach((l, i) => {
+        const x = l.x + Math.sin(t + l.phase) * 16;
+        const y = l.y + Math.cos(t * 0.9 + l.phase) * 12;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(Math.sin(t * 0.4 + i) * 0.04);
+        ctx.shadowBlur = 18;
+        ctx.shadowColor = "rgba(37,99,235,0.32)";
+        roundedRect(-l.w / 2, -l.h / 2, l.w, l.h, 12);
+        ctx.fillStyle = "rgba(8,16,31,0.82)";
+        ctx.fill();
+        ctx.strokeStyle = "rgba(96,165,250,0.26)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = "rgba(191,219,254,0.94)";
+        ctx.font = "600 12px Inter, sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(l.text, 0, 1);
+        ctx.restore();
+      });
+
+      const cx = width * 0.74;
+      const cy = height * 0.48;
+      const mainR = Math.min(width, height) * 0.18;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.strokeStyle = "rgba(96,165,250,0.2)";
+      ctx.lineWidth = 22;
+      ctx.arc(cx, cy, mainR + 10 + Math.sin(t * 2) * 2, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.strokeStyle = "rgba(59,130,246,0.36)";
+      ctx.lineWidth = 2;
+      ctx.arc(cx, cy, mainR, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.fillStyle = "rgba(5,11,24,0.92)";
+      ctx.arc(cx, cy, mainR - 18, 0, Math.PI * 2);
+      ctx.fill();
+
+      const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, mainR - 10);
+      coreGrad.addColorStop(0, "rgba(59,130,246,0.15)");
+      coreGrad.addColorStop(1, "rgba(2,6,23,0)");
+      ctx.fillStyle = coreGrad;
+      ctx.beginPath();
+      ctx.arc(cx, cy, mainR - 10, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = "rgba(255,255,255,0.98)";
+      ctx.textAlign = "center";
+      ctx.font = "700 18px Inter, sans-serif";
+      ctx.fillText("BUILDING", cx, cy - 18);
+      ctx.font = "800 34px Inter, sans-serif";
+      ctx.fillText("SYSTEMS", cx, cy + 16);
+      ctx.font = "600 13px Inter, sans-serif";
+      ctx.fillStyle = "rgba(191,219,254,0.86)";
+      ctx.fillText("Digital AM", cx, cy + 42);
+      ctx.restore();
+
+      frame = requestAnimationFrame(draw);
+    };
+
+    resize();
+    draw();
+
+    window.addEventListener("resize", resize);
+    window.addEventListener("mousemove", onMove);
+    canvas.addEventListener("mouseleave", onLeave);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      observer.disconnect();
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", onMove);
+      canvas.removeEventListener("mouseleave", onLeave);
     };
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("lang", lang);
-    document.documentElement.lang = lang;
-    document.title = t.metaTitle;
-    setMetaByName("description", t.metaDescription);
-    setMetaByProperty("og:title", t.ogTitle);
-    setMetaByProperty("og:description", t.ogDescription);
-    setMetaByName("twitter:title", t.twitterTitle);
-    setMetaByName("twitter:description", t.twitterDescription);
-    setFormSent(false);
-  }, [lang, t]);
+  return <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />;
+}
 
-  const closeMobile = () => setMenuOpen(false);
+function SectionTitle({ eyebrow, title, text }) {
+  return (
+    <div className="max-w-3xl space-y-4">
+      {eyebrow && (
+        <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-300">
+          <Sparkles className="h-3.5 w-3.5" />
+          {eyebrow}
+        </div>
+      )}
+      <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl">{title}</h2>
+      {text && <p className="max-w-2xl text-base leading-7 text-slate-300 md:text-lg">{text}</p>}
+    </div>
+  );
+}
 
-  const onSubmit = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const required = ["name", "businessType", "phone", "email"];
-    const isValid = required.every((field) => String(formData.get(field) || "").trim());
-    if (!isValid) return;
-    event.currentTarget.reset();
-    setFormSent(true);
-  };
+function MockCard({ title, subtitle, lines = [] }) {
+  return (
+    <div className="rounded-[26px] border border-white/10 bg-[#071120]/90 p-5 shadow-[0_20px_60px_rgba(2,8,23,0.45)] backdrop-blur-sm">
+      <div className="mb-4 flex items-center justify-between">
+        <div>
+          <div className="text-sm font-semibold text-white">{title}</div>
+          <div className="text-xs uppercase tracking-[0.16em] text-slate-400">{subtitle}</div>
+        </div>
+        <div className="flex gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
+          <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
+          <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
+        </div>
+      </div>
+      <div className="space-y-3">
+        {lines.map((line, i) => (
+          <div key={i} className="rounded-2xl border border-white/6 bg-white/[0.04] px-3 py-3 text-sm text-slate-300">
+            {line}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function App() {
+  const [form, setForm] = useState({ name: "", email: "", business: "", message: "" });
+
+  const mailto = useMemo(() => {
+    const subject = encodeURIComponent(`Nuevo contacto desde Digital AM - ${form.business || "Sitio web"}`);
+    const body = encodeURIComponent(
+      `Nombre: ${form.name || ""}\nEmail: ${form.email || ""}\nNegocio: ${form.business || ""}\n\nMensaje:\n${form.message || ""}`
+    );
+    return `mailto:ferkmas88@gmail.com?subject=${subject}&body=${body}`;
+  }, [form]);
 
   return (
-    <>
-      <header className={`site-header ${isScrolled ? "site-header--scrolled" : ""}`}>
-        <div className="container nav-row">
-          <a href="#top" className="brand" onClick={closeMobile}>
-            <img src="/logo-digital-am.png" alt="Digital AM" className="brand-logo" />
-            <span className="brand-text">Digital AM</span>
+    <div className="min-h-screen bg-[#020611] text-slate-100">
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.16),_transparent_22%),radial-gradient(circle_at_80%_18%,_rgba(14,165,233,0.08),_transparent_15%),linear-gradient(to_bottom,rgba(59,130,246,0.03),transparent_25%)]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(96,165,250,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(96,165,250,0.025)_1px,transparent_1px)] bg-[size:42px_42px]" />
+
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-[#020611]/75 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+          <a href="#top" className="flex items-center gap-3">
+            <div className="grid h-11 w-11 place-items-center rounded-2xl border border-blue-400/25 bg-blue-500/10 shadow-[0_0_30px_rgba(37,99,235,0.15)]">
+              <span className="text-sm font-black tracking-[0.24em] text-blue-300">AM</span>
+            </div>
+            <div>
+              <div className="text-lg font-semibold text-white">Digital AM</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-slate-400">Founder · SaaS · Systems · Automation</div>
+            </div>
           </a>
 
-          <button
-            className="menu-toggle"
-            type="button"
-            aria-label="Toggle navigation"
-            onClick={() => setMenuOpen((prev) => !prev)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-
-          <nav className={`nav ${menuOpen ? "nav--open" : ""}`}>
-            <a href="#services" onClick={closeMobile}>
-              {t.nav.services}
-            </a>
-            <a href="#industries" onClick={closeMobile}>
-              {t.nav.industries}
-            </a>
-            <a href="#process" onClick={closeMobile}>
-              {t.nav.process}
-            </a>
-            <a href="#results" onClick={closeMobile}>
-              {t.nav.results}
-            </a>
-            <div className="lang-switch" role="group" aria-label="Language switcher">
-              <button
-                type="button"
-                className={`lang-btn ${lang === "es" ? "active" : ""}`}
-                onClick={() => setLang("es")}
-              >
-                ES
-              </button>
-              <button
-                type="button"
-                className={`lang-btn ${lang === "en" ? "active" : ""}`}
-                onClick={() => setLang("en")}
-              >
-                EN
-              </button>
-            </div>
-            <a href="#contact" className="btn btn-primary" onClick={closeMobile}>
-              {t.nav.cta}
-            </a>
+          <nav className="hidden items-center gap-8 lg:flex">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} className="text-sm font-medium text-slate-300 transition hover:text-white">
+                {item.label}
+              </a>
+            ))}
           </nav>
+
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-2xl border border-blue-400/20 bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_40px_rgba(37,99,235,0.28)] transition hover:bg-blue-500"
+          >
+            Hablar de un proyecto
+            <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </header>
 
       <main id="top">
-        <section className="hero">
-          <div className="bg-grid" />
-          <div className="container hero-inner reveal">
-            <p className="eyebrow">{t.hero.eyebrow}</p>
-            <h1>{t.hero.title}</h1>
-            <p className="lead">{t.hero.lead}</p>
-            <div className="hero-actions">
-              <a href="#contact" className="btn btn-primary">
-                {t.hero.primary}
-              </a>
-              <a href="#contact" className="btn btn-outline">
-                {t.hero.secondary}
-              </a>
+        <section className="relative overflow-hidden">
+          <div className="mx-auto grid max-w-7xl gap-10 px-6 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-24">
+            <div className="flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55 }}
+                className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-300"
+              >
+                <Zap className="h-3.5 w-3.5" />
+                Diseño de sistemas digitales con visión de negocio
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.04 }}
+                className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-tight text-white md:text-7xl"
+              >
+                Diseño y desarrollo sistemas digitales para negocios que valoran la claridad, la estructura y una ejecución más seria.
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.08 }}
+                className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl"
+              >
+                Trabajo en SaaS, software a medida, automatización, sistemas de QR + SMS + reseñas y ecommerce con un enfoque más estratégico. Cada solución busca elevar la operación, fortalecer la presencia digital y aportar valor real al negocio.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.12 }}
+                className="mt-8 flex flex-col gap-4 sm:flex-row"
+              >
+                <a
+                  href="#projects"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-4 text-base font-semibold text-white shadow-[0_15px_45px_rgba(37,99,235,0.28)] transition hover:bg-blue-500"
+                >
+                  Ver proyectos actuales
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-base font-semibold text-white transition hover:border-blue-400/30 hover:bg-white/10"
+                >
+                  Escribirme directo
+                  <Mail className="h-4 w-4" />
+                </a>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.16 }}
+                className="mt-10 grid gap-4 sm:grid-cols-3"
+              >
+                {stats.map((item) => (
+                  <div key={item.label} className="rounded-[24px] border border-white/8 bg-white/[0.04] p-5">
+                    <div className="text-3xl font-semibold text-white">{item.value}</div>
+                    <div className="mt-2 text-sm font-medium text-slate-200">{item.label}</div>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">{item.text}</p>
+                  </div>
+                ))}
+              </motion.div>
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98, y: 14 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="relative min-h-[680px] overflow-hidden rounded-[36px] border border-white/10 bg-[#040b19] shadow-[0_35px_100px_rgba(2,8,23,0.8)]"
+            >
+              <AdvancedCanvas />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.08),transparent_22%),linear-gradient(to_bottom,rgba(255,255,255,0.03),transparent_26%,rgba(255,255,255,0.02))]" />
+
+              <div className="absolute left-6 top-6 right-6 grid gap-4 md:grid-cols-2">
+                <MockCard
+                  title="Enfoque actual"
+                  subtitle="Servicios y productos"
+                  lines={[
+                    "Sistemas de QR + SMS + reseñas",
+                    "Automatización lista para escalar",
+                    "Software a medida para operaciones reales",
+                  ]}
+                />
+                <MockCard
+                  title="Criterio detrás"
+                  subtitle="Dirección estratégica"
+                  lines={[
+                    "Mayor profundidad que un servicio aislado",
+                    "Sistemas con mejor capacidad de reutilización",
+                    "Más valor estructural en cada proyecto",
+                  ]}
+                />
+              </div>
+
+              <div className="absolute bottom-6 left-6 right-6 grid gap-4 md:grid-cols-3">
+                <div className="rounded-[26px] border border-white/10 bg-[#08111f]/85 p-5 backdrop-blur-sm">
+                  <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-white">
+                    <Store className="h-4 w-4 text-blue-300" />
+                    Sistemas para negocio local
+                  </div>
+                  <p className="text-sm leading-6 text-slate-300">
+                    Soluciones para negocios que necesitan captar mejor, responder con agilidad y operar con más consistencia.
+                  </p>
+                </div>
+                <div className="rounded-[26px] border border-white/10 bg-[#08111f]/85 p-5 backdrop-blur-sm">
+                  <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-white">
+                    <Workflow className="h-4 w-4 text-blue-300" />
+                    Arquitectura del sistema
+                  </div>
+                  <p className="text-sm leading-6 text-slate-300">
+                    No solo diseño visual. También lógica, procesos, estructura y margen real para escalar.
+                  </p>
+                </div>
+                <div className="rounded-[26px] border border-white/10 bg-[#08111f]/85 p-5 backdrop-blur-sm">
+                  <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-white">
+                    <ShieldCheck className="h-4 w-4 text-blue-300" />
+                    Mentalidad de construcción
+                  </div>
+                  <p className="text-sm leading-6 text-slate-300">
+                    La meta es construir activos digitales más sólidos: software, automatización y sistemas sostenibles.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        <section id="services" className="section reveal">
-          <div className="container">
-            <h2>{t.authority.title}</h2>
-            <p className="section-copy">{t.authority.copy}</p>
+        <section id="services" className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+          <SectionTitle
+            eyebrow="Servicios"
+            title="Servicios diseñados para aportar estructura, claridad y valor al negocio."
+            text="Más allá de la presencia digital, el objetivo es construir una base que permita captar mejor, responder con más precisión y operar con una lógica más sólida."
+          />
 
-            <div className="cards four-col">
-              {t.authority.services.map((service) => (
-                <article className="card" key={service.title}>
-                  <h3>{service.title}</h3>
-                  <p>{service.desc}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="industries" className="section section-muted reveal">
-          <div className="container">
-            <h2>{t.industries.title}</h2>
-
-            <div className="cards two-col">
-              {t.industries.cards.map((card) => (
-                <article className="card feature-card" key={card.title}>
-                  <h3>{card.title}</h3>
-                  <p>{card.desc}</p>
-                  <ul>
-                    {card.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: index * 0.05 }}
+                  className="group rounded-[28px] border border-white/8 bg-white/[0.04] p-6 transition hover:-translate-y-1 hover:border-blue-400/20 hover:bg-white/[0.06]"
+                >
+                  <div className="mb-5 inline-flex rounded-2xl border border-blue-400/20 bg-blue-500/10 p-3 text-blue-300">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">{service.title}</h3>
+                  <p className="mt-3 leading-7 text-slate-300">{service.description}</p>
+                  <div className="mt-5 space-y-3">
+                    {service.bullets.map((bullet) => (
+                      <div key={bullet} className="flex items-start gap-3 text-sm text-slate-400">
+                        <ChevronRight className="mt-[2px] h-4 w-4 text-blue-300" />
+                        <span>{bullet}</span>
+                      </div>
                     ))}
-                  </ul>
-                  <a href="#contact" className="btn btn-primary">
-                    {card.cta}
-                  </a>
-                </article>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </section>
+
+        <section id="projects" className="border-y border-white/5 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+          <SectionTitle
+            eyebrow="Proyectos actuales"
+            title="Una selección de proyectos alineados con la dirección que estoy construyendo hoy."
+            text="Cada uno responde a una lógica concreta: resolver mejor, presentar mejor y crear sistemas con mayor proyección."
+          />
+
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
+              {projects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.45, delay: index * 0.05 }}
+                  className="rounded-[30px] border border-white/8 bg-[#06101d] p-6"
+                >
+                  <div className="mb-4 flex items-center justify-between gap-4">
+                    <span className="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
+                      {project.status}
+                    </span>
+                    <div className="h-2.5 w-2.5 rounded-full bg-blue-400 shadow-[0_0_16px_rgba(96,165,250,0.8)]" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
+                  <p className="mt-4 leading-7 text-slate-300">{project.text}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {project.tech.map((tag) => (
+                      <span key={tag} className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-300">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="process" className="section reveal">
-          <div className="container">
-            <h2>{t.process.title}</h2>
-            <div className="process-row">
-              {t.process.steps.map((step, index) => (
-                <article key={step.title} className="process-item card">
-                  <span className="step-number">{index + 1}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
-                </article>
-              ))}
+        <section id="process" className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+          <SectionTitle
+            eyebrow="Proceso"
+            title="Cada proyecto parte de una lectura precisa del problema."
+            text="A partir de ahí se define la estructura, la herramienta y la mejor forma de construir una solución con sentido, coherencia y recorrido."
+          />
+
+          <div className="mt-12 grid gap-6 lg:grid-cols-4">
+            {process.map((item, index) => (
+              <motion.div
+                key={item.step}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.45, delay: index * 0.05 }}
+                className="rounded-[28px] border border-white/8 bg-white/[0.04] p-6"
+              >
+                <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 font-semibold text-white">
+                  {item.step}
+                </div>
+                <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                <p className="mt-3 leading-7 text-slate-300">{item.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-6 pb-8 lg:px-8">
+          <div className="rounded-[36px] border border-white/8 bg-[linear-gradient(135deg,rgba(37,99,235,0.16),rgba(15,23,42,0.82)_48%,rgba(2,6,23,0.98))] p-8 md:p-10 lg:p-12">
+            <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+              <div>
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-blue-100">
+                  <Sparkles className="h-3.5 w-3.5" />
+                  Filosofía de trabajo
+                </div>
+                <h3 className="max-w-2xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
+                  Un sistema bien pensado mejora la presencia de la marca y la forma en que el negocio opera.
+                </h3>
+                <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-50/85">
+                  No se trata de sumar herramientas por inercia, sino de diseñar una estructura digital coherente, útil y preparada para acompañar el crecimiento con mayor claridad.
+                </p>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  [MessageSquare, "Captación y seguimiento", "Procesos más claros para atraer clientes y sostener cada conversación con mejor criterio."],
+                  [Globe, "Visión de producto", "Pensar en soluciones útiles, sostenibles y alineadas con una marca que quiere elevar su nivel."],
+                  [Send, "Automatización", "Una base preparada para integrar flujos más avanzados cuando el proyecto lo requiera."],
+                  [MapPin, "Base en Louisville", "Trabajo con contexto local, ejecución digital y una visión diseñada para proyectarse."],
+                ].map(([Icon, title, text]) => (
+                  <div key={title} className="rounded-3xl border border-white/10 bg-black/20 p-5 backdrop-blur-sm">
+                    <Icon className="h-5 w-5 text-blue-200" />
+                    <div className="mt-4 text-lg font-semibold text-white">{title}</div>
+                    <div className="mt-2 text-sm leading-6 text-blue-50/75">{text}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="results" className="section section-muted reveal">
-          <div className="container">
-            <h2>{t.results.title}</h2>
-            <div className="cards four-col metrics">
-              {t.results.metrics.map((metric) => (
-                <article key={`${metric.value}-${metric.label}`} className="metric-card card">
-                  <p className="metric-value">{metric.value}</p>
-                  <p className="metric-label">{metric.label}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <section id="contact" className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+            <div className="rounded-[30px] border border-white/8 bg-white/[0.04] p-8">
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
+                <Mail className="h-3.5 w-3.5" />
+                Contacto
+              </div>
+              <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white md:text-4xl">Si estás listo para construir algo bien hecho, conversemos.</h2>
+              <p className="mt-4 max-w-xl leading-7 text-slate-300">
+                Si tienes una idea, un negocio en marcha o una operación que necesita más estructura, puedo ayudarte a convertirlo en una solución más clara y mejor ejecutada.
+              </p>
 
-        <section id="contact" className="section reveal">
-          <div className="container contact-wrap">
-            <div className="contact-copy">
-              <h2>{t.contact.title}</h2>
-              <p>{t.contact.copy}</p>
-              <a href="#contact-form" className="btn btn-primary">
-                {t.contact.primary}
-              </a>
+              <div className="mt-8 space-y-4">
+                <a
+                  href="mailto:ferkmas88@gmail.com"
+                  className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-slate-200 transition hover:border-blue-400/20 hover:bg-white/[0.06]"
+                >
+                  <Mail className="h-4 w-4 text-blue-300" />
+                  ferkmas88@gmail.com
+                </a>
+                <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-slate-300">
+                  <MapPin className="h-4 w-4 text-blue-300" />
+                  Louisville, Kentucky
+                </div>
+              </div>
             </div>
 
-            <form id="contact-form" className="contact-form card" onSubmit={onSubmit}>
-              <h3 className="full-width">{t.contact.formTitle}</h3>
-              <label>
-                {t.contact.fields.name}
-                <input type="text" name="name" required />
-              </label>
-              <label>
-                {t.contact.fields.businessType}
-                <input type="text" name="businessType" required />
-              </label>
-              <label>
-                {t.contact.fields.phone}
-                <input type="tel" name="phone" required />
-              </label>
-              <label>
-                {t.contact.fields.email}
-                <input type="email" name="email" required />
-              </label>
-              <label className="full-width">
-                {t.contact.fields.message}
-                <textarea name="message" rows="4" />
-              </label>
-              <button type="submit" className="btn btn-primary full-width">
-                {t.contact.submit}
-              </button>
-              {formSent ? <p className="success-message full-width">{t.contact.success}</p> : null}
-            </form>
+            <div className="rounded-[30px] border border-white/8 bg-[#071120] p-8 shadow-[0_20px_80px_rgba(2,8,23,0.45)]">
+              <div className="mb-6 text-xl font-semibold text-white">Cuéntame qué te gustaría construir o mejorar</div>
+              <div className="grid gap-4 md:grid-cols-2">
+                <input
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-white outline-none placeholder:text-slate-500 focus:border-blue-400/30"
+                  placeholder="Nombre"
+                  value={form.name}
+                  onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                />
+                <input
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-white outline-none placeholder:text-slate-500 focus:border-blue-400/30"
+                  placeholder="Email"
+                  value={form.email}
+                  onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                />
+              </div>
+              <input
+                className="mt-4 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-white outline-none placeholder:text-slate-500 focus:border-blue-400/30"
+                placeholder="Negocio o proyecto"
+                value={form.business}
+                onChange={(e) => setForm((f) => ({ ...f, business: e.target.value }))}
+              />
+              <textarea
+                className="mt-4 min-h-[150px] w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-white outline-none placeholder:text-slate-500 focus:border-blue-400/30"
+                placeholder="Cuéntame un poco sobre tu negocio, tu proyecto o la oportunidad que quieres desarrollar."
+                value={form.message}
+                onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+              />
+
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={mailto}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-4 text-base font-semibold text-white transition hover:bg-blue-500"
+                >
+                  Enviar por email
+                  <Send className="h-4 w-4" />
+                </a>
+                <a
+                  href="#top"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-4 text-base font-semibold text-white transition hover:border-blue-400/20 hover:bg-white/[0.06]"
+                >
+                  Volver arriba
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </main>
-
-      <footer className="site-footer">
-        <div className="container footer-row">
-          <p>{t.footer.line1}</p>
-          <p>{t.footer.line2}</p>
-        </div>
-      </footer>
-
-      <a
-        href="https://wa.me/18304750779"
-        className="whatsapp-float"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-      >
-        <span>{t.whatsapp}</span>
-      </a>
-
-      <script
-        key={lang}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-    </>
+    </div>
   );
 }
