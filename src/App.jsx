@@ -597,9 +597,9 @@ export default function App() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.04 }}
-                className="max-w-4xl text-3xl font-semibold leading-[1.02] tracking-tight text-white sm:text-4xl md:text-5xl xl:text-[4.35rem]"
+                className="max-w-4xl text-3xl font-semibold leading-[1.02] tracking-tight text-white sm:text-4xl md:text-[3.35rem] xl:text-[3.95rem]"
               >
-                Diseño y desarrollo sistemas digitales para negocios que valoran la claridad, la estructura y una ejecución más seria
+                Sistemas digitales con claridad, estructura y buena ejecución
               </motion.h1>
 
               <motion.p
@@ -946,7 +946,7 @@ export default function App() {
       </main>
 
       <footer className="border-t border-white/5 bg-black/20">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-sm text-slate-400 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-xs text-slate-500 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <p>© {currentYear} Digital AM.</p>
           <p>Sitio diseñado y desarrollado por Fernando Martínez.</p>
         </div>
