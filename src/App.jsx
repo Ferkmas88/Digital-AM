@@ -495,14 +495,54 @@ function MockCard({ title, subtitle, lines = [] }) {
 
 export default function App() {
   const [form, setForm] = useState({ name: "", email: "", business: "", message: "" });
+  const [submitState, setSubmitState] = useState("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
+  const currentYear = new Date().getFullYear();
 
-  const mailto = useMemo(() => {
-    const subject = encodeURIComponent(`Nuevo contacto desde Digital AM - ${form.business || "Sitio web"}`);
-    const body = encodeURIComponent(
-      `Nombre: ${form.name || ""}\nEmail: ${form.email || ""}\nNegocio: ${form.business || ""}\n\nMensaje:\n${form.message || ""}`
-    );
-    return `mailto:ferkmas88@gmail.com?subject=${subject}&body=${body}`;
-  }, [form]);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!form.name || !form.email || !form.message) {
+      setSubmitState("error");
+      setSubmitMessage("Completa nombre, email y mensaje para enviarlo.");
+      return;
+    }
+
+    try {
+      setSubmitState("submitting");
+      setSubmitMessage("");
+
+      const response = await fetch("https://formsubmit.co/ajax/ferkmas88@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          business: form.business,
+          message: form.message,
+          _subject: `Nuevo contacto desde Digital AM${form.business ? ` - ${form.business}` : ""}`,
+          _captcha: "false",
+          _template: "table",
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || data.success === "false") {
+        throw new Error(data.message || "No se pudo enviar el formulario.");
+      }
+
+      setSubmitState("success");
+      setSubmitMessage("Mensaje enviado. Te responderé por correo lo antes posible.");
+      setForm({ name: "", email: "", business: "", message: "" });
+    } catch {
+      setSubmitState("error");
+      setSubmitMessage("No se pudo enviar desde la web. Puedes escribirme directo a ferkmas88@gmail.com.");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#020611] text-slate-100">
@@ -517,7 +557,7 @@ export default function App() {
             </div>
             <div>
               <div className="text-lg font-semibold text-white">Digital AM</div>
-              <div className="text-xs uppercase tracking-[0.18em] text-slate-400">Founder · SaaS · Systems · Automation</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-slate-400">Diseño web · Software · Automatización</div>
             </div>
           </a>
 
@@ -557,9 +597,9 @@ export default function App() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.65, delay: 0.04 }}
-                className="max-w-4xl text-5xl font-semibold leading-[0.95] tracking-tight text-white md:text-7xl"
+                className="max-w-4xl text-3xl font-semibold leading-[1.02] tracking-tight text-white sm:text-4xl md:text-5xl xl:text-[4.35rem]"
               >
-                Diseño y desarrollo sistemas digitales para negocios que valoran la claridad, la estructura y una ejecución más seria.
+                Diseño y desarrollo sistemas digitales para negocios que valoran la claridad, la estructura y una ejecución más seria
               </motion.h1>
 
               <motion.p
@@ -568,7 +608,7 @@ export default function App() {
                 transition={{ duration: 0.65, delay: 0.08 }}
                 className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl"
               >
-                Trabajo en SaaS, software a medida, automatización, sistemas de QR + SMS + reseñas y ecommerce con un enfoque más estratégico. Cada solución busca elevar la operación, fortalecer la presencia digital y aportar valor real al negocio.
+                Diseño sitios, software y automatizaciones para negocios que necesitan una presencia más sólida y procesos más claros. La idea es simple: que lo digital se vea bien, funcione bien y ayude de verdad al negocio.
               </motion.p>
 
               <motion.div
@@ -785,10 +825,10 @@ export default function App() {
                   Filosofía de trabajo
                 </div>
                 <h3 className="max-w-2xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
-                  Un sistema bien pensado mejora la presencia de la marca y la forma en que el negocio opera.
+                  Un sistema bien pensado mejora la presencia del negocio y también la forma en que se trabaja por dentro.
                 </h3>
                 <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-50/85">
-                  No se trata de sumar herramientas por inercia, sino de diseñar una estructura digital coherente, útil y preparada para acompañar el crecimiento con mayor claridad.
+                  No se trata de meter herramientas porque sí, sino de construir una base digital coherente, útil y lista para acompañar el crecimiento con más orden.
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -816,9 +856,9 @@ export default function App() {
                 <Mail className="h-3.5 w-3.5" />
                 Contacto
               </div>
-              <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white md:text-4xl">Si estás listo para construir algo bien hecho, conversemos.</h2>
+              <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white md:text-4xl">Si tienes una idea o un negocio en marcha, conversemos.</h2>
               <p className="mt-4 max-w-xl leading-7 text-slate-300">
-                Si tienes una idea, un negocio en marcha o una operación que necesita más estructura, puedo ayudarte a convertirlo en una solución más clara y mejor ejecutada.
+                Cuéntame qué quieres mejorar y reviso contigo la mejor forma de aterrizarlo: sitio web, software, automatización o una mezcla de varias piezas.
               </p>
 
               <div className="mt-8 space-y-4">
@@ -836,16 +876,25 @@ export default function App() {
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-white/8 bg-[#071120] p-8 shadow-[0_20px_80px_rgba(2,8,23,0.45)]">
+            <form
+              onSubmit={handleSubmit}
+              className="rounded-[30px] border border-white/8 bg-[#071120] p-8 shadow-[0_20px_80px_rgba(2,8,23,0.45)]"
+            >
               <div className="mb-6 text-xl font-semibold text-white">Cuéntame qué te gustaría construir o mejorar</div>
               <div className="grid gap-4 md:grid-cols-2">
                 <input
+                  type="text"
+                  name="name"
+                  required
                   className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-white outline-none placeholder:text-slate-500 focus:border-blue-400/30"
                   placeholder="Nombre"
                   value={form.name}
                   onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                 />
                 <input
+                  type="email"
+                  name="email"
+                  required
                   className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-white outline-none placeholder:text-slate-500 focus:border-blue-400/30"
                   placeholder="Email"
                   value={form.email}
@@ -853,12 +902,16 @@ export default function App() {
                 />
               </div>
               <input
+                type="text"
+                name="business"
                 className="mt-4 w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-white outline-none placeholder:text-slate-500 focus:border-blue-400/30"
                 placeholder="Negocio o proyecto"
                 value={form.business}
                 onChange={(e) => setForm((f) => ({ ...f, business: e.target.value }))}
               />
               <textarea
+                name="message"
+                required
                 className="mt-4 min-h-[150px] w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-white outline-none placeholder:text-slate-500 focus:border-blue-400/30"
                 placeholder="Cuéntame un poco sobre tu negocio, tu proyecto o la oportunidad que quieres desarrollar."
                 value={form.message}
@@ -866,25 +919,38 @@ export default function App() {
               />
 
               <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={mailto}
-                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-4 text-base font-semibold text-white transition hover:bg-blue-500"
+                <button
+                  type="submit"
+                  disabled={submitState === "submitting"}
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-blue-600 px-6 py-4 text-base font-semibold text-white transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:bg-blue-900/70"
                 >
-                  Enviar por email
+                  {submitState === "submitting" ? "Enviando..." : "Enviar mensaje"}
                   <Send className="h-4 w-4" />
-                </a>
+                </button>
                 <a
-                  href="#top"
+                  href="mailto:ferkmas88@gmail.com"
                   className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-4 text-base font-semibold text-white transition hover:border-blue-400/20 hover:bg-white/[0.06]"
                 >
-                  Volver arriba
-                  <ArrowRight className="h-4 w-4" />
+                  Escribirme directo
+                  <Mail className="h-4 w-4" />
                 </a>
               </div>
-            </div>
+              <p className="mt-4 text-sm leading-6 text-slate-400">
+                {submitState === "success" && <span className="text-emerald-300">{submitMessage}</span>}
+                {submitState === "error" && <span className="text-rose-300">{submitMessage}</span>}
+                {submitState === "idle" && "Responderé por correo con contexto y siguientes pasos."}
+              </p>
+            </form>
           </div>
         </section>
       </main>
+
+      <footer className="border-t border-white/5 bg-black/20">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-sm text-slate-400 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <p>© {currentYear} Digital AM.</p>
+          <p>Sitio diseñado y desarrollado por Fernando Martínez.</p>
+        </div>
+      </footer>
     </div>
   );
 }
