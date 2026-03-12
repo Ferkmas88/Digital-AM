@@ -136,29 +136,39 @@ function LegalPage({ content }) {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.16),_transparent_22%),radial-gradient(circle_at_80%_18%,_rgba(14,165,233,0.08),_transparent_15%),linear-gradient(to_bottom,rgba(59,130,246,0.03),transparent_25%)]" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(96,165,250,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(96,165,250,0.025)_1px,transparent_1px)] bg-[size:42px_42px]" />
 
-      <header className="border-b border-white/5 bg-[#020611]/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <a href="/" className="flex items-center gap-3 self-start">
+      <header className="sticky top-0 z-50 border-b border-white/5 bg-[#020611]/75 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-8">
+          <a href="/" className="flex items-center gap-3">
             <div className="grid h-11 w-11 place-items-center rounded-2xl border border-blue-400/25 bg-blue-500/10 shadow-[0_0_30px_rgba(37,99,235,0.15)]">
               <span className="text-sm font-black tracking-[0.24em] text-blue-300">AM</span>
             </div>
             <div>
               <div className="text-lg font-semibold text-white">{brandName}</div>
-              <div className="text-xs uppercase tracking-[0.18em] text-slate-400">Public legal pages</div>
+              <div className="text-xs uppercase tracking-[0.18em] text-slate-400">Diseño web · Software · Automatización</div>
             </div>
           </a>
 
-          <nav className="flex w-full flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-300 lg:w-auto lg:justify-end">
-            <a href="/" className="flow-link whitespace-nowrap hover:text-white">
-              Home
+          <nav className="hidden items-center gap-8 lg:flex">
+            <a href="/#services" className="flow-link text-sm font-medium text-slate-300 transition hover:text-white">
+              Servicios
             </a>
-            <a href="/privacy" className="flow-link whitespace-nowrap hover:text-white">
-              Privacy Policy
+            <a href="/#projects" className="flow-link text-sm font-medium text-slate-300 transition hover:text-white">
+              Proyectos
             </a>
-            <a href="/terms" className="flow-link whitespace-nowrap hover:text-white">
-              Terms & Conditions
+            <a href="/#process" className="flow-link text-sm font-medium text-slate-300 transition hover:text-white">
+              Proceso
+            </a>
+            <a href="/#contact" className="flow-link text-sm font-medium text-slate-300 transition hover:text-white">
+              Contacto
             </a>
           </nav>
+
+          <a
+            href="/#contact"
+            className="flow-button hidden items-center gap-2 rounded-2xl border border-blue-400/20 bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_40px_rgba(37,99,235,0.28)] transition hover:bg-blue-500 sm:inline-flex"
+          >
+            Hablar de un proyecto
+          </a>
         </div>
       </header>
 
