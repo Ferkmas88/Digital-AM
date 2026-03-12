@@ -263,7 +263,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.45, delay: index * 0.05 }}
-                  className="flow-surface rounded-[30px] border border-white/8 bg-[#06101d] p-6"
+                  className="flow-surface flex h-full flex-col rounded-[30px] border border-white/8 bg-[#06101d] p-6"
                 >
                   <div className="flow-child mb-4 flex items-center justify-between gap-4">
                     <span className="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
@@ -273,6 +273,18 @@ export default function App() {
                   </div>
                   <h3 className="flow-child text-2xl font-semibold text-white">{project.title}</h3>
                   <p className="flow-child mt-4 leading-7 text-slate-300">{project.text}</p>
+                  {project.href && (
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      {...flowButtonProps}
+                      className="flow-button mt-6 inline-flex items-center gap-2 self-start rounded-2xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/30 hover:bg-cyan-300/15"
+                    >
+                      {copy.projects.linkLabel}
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  )}
                   <div className="mt-6 flex flex-wrap gap-2">
                     {project.tech.map((tag) => (
                       <span

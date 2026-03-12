@@ -98,7 +98,7 @@ function VisualStack({ copy }) {
             <div className="flow-child text-xs uppercase tracking-[0.28em] text-slate-400">{copy.visual.growthLabel}</div>
             <div className="mt-4 flex flex-wrap gap-2">
               {copy.visual.features.map((label, index) => {
-                const Icon = featureIcons[index];
+                const Icon = featureIcons[index % featureIcons.length];
 
                 return (
                   <div
