@@ -137,8 +137,8 @@ function LegalPage({ content }) {
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(96,165,250,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(96,165,250,0.025)_1px,transparent_1px)] bg-[size:42px_42px]" />
 
       <header className="border-b border-white/5 bg-[#020611]/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-          <a href="/" className="flex items-center gap-3">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <a href="/" className="flex items-center gap-3 self-start">
             <div className="grid h-11 w-11 place-items-center rounded-2xl border border-blue-400/25 bg-blue-500/10 shadow-[0_0_30px_rgba(37,99,235,0.15)]">
               <span className="text-sm font-black tracking-[0.24em] text-blue-300">AM</span>
             </div>
@@ -148,14 +148,14 @@ function LegalPage({ content }) {
             </div>
           </a>
 
-          <nav className="flex items-center gap-5 text-sm text-slate-300">
-            <a href="/" className="flow-link hover:text-white">
+          <nav className="flex w-full flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-300 lg:w-auto lg:justify-end">
+            <a href="/" className="flow-link whitespace-nowrap hover:text-white">
               Home
             </a>
-            <a href="/privacy" className="flow-link hover:text-white">
+            <a href="/privacy" className="flow-link whitespace-nowrap hover:text-white">
               Privacy Policy
             </a>
-            <a href="/terms" className="flow-link hover:text-white">
+            <a href="/terms" className="flow-link whitespace-nowrap hover:text-white">
               Terms & Conditions
             </a>
           </nav>
