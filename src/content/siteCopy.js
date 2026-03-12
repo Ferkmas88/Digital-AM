@@ -21,7 +21,7 @@ export const siteCopy = {
     ],
     hero: {
       badge: "Disenado para crecimiento local",
-      title: "Sitios premium y sistemas de seguimiento que ayudan a negocios locales a captar mejores leads y responder mas rapido.",
+      title: "Sitios premium y sistemas que impulsan leads de calidad y respuestas rapidas.",
       subtitle:
         "Diseno webs, capturo leads y automatizo seguimientos para negocios locales que quieren proyectar una imagen mas profesional online y dejar de perder oportunidades por respuestas lentas o procesos desordenados.",
       trustLine: "Websites, captacion de leads, automatizaciones y CRM para negocios locales que buscan crecer.",
