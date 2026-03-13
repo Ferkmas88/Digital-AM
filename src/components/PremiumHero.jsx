@@ -176,7 +176,7 @@ export default function PremiumHero({ copy, ui }) {
               {copy.badge}
             </div>
 
-            <h1 className="font-display mt-6 max-w-[12ch] text-[clamp(3.4rem,7vw,5.15rem)] font-semibold leading-[0.9] tracking-[-0.055em] text-white">
+            <h1 className="font-display mt-6 max-w-[14ch] text-[clamp(4.1rem,8vw,6rem)] font-semibold leading-[0.88] tracking-[-0.055em] text-white">
               {(copy.titleLines ?? [copy.title]).map((line) => (
                 <span key={line} className="block">
                   {line}

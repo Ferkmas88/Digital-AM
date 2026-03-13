@@ -22,7 +22,7 @@ export const siteCopy = {
     hero: {
       badge: "Disenado para crecimiento local",
       title: "Sitios premium y sistemas que impulsan leads de calidad y respuestas rapidas.",
-      titleLines: ["Sitios premium", "y sistemas para", "captar mejores", "leads y responder", "mas rapido."],
+      titleLines: ["Sitios premium y", "sistemas que impulsan", "leads de calidad", "y respuestas rapidas."],
       subtitle:
         "Diseno webs, capturo leads y automatizo seguimientos para negocios locales que quieren proyectar una imagen mas profesional online y dejar de perder oportunidades por respuestas lentas o procesos desordenados.",
       trustLine: "Websites, captacion de leads, automatizaciones y CRM para negocios locales que buscan crecer.",
@@ -277,7 +277,7 @@ export const siteCopy = {
     hero: {
       badge: "Built for local growth",
       title: "Premium websites and follow-up systems that help local businesses capture better leads and respond faster.",
-      titleLines: ["Premium websites", "and systems that", "capture better", "leads and answer", "faster."],
+      titleLines: ["Premium websites", "and systems that drive", "better leads", "and faster responses."],
       subtitle:
         "I design websites, capture leads and automate follow-up for local businesses that want to project a more professional image online and stop losing opportunities to slow responses or messy processes.",
       trustLine: "Websites, lead capture, automations and CRM workflows for local businesses ready to grow.",
