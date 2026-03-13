@@ -11,7 +11,7 @@ export const siteCopy = {
     brand: {
       name: "Digital AM",
       tagline: "Diseño web · Software · Automatización",
-      headerCta: "Reservar demo",
+      headerCta: "Cotización gratis",
     },
     nav: [
       { label: "Servicios", href: "#services" },
@@ -20,14 +20,14 @@ export const siteCopy = {
       { label: "Contacto", href: "#contact" },
     ],
     hero: {
-      badge: "Diseñado para crecimiento local",
-      title: "Sitios premium y sistemas que impulsan leads de calidad y respuestas rápidas.",
-      titleLines: ["Sitios premium y", "sistemas que impulsan", "leads de calidad", "y respuestas rápidas."],
+      badge: "Sin precios fijos · Me adapto a tu presupuesto",
+      title: "Tu negocio merece una presencia digital profesional. Sin importar tu presupuesto, encontramos la solución.",
+      titleLines: ["Tu negocio merece", "una presencia digital", "profesional — sin", "importar tu presupuesto."],
       subtitle:
-        "Diseño webs, capturo leads y automatizo seguimientos para negocios locales que quieren proyectar una imagen más profesional online y dejar de perder oportunidades por respuestas lentas o procesos desordenados.",
-      trustLine: "Websites, captación de leads, automatizaciones y CRM para negocios locales que buscan crecer.",
-      ctaNote: "Sin presión. Analizamos tu situación y te asesoro sobre qué conviene construir primero.",
-      primaryCta: { label: "Reservar demo", href: "#contact" },
+        "Diseño webs, capturo leads y automatizo seguimientos para negocios locales. No trabajo con precios fijos: me adapto a lo que necesitás y a lo que podés invertir. Hablamos, analizamos tu situación y arrancamos desde ahí.",
+      trustLine: "Cotización gratis · Sin compromiso · Me adapto a tu proyecto y presupuesto.",
+      ctaNote: "Sin presión y sin precio fijo. Contame qué necesitás y armamos algo a medida.",
+      primaryCta: { label: "Pedir cotización gratis", href: "#contact" },
       secondaryCta: { label: "Ver proyectos", href: "#projects" },
       metrics: ["Sitios premium", "Captura de leads", "Automatización", "CRM"],
       visual: {
@@ -96,7 +96,7 @@ export const siteCopy = {
     services: {
       eyebrow: "Servicios",
       title: "Cada servicio soluciona una parte específica del problema: verte mejor, captar mejor o responder mejor.",
-      text: "No se trata de saturar tu negocio con herramientas, sino de construir lo justo para mejorar la experiencia y ordenar el flujo comercial.",
+      text: "No trabajo con precios fijos. Cada negocio es distinto y el presupuesto se arma según lo que realmente necesitás. Contactame y lo vemos juntos.",
       items: [
         {
           title: "QR + SMS + Reviews",
@@ -193,33 +193,33 @@ export const siteCopy = {
       ],
     },
     philosophy: {
-      eyebrow: "Filosofía de trabajo",
-      title: "La diferencia está en conectar mensaje, experiencia y operación, no en usar más herramientas.",
-      text: "Busco construir una base digital premium, que responda mejor y reduzca el trabajo manual dentro del negocio.",
+      eyebrow: "Por qué trabajar conmigo",
+      title: "Me adapto a tu negocio, a tu situación y a lo que podés invertir hoy.",
+      text: "No hay paquetes genéricos ni precios de lista. Cada proyecto parte de una conversación real donde entiendo tu negocio y te propongo exactamente lo que tiene sentido construir.",
       cards: [
         {
-          title: "Captación y seguimiento",
-          text: "Procesos claros para atraer clientes y sostener cada conversación con mejor criterio.",
+          title: "Precio a medida",
+          text: "No tengo tarifas fijas. El presupuesto se arma según tu proyecto, tus necesidades y lo que podés invertir.",
         },
         {
-          title: "Visión de producto",
-          text: "Soluciones útiles y sostenibles alineadas con una marca que quiere elevar su nivel.",
+          title: "Sin compromiso inicial",
+          text: "Hablamos, analizamos tu situación y te digo con claridad qué conviene hacer primero. Sin costo.",
         },
         {
-          title: "Automatización",
-          text: "Base preparada para integrar flujos más avanzados cuando el proyecto lo requiera.",
+          title: "Resultados reales",
+          text: "Trabajo con negocios locales reales. Podés ver los sitios publicados y juzgar por vos mismo.",
         },
         {
           title: "Base en Louisville",
-          text: "Trabajo con contexto local, ejecución digital y una visión de proyección.",
+          text: "Trabajo con contexto local, ejecución digital y disponibilidad directa.",
         },
       ],
     },
     contact: {
       eyebrow: "Contacto",
-      title: "Si querés una presencia premium y un sistema claro para captar leads, conversemos.",
-      text: "Cuanto más concreto seas sobre tu negocio, tu oferta y tu cuello de botella, más precisa será la propuesta.",
-      formTitle: "Contame qué querés mejorar en tu web, captación o seguimiento",
+      title: "Contame qué necesitás. Me adapto a tu proyecto y armamos un presupuesto a medida.",
+      text: "No trabajo con paquetes fijos. Cada proyecto es diferente — analizamos tu situación y te propongo exactamente lo que tiene sentido para tu negocio y tu presupuesto.",
+      formTitle: "Contame qué necesitás — te respondo con un presupuesto a medida, sin compromiso",
       fields: {
         name: { placeholder: "Nombre" },
         email: { placeholder: "Email" },
@@ -259,7 +259,7 @@ export const siteCopy = {
     brand: {
       name: "Digital AM",
       tagline: "Web design · Software · Automation",
-      headerCta: "Book a demo",
+      headerCta: "Get a free quote",
     },
     nav: [
       { label: "Services", href: "#services" },
@@ -268,14 +268,14 @@ export const siteCopy = {
       { label: "Contact", href: "#contact" },
     ],
     hero: {
-      badge: "Built for local growth",
-      title: "Premium websites and follow-up systems that help local businesses capture better leads and respond faster.",
-      titleLines: ["Premium websites", "and systems that drive", "better leads", "and faster responses."],
+      badge: "No fixed prices · I adapt to your budget",
+      title: "Your business deserves a professional digital presence. Whatever your budget, we find the right solution.",
+      titleLines: ["Your business deserves", "a professional digital", "presence — whatever", "your budget."],
       subtitle:
-        "I design websites, capture leads and automate follow-up for local businesses that want to project a more professional image online and stop losing opportunities to slow responses or messy processes.",
-      trustLine: "Websites, lead capture, automations and CRM workflows for local businesses ready to grow.",
-      ctaNote: "No pressure. We review your situation and decide what makes sense to build first.",
-      primaryCta: { label: "Book a demo", href: "#contact" },
+        "I build websites, capture leads and automate follow-up for local businesses. No fixed prices — I adapt to what you need and what you can invest. We talk, I understand your situation, and we start from there.",
+      trustLine: "Free quote · No commitment · I adapt to your project and budget.",
+      ctaNote: "No pressure, no fixed prices. Tell me what you need and we build something that fits.",
+      primaryCta: { label: "Get a free quote", href: "#contact" },
       secondaryCta: { label: "See projects", href: "#projects" },
       metrics: ["Premium websites", "Lead capture", "Automation", "CRM"],
       visual: {
@@ -340,7 +340,7 @@ export const siteCopy = {
     services: {
       eyebrow: "Services",
       title: "Each service solves a specific part of the problem: look better, capture better or respond better.",
-      text: "The goal is not to overload your business with tools, but to build the right pieces to improve the experience and organize the commercial flow.",
+      text: "No fixed packages. Every business is different and the budget is built around what you actually need. Reach out and we figure it out together.",
       items: [
         {
           title: "QR + SMS + Reviews",
@@ -431,33 +431,33 @@ export const siteCopy = {
       ],
     },
     philosophy: {
-      eyebrow: "Work philosophy",
-      title: "The difference comes from connecting message, experience and operations, not from using more tools.",
-      text: "I aim to build a premium digital base that responds better and reduces manual work inside the business.",
+      eyebrow: "Why work with me",
+      title: "I adapt to your business, your situation and what you can invest right now.",
+      text: "No generic packages, no price lists. Every project starts with a real conversation where I understand your business and propose exactly what makes sense to build.",
       cards: [
         {
-          title: "Lead capture and follow-up",
-          text: "Clear processes to attract customers and support every conversation with better judgment.",
+          title: "Custom pricing",
+          text: "No fixed rates. The budget is built around your project, your needs and what you can invest.",
         },
         {
-          title: "Product thinking",
-          text: "Useful and sustainable solutions aligned with a brand that wants to raise its level.",
+          title: "No upfront commitment",
+          text: "We talk, I review your situation and tell you clearly what makes sense to do first. No cost.",
         },
         {
-          title: "Automation",
-          text: "A base prepared to integrate more advanced flows when the project requires them.",
+          title: "Real results",
+          text: "I work with real local businesses. You can see the published sites and judge for yourself.",
         },
         {
           title: "Based in Louisville",
-          text: "I work with local context, digital execution and a vision for growth.",
+          text: "Local context, digital execution and direct availability.",
         },
       ],
     },
     contact: {
       eyebrow: "Contact",
-      title: "If you want a premium presence and a clear system to capture leads, let us talk.",
-      text: "The more specific you are about your business, your offer and your bottleneck, the more precise the proposal will be.",
-      formTitle: "Tell me what you want to improve in your website, lead capture or follow-up",
+      title: "Tell me what you need. I adapt to your project and put together a custom quote.",
+      text: "No fixed packages. Every project is different — we look at your situation and I propose exactly what makes sense for your business and your budget.",
+      formTitle: "Tell me what you need — I'll come back with a custom quote, no strings attached",
       fields: {
         name: { placeholder: "Name" },
         email: { placeholder: "Email" },
