@@ -28,9 +28,6 @@ const flowCardProps = getFlowInteractionProps({ tilt: 4 });
 const flowPanelProps = getFlowInteractionProps({ tilt: 5 });
 const flowButtonProps = getFlowInteractionProps();
 
-const getProjectPreviewUrl = (href) =>
-  `https://s.wordpress.com/mshots/v1/${encodeURIComponent(href)}?w=1600`;
-
 const getProjectDomain = (href) => {
   try {
     return new URL(href).hostname.replace(/^www\./, "");
@@ -67,7 +64,7 @@ function SectionTitle({ eyebrow, title, text }) {
 
 function ProjectCard({ project, index, linkLabel }) {
   const domain = project.href ? getProjectDomain(project.href) : "";
-  const [previewUnavailable, setPreviewUnavailable] = useState(false);
+  const [previewLoaded, setPreviewLoaded] = useState(false);
 
   return (
     <motion.article
@@ -90,24 +87,36 @@ function ProjectCard({ project, index, linkLabel }) {
         </div>
 
         <div className="relative aspect-[16/10] overflow-hidden">
-          {previewUnavailable ? (
-            <div className="flex h-full w-full items-end bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.2),transparent_38%),linear-gradient(180deg,rgba(15,23,42,0.4),rgba(6,16,29,0.95))] p-5">
-              <div>
-                <div className="text-[11px] uppercase tracking-[0.24em] text-cyan-200/75">Preview listo</div>
-                <div className="font-display mt-2 text-xl tracking-[-0.04em] text-white">{project.title}</div>
-                <div className="mt-2 text-sm text-slate-300">{domain}</div>
-              </div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.18),transparent_30%),linear-gradient(180deg,rgba(8,15,30,0.3),rgba(6,16,29,0.95))]" />
+          <iframe
+            src={project.href}
+            title={`Preview de ${project.title}`}
+            loading="lazy"
+            onLoad={() => setPreviewLoaded(true)}
+            className="pointer-events-none absolute left-0 top-0 border-0 transition duration-500 group-hover:scale-[0.635]"
+            style={{
+              width: "160%",
+              height: "160%",
+              transform: "scale(0.625)",
+              transformOrigin: "top left",
+            }}
+          />
+          <div
+            className={`pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(6,16,29,0.14),rgba(6,16,29,0.68))] transition-opacity duration-500 ${
+              previewLoaded ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <div
+            className={`pointer-events-none absolute inset-0 flex items-end p-5 transition-opacity duration-500 ${
+              previewLoaded ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            <div>
+              <div className="text-[11px] uppercase tracking-[0.24em] text-cyan-200/75">Cargando preview</div>
+              <div className="font-display mt-2 text-xl tracking-[-0.04em] text-white">{project.title}</div>
+              <div className="mt-2 text-sm text-slate-300">{domain}</div>
             </div>
-          ) : (
-            <img
-              src={getProjectPreviewUrl(project.href)}
-              alt={`Preview de ${project.title}`}
-              loading="lazy"
-              referrerPolicy="no-referrer"
-              onError={() => setPreviewUnavailable(true)}
-              className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]"
-            />
-          )}
+          </div>
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,16,29,0)_50%,rgba(6,16,29,0.9)_100%)]" />
           <div className="absolute bottom-4 left-4 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-200">
             {project.status}
