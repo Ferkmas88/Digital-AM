@@ -6,11 +6,11 @@ export const siteCopy = {
     ui: {
       languageLabel: "Idioma",
       moveToReveal: "Mueve para revelar",
-      autoReveal: "Revelado automatico",
+      autoReveal: "Revelado automático",
     },
     brand: {
       name: "Digital AM",
-      tagline: "Diseno web - Software - Automatizacion",
+      tagline: "Diseño web · Software · Automatización",
       headerCta: "Reservar demo",
     },
     nav: [
@@ -20,19 +20,19 @@ export const siteCopy = {
       { label: "Contacto", href: "#contact" },
     ],
     hero: {
-      badge: "Disenado para crecimiento local",
-      title: "Sitios premium y sistemas que impulsan leads de calidad y respuestas rapidas.",
-      titleLines: ["Sitios premium y", "sistemas que impulsan", "leads de calidad", "y respuestas rapidas."],
+      badge: "Diseñado para crecimiento local",
+      title: "Sitios premium y sistemas que impulsan leads de calidad y respuestas rápidas.",
+      titleLines: ["Sitios premium y", "sistemas que impulsan", "leads de calidad", "y respuestas rápidas."],
       subtitle:
-        "Diseno webs, capturo leads y automatizo seguimientos para negocios locales que quieren proyectar una imagen mas profesional online y dejar de perder oportunidades por respuestas lentas o procesos desordenados.",
-      trustLine: "Websites, captacion de leads, automatizaciones y CRM para negocios locales que buscan crecer.",
-      ctaNote: "Sin presion. Analizamos tu situacion y te asesoro sobre que conviene construir primero.",
+        "Diseño webs, capturo leads y automatizo seguimientos para negocios locales que quieren proyectar una imagen más profesional online y dejar de perder oportunidades por respuestas lentas o procesos desordenados.",
+      trustLine: "Websites, captación de leads, automatizaciones y CRM para negocios locales que buscan crecer.",
+      ctaNote: "Sin presión. Analizamos tu situación y te asesoro sobre qué conviene construir primero.",
       primaryCta: { label: "Reservar demo", href: "#contact" },
       secondaryCta: { label: "Ver proyectos", href: "#projects" },
-      metrics: ["Sitios premium", "Captura de leads", "Automatizacion", "CRM"],
+      metrics: ["Sitios premium", "Captura de leads", "Automatización", "CRM"],
       visual: {
         stackLabel: "Sistema Digital AM",
-        stackTitle: "Flujo de leads disenado para crecimiento local",
+        stackTitle: "Flujo de leads diseñado para crecimiento local",
         liveSystem: "Sistema activo",
         journeyLabel: "Ruta principal",
         journeyTitle: "Atrae. Captura. Automatiza. Cierra.",
@@ -40,37 +40,37 @@ export const siteCopy = {
         journeyCards: [
           {
             label: "Captura de leads",
-            detail: "Formularios inteligentes, mensajes por SMS y contacto sin friccion.",
+            detail: "Formularios inteligentes, mensajes por SMS y contacto sin fricción.",
           },
           {
-            label: "Logica de seguimiento",
-            detail: "Automatizaciones que mueven cada consulta rapidamente al siguiente paso.",
+            label: "Lógica de seguimiento",
+            detail: "Automatizaciones que mueven cada consulta rápidamente al siguiente paso.",
           },
           {
             label: "Visibilidad en CRM",
-            detail: "Pipeline limpio para que ningun lead caliente se pierda.",
+            detail: "Pipeline limpio para que ningún lead caliente se pierda.",
           },
         ],
-        signalsLabel: "Senales de conversion",
-        signalsTitle: "Atencion que sigue avanzando",
+        signalsLabel: "Señales de conversión",
+        signalsTitle: "Atención que sigue avanzando",
         signals: [
           ["Consulta", "Capturada en menos de 60 segundos"],
-          ["Demo", "Enviada automaticamente al siguiente paso"],
+          ["Demo", "Enviada automáticamente al siguiente paso"],
           ["Seguimiento", "Flujo SMS + CRM listo para actuar"],
         ],
         growthLabel: "Growth stack",
         features: [
           "Sistema web premium",
-          "Rutas de conversion mobile-first",
-          "Lanzamiento rapido y ejecucion limpia",
-          "Posicionamiento premium con backend estrategico",
-          "Sistemas de respuesta rapida",
+          "Rutas de conversión mobile-first",
+          "Lanzamiento rápido y ejecución limpia",
+          "Posicionamiento premium con backend estratégico",
+          "Sistemas de respuesta rápida",
           "AI + CRM automation layer",
         ],
         positioningLabel: "Base digital",
         positioningText: "No se trata solo de tener una web bonita, sino de tener una base digital que venda mejor.",
         footerPills: [
-          "Primera impresion poderosa",
+          "Primera impresión poderosa",
           "Captura con criterio",
           "Seguimiento sin fugas",
         ],
@@ -80,93 +80,86 @@ export const siteCopy = {
       title: "No se trata solo de tener una web bonita, sino de tener una base digital que venda mejor.",
       items: [
         {
-          title: "Primera impresion poderosa",
-          text: "Comunica claridad, confianza y una percepcion premium desde el primer vistazo.",
+          title: "Primera impresión poderosa",
+          text: "Comunica claridad, confianza y una percepción premium desde el primer vistazo.",
         },
         {
           title: "Captura con criterio",
-          text: "Mensajes, formularios y CTAs disenados para que el visitante entienda rapido que haces y de el siguiente paso.",
+          text: "Mensajes, formularios y CTAs diseñados para que el visitante entienda rápido qué hacés y dé el siguiente paso.",
         },
         {
           title: "Seguimiento sin fugas",
-          text: "Automatizaciones y flujos CRM para que cada lead reciba atencion y avance con menos trabajo manual.",
+          text: "Automatizaciones y flujos CRM para que cada lead reciba atención y avance con menos trabajo manual.",
         },
       ],
     },
     services: {
       eyebrow: "Servicios",
-      title: "Cada servicio soluciona una parte especifica del problema: verte mejor, captar mejor o responder mejor.",
+      title: "Cada servicio soluciona una parte específica del problema: verte mejor, captar mejor o responder mejor.",
       text: "No se trata de saturar tu negocio con herramientas, sino de construir lo justo para mejorar la experiencia y ordenar el flujo comercial.",
       items: [
         {
           title: "QR + SMS + Reviews",
           description:
-            "Sistemas para captar clientes, solicitar resenas y mantener seguimiento por SMS con consistencia.",
+            "Sistemas para captar clientes, solicitar reseñas y mantener seguimiento por SMS con consistencia.",
           bullets: ["Captura por QR", "Solicitud de reviews", "Seguimiento por SMS", "Enfoque para negocios locales"],
         },
         {
-          title: "Automatizacion conversacional",
+          title: "Automatización conversacional",
           description:
-            "Flujos que ordenan la atencion, filtran oportunidades y preparan la base para automatizaciones avanzadas.",
-          bullets: ["Flujos personalizados", "Respuestas mas organizadas", "Filtrado de leads", "Base lista para evolucionar"],
+            "Flujos que ordenan la atención, filtran oportunidades y preparan la base para automatizaciones avanzadas.",
+          bullets: ["Flujos personalizados", "Respuestas más organizadas", "Filtrado de leads", "Base lista para evolucionar"],
         },
         {
           title: "Software a medida",
           description:
-            "Herramientas web disenadas segun el flujo real de tu negocio: formularios, paneles y procesos internos.",
-          bullets: ["Dashboards simples", "Procesos personalizados", "Menos trabajo manual", "Construido segun necesidad"],
+            "Herramientas web diseñadas según el flujo real de tu negocio: formularios, paneles y procesos internos.",
+          bullets: ["Dashboards simples", "Procesos personalizados", "Menos trabajo manual", "Construido según necesidad"],
         },
         {
           title: "Sitios web que convierten",
           description:
-            "Estructura estrategica, diseno cuidado y enfoque en comunicar valor y generar confianza.",
-          bullets: ["Mensajes claros", "CTAs correctos", "Diseno limpio y rapido", "Base lista para crecer"],
+            "Estructura estratégica, diseño cuidado y enfoque en comunicar valor y generar confianza.",
+          bullets: ["Mensajes claros", "CTAs correctos", "Diseño limpio y rápido", "Base lista para crecer"],
         },
         {
           title: "Sistemas para negocio local",
           description:
-            "Combinacion de web, automatizacion y estructura digital para ganar orden, claridad y continuidad.",
-          bullets: ["Captura de leads", "Mejor presentacion", "Procesos mas claros", "Mas orden comercial"],
+            "Combinación de web, automatización y estructura digital para ganar orden, claridad y continuidad.",
+          bullets: ["Captura de leads", "Mejor presentación", "Procesos más claros", "Más orden comercial"],
         },
         {
-          title: "Ecommerce para joyeria",
+          title: "Ecommerce para joyería",
           description:
-            "Tiendas con presentacion refinada, catalogo claro y experiencia visual alineada con marcas que buscan vender mejor online.",
-          bullets: ["Catalogo premium", "Presentacion elegante", "Estructura ecommerce", "Preparado para escalar"],
+            "Tiendas con presentación refinada, catálogo claro y experiencia visual alineada con marcas que buscan vender mejor online.",
+          bullets: ["Catálogo premium", "Presentación elegante", "Estructura ecommerce", "Preparado para escalar"],
         },
       ],
     },
     projects: {
       eyebrow: "Mis trabajos",
       title: "Sitios reales publicados con preview visual y acceso directo.",
-      text: "Estos son trabajos ya en linea para clientes y marcas que necesitaban una presencia mas clara, mas confiable y mejor presentada.",
+      text: "Estos son trabajos ya en línea para clientes y marcas que necesitaban una presencia más clara, más confiable y mejor presentada.",
       linkLabel: "Ver sitio",
       items: [
         {
-          title: "EWA Elite Cleaning",
-          status: "Sitio publicado",
-          text: "Sitio web para una empresa de limpieza con enfoque en claridad de oferta, contacto rapido y una presentacion mas profesional para negocio local.",
-          tech: ["Web design", "Local services", "Lead capture", "Responsive"],
-          href: "https://ewaelitecleaning.com/",
-        },
-        {
           title: "Empire Auto Rey",
           status: "Sitio publicado",
-          text: "Sitio orientado a presentacion de inventario y contacto para negocio automotriz, con una estructura pensada para generar confianza y facilitar consultas.",
+          text: "Sitio orientado a presentación de inventario y contacto para negocio automotriz, con una estructura pensada para generar confianza y facilitar consultas.",
           tech: ["Automotive", "Brand presence", "Lead capture", "Responsive"],
           href: "https://empireautorey.com/",
         },
         {
-          title: "V&M Joyeria Original",
+          title: "V&M Joyería Original",
           status: "Sitio publicado",
-          text: "Ecommerce visual para joyeria con una presentacion mas refinada del catalogo y una experiencia mas alineada con una marca de producto premium.",
+          text: "Ecommerce visual para joyería con una presentación más refinada del catálogo y una experiencia más alineada con una marca de producto premium.",
           tech: ["Ecommerce", "Catalog", "Product UX", "Storefront"],
           href: "https://v-m-joyeria-original.vercel.app/",
         },
         {
           title: "Fiesta Boom Louisville",
           status: "Sitio publicado",
-          text: "Sitio promocional para entretenimiento y eventos con una presencia visual mas dinamica, clara y pensada para mostrar la experiencia del servicio.",
+          text: "Sitio promocional para entretenimiento y eventos con una presencia visual más dinámica, clara y pensada para mostrar la experiencia del servicio.",
           tech: ["Events", "Brand presence", "Promo site", "Responsive"],
           href: "https://fiesta-boom-louisville.vercel.app/",
         },
@@ -174,64 +167,64 @@ export const siteCopy = {
     },
     process: {
       eyebrow: "Proceso de trabajo",
-      title: "Cada proyecto parte de un diagnostico preciso para definir la estructura y las herramientas adecuadas.",
-      text: "La idea es construir soluciones con sentido, coherencia y recorrido, no sumar piezas sin direccion.",
+      title: "Cada proyecto parte de un diagnóstico preciso para definir la estructura y las herramientas adecuadas.",
+      text: "La idea es construir soluciones con sentido, coherencia y recorrido, no sumar piezas sin dirección.",
       items: [
         {
           step: "01",
           title: "Diagnosticar",
-          text: "Identificar donde se pierden tiempo, oportunidades o claridad antes de definir cualquier solucion.",
+          text: "Identificar dónde se pierden tiempo, oportunidades o claridad antes de definir cualquier solución.",
         },
         {
           step: "02",
           title: "Arquitectura",
-          text: "Disenar la estructura correcta segun la necesidad real del negocio.",
+          text: "Diseñar la estructura correcta según la necesidad real del negocio.",
         },
         {
           step: "03",
-          title: "Construccion",
-          text: "Desarrollar una base funcional, elegante y solida para sostenerse en el tiempo.",
+          title: "Construcción",
+          text: "Desarrollar una base funcional, elegante y sólida para sostenerse en el tiempo.",
         },
         {
           step: "04",
-          title: "Iteracion",
-          text: "Refinar con base en uso real, friccion detectada y evolucion natural del proyecto.",
+          title: "Iteración",
+          text: "Refinar con base en uso real, fricción detectada y evolución natural del proyecto.",
         },
       ],
     },
     philosophy: {
-      eyebrow: "Filosofia de trabajo",
-      title: "La diferencia esta en conectar mensaje, experiencia y operacion, no en usar mas herramientas.",
+      eyebrow: "Filosofía de trabajo",
+      title: "La diferencia está en conectar mensaje, experiencia y operación, no en usar más herramientas.",
       text: "Busco construir una base digital premium, que responda mejor y reduzca el trabajo manual dentro del negocio.",
       cards: [
         {
-          title: "Captacion y seguimiento",
-          text: "Procesos claros para atraer clientes y sostener cada conversacion con mejor criterio.",
+          title: "Captación y seguimiento",
+          text: "Procesos claros para atraer clientes y sostener cada conversación con mejor criterio.",
         },
         {
-          title: "Vision de producto",
-          text: "Soluciones utiles y sostenibles alineadas con una marca que quiere elevar su nivel.",
+          title: "Visión de producto",
+          text: "Soluciones útiles y sostenibles alineadas con una marca que quiere elevar su nivel.",
         },
         {
-          title: "Automatizacion",
-          text: "Base preparada para integrar flujos mas avanzados cuando el proyecto lo requiera.",
+          title: "Automatización",
+          text: "Base preparada para integrar flujos más avanzados cuando el proyecto lo requiera.",
         },
         {
           title: "Base en Louisville",
-          text: "Trabajo con contexto local, ejecucion digital y una vision de proyeccion.",
+          text: "Trabajo con contexto local, ejecución digital y una visión de proyección.",
         },
       ],
     },
     contact: {
       eyebrow: "Contacto",
-      title: "Si quieres una presencia premium y un sistema claro para captar leads, conversemos.",
-      text: "Cuanto mas concreto seas sobre tu negocio, tu oferta y tu cuello de botella, mas precisa sera la propuesta.",
-      formTitle: "Cuentame que quieres mejorar en tu web, captacion o seguimiento",
+      title: "Si querés una presencia premium y un sistema claro para captar leads, conversemos.",
+      text: "Cuanto más concreto seas sobre tu negocio, tu oferta y tu cuello de botella, más precisa será la propuesta.",
+      formTitle: "Contame qué querés mejorar en tu web, captación o seguimiento",
       fields: {
         name: { placeholder: "Nombre" },
         email: { placeholder: "Email" },
         message: {
-          placeholder: "Que negocio tienes, que ofreces hoy y donde sientes que se te estan yendo leads o claridad.",
+          placeholder: "Qué negocio tenés, qué ofrecés hoy y dónde sentís que se te están yendo leads o claridad.",
         },
       },
       actions: {
@@ -240,18 +233,18 @@ export const siteCopy = {
         direct: "Escribirme directo",
       },
       notes: {
-        idle: "Sin spam. Sin presion. Te respondo por correo con pasos claros.",
+        idle: "Sin spam. Sin presión. Te respondo por correo con pasos claros.",
       },
       messages: {
-        incomplete: "Completa nombre, email y mensaje para enviarlo.",
-        success: "Mensaje enviado. Te respondere por correo lo antes posible.",
-        localPreview: "Estas probando el formulario fuera del sitio publicado. Abrelo desde la web ya desplegada y vuelve a intentarlo.",
-        fallback: "Revisa spam si no lo ves en la bandeja principal, o escribeme directo a ferkmas88@gmail.com.",
+        incomplete: "Completá nombre, email y mensaje para enviarlo.",
+        success: "Mensaje enviado. Te responderé por correo lo antes posible.",
+        localPreview: "Estás probando el formulario fuera del sitio publicado. Ábrelo desde la web ya desplegada y volvé a intentarlo.",
+        fallback: "Revisá spam si no lo ves en la bandeja principal, o escribime directo a ferkmas88@gmail.com.",
       },
     },
     footer: {
-      copyright: "(c) {year} Digital AM.",
-      credit: "Estrategia, diseno y desarrollo por Fernando Martinez.",
+      copyright: "© {year} Digital AM.",
+      credit: "Estrategia, diseño y desarrollo por Fernando Martinez.",
     },
   },
   en: {
@@ -265,7 +258,7 @@ export const siteCopy = {
     },
     brand: {
       name: "Digital AM",
-      tagline: "Web design - Software - Automation",
+      tagline: "Web design · Software · Automation",
       headerCta: "Book a demo",
     },
     nav: [
@@ -388,13 +381,6 @@ export const siteCopy = {
       linkLabel: "Visit site",
       items: [
         {
-          title: "EWA Elite Cleaning",
-          status: "Live site",
-          text: "Website for a cleaning company focused on clear offer presentation, fast contact and a more professional local-business presence.",
-          tech: ["Web design", "Local services", "Lead capture", "Responsive"],
-          href: "https://ewaelitecleaning.com/",
-        },
-        {
           title: "Empire Auto Rey",
           status: "Live site",
           text: "Automotive website focused on inventory presentation and contact, with a structure designed to build trust and make inquiries easier.",
@@ -495,7 +481,7 @@ export const siteCopy = {
       },
     },
     footer: {
-      copyright: "(c) {year} Digital AM.",
+      copyright: "© {year} Digital AM.",
       credit: "Strategy, design and development by Fernando Martinez.",
     },
   },
