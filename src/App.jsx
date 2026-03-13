@@ -28,6 +28,17 @@ const flowCardProps = getFlowInteractionProps({ tilt: 4 });
 const flowPanelProps = getFlowInteractionProps({ tilt: 5 });
 const flowButtonProps = getFlowInteractionProps();
 
+const getProjectPreviewUrl = (href) =>
+  `https://s.wordpress.com/mshots/v1/${encodeURIComponent(href)}?w=1600`;
+
+const getProjectDomain = (href) => {
+  try {
+    return new URL(href).hostname.replace(/^www\./, "");
+  } catch {
+    return href;
+  }
+};
+
 const getInitialLocale = () => {
   if (typeof window === "undefined") return "es";
 
@@ -48,9 +59,88 @@ function SectionTitle({ eyebrow, title, text }) {
           {eyebrow}
         </div>
       )}
-      <h2 className="text-3xl font-semibold tracking-tight text-white md:text-5xl">{title}</h2>
+      <h2 className="font-display text-3xl font-semibold tracking-[-0.04em] text-white md:text-5xl">{title}</h2>
       {text && <p className="max-w-2xl text-base leading-7 text-slate-300 md:text-lg">{text}</p>}
     </div>
+  );
+}
+
+function ProjectCard({ project, index, linkLabel }) {
+  const domain = project.href ? getProjectDomain(project.href) : "";
+  const [previewUnavailable, setPreviewUnavailable] = useState(false);
+
+  return (
+    <motion.article
+      key={project.title}
+      {...flowCardProps}
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.45, delay: index * 0.05 }}
+      className="flow-surface group flex h-full flex-col rounded-[30px] border border-white/8 bg-[#06101d] p-4 sm:p-5"
+    >
+      <div className="flow-child relative overflow-hidden rounded-[24px] border border-white/10 bg-[#091426]">
+        <div className="flex items-center justify-between border-b border-white/10 bg-black/20 px-4 py-3">
+          <div className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
+            <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
+            <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+          </div>
+          <div className="truncate text-[11px] uppercase tracking-[0.22em] text-slate-400">{domain}</div>
+        </div>
+
+        <div className="relative aspect-[16/10] overflow-hidden">
+          {previewUnavailable ? (
+            <div className="flex h-full w-full items-end bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.2),transparent_38%),linear-gradient(180deg,rgba(15,23,42,0.4),rgba(6,16,29,0.95))] p-5">
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.24em] text-cyan-200/75">Preview listo</div>
+                <div className="font-display mt-2 text-xl tracking-[-0.04em] text-white">{project.title}</div>
+                <div className="mt-2 text-sm text-slate-300">{domain}</div>
+              </div>
+            </div>
+          ) : (
+            <img
+              src={getProjectPreviewUrl(project.href)}
+              alt={`Preview de ${project.title}`}
+              loading="lazy"
+              referrerPolicy="no-referrer"
+              onError={() => setPreviewUnavailable(true)}
+              className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-[1.02]"
+            />
+          )}
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,16,29,0)_50%,rgba(6,16,29,0.9)_100%)]" />
+          <div className="absolute bottom-4 left-4 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-200">
+            {project.status}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-5 flex flex-1 flex-col">
+        <h3 className="flow-child font-display text-2xl font-semibold tracking-[-0.04em] text-white">{project.title}</h3>
+        <p className="flow-child mt-2 text-sm uppercase tracking-[0.2em] text-cyan-200/75">{domain}</p>
+        <p className="flow-child mt-4 flex-1 leading-7 text-slate-300">{project.text}</p>
+        <a
+          href={project.href}
+          target="_blank"
+          rel="noreferrer"
+          {...flowButtonProps}
+          className="flow-button mt-6 inline-flex items-center gap-2 self-start rounded-2xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/30 hover:bg-cyan-300/15"
+        >
+          {linkLabel}
+          <ArrowRight className="h-4 w-4" />
+        </a>
+        <div className="mt-6 flex flex-wrap gap-2">
+          {project.tech.map((tag) => (
+            <span
+              key={tag}
+              className="flow-child rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-300"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.article>
   );
 }
 
@@ -190,11 +280,25 @@ export default function App() {
       <main id="top">
         <PremiumHero copy={copy.hero} ui={copy.ui} />
 
+        <section id="projects" className="border-y border-white/5 bg-white/[0.02]">
+          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
+            <SectionTitle eyebrow={copy.projects.eyebrow} title={copy.projects.title} text={copy.projects.text} />
+
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
+              {copy.projects.items.map((project, index) => (
+                <ProjectCard key={project.title} project={project} index={index} linkLabel={copy.projects.linkLabel} />
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="mx-auto max-w-7xl px-6 py-6 lg:px-8 lg:py-10">
           <div {...flowPanelProps} className="flow-surface rounded-[32px] border border-white/8 bg-white/[0.03] p-6 backdrop-blur-sm lg:p-8">
             <div className="max-w-3xl">
               <div className="flow-child text-xs font-semibold uppercase tracking-[0.24em] text-cyan-200/75">Digital AM</div>
-              <h2 className="flow-child mt-3 text-2xl font-semibold tracking-tight text-white md:text-3xl">{copy.proof.title}</h2>
+              <h2 className="flow-child font-display mt-3 text-2xl font-semibold tracking-[-0.04em] text-white md:text-3xl">
+                {copy.proof.title}
+              </h2>
             </div>
 
             <div className="mt-8 grid gap-4 lg:grid-cols-3">
@@ -234,7 +338,7 @@ export default function App() {
                   <div className="flow-child mb-5 inline-flex rounded-2xl border border-blue-400/20 bg-blue-500/10 p-3 text-blue-300">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="flow-child text-xl font-semibold text-white">{service.title}</h3>
+                  <h3 className="flow-child font-display text-xl font-semibold tracking-[-0.03em] text-white">{service.title}</h3>
                   <p className="flow-child mt-3 leading-7 text-slate-300">{service.description}</p>
                   <div className="mt-5 space-y-3">
                     {service.bullets.map((bullet) => (
@@ -247,57 +351,6 @@ export default function App() {
                 </motion.div>
               );
             })}
-          </div>
-        </section>
-
-        <section id="projects" className="border-y border-white/5 bg-white/[0.02]">
-          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-24">
-            <SectionTitle eyebrow={copy.projects.eyebrow} title={copy.projects.title} text={copy.projects.text} />
-
-            <div className="mt-12 grid gap-6 lg:grid-cols-3">
-              {copy.projects.items.map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  {...flowCardProps}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.45, delay: index * 0.05 }}
-                  className="flow-surface flex h-full flex-col rounded-[30px] border border-white/8 bg-[#06101d] p-6"
-                >
-                  <div className="flow-child mb-4 flex items-center justify-between gap-4">
-                    <span className="rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
-                      {project.status}
-                    </span>
-                    <div className="h-2.5 w-2.5 rounded-full bg-blue-400 shadow-[0_0_16px_rgba(96,165,250,0.8)]" />
-                  </div>
-                  <h3 className="flow-child text-2xl font-semibold text-white">{project.title}</h3>
-                  <p className="flow-child mt-4 leading-7 text-slate-300">{project.text}</p>
-                  {project.href && (
-                    <a
-                      href={project.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      {...flowButtonProps}
-                      className="flow-button mt-6 inline-flex items-center gap-2 self-start rounded-2xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/30 hover:bg-cyan-300/15"
-                    >
-                      {copy.projects.linkLabel}
-                      <ArrowRight className="h-4 w-4" />
-                    </a>
-                  )}
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {project.tech.map((tag) => (
-                      <span
-                        key={tag}
-                        className="flow-child rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-slate-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -318,7 +371,7 @@ export default function App() {
                 <div className="flow-child mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 font-semibold text-white">
                   {item.step}
                 </div>
-                <h3 className="flow-child text-xl font-semibold text-white">{item.title}</h3>
+                <h3 className="flow-child font-display text-xl font-semibold tracking-[-0.03em] text-white">{item.title}</h3>
                 <p className="flow-child mt-3 leading-7 text-slate-300">{item.text}</p>
               </motion.div>
             ))}
@@ -333,7 +386,9 @@ export default function App() {
                   <Sparkles className="h-3.5 w-3.5" />
                   {copy.philosophy.eyebrow}
                 </div>
-                <h3 className="max-w-2xl text-3xl font-semibold tracking-tight text-white md:text-5xl">{copy.philosophy.title}</h3>
+                <h3 className="font-display max-w-2xl text-3xl font-semibold tracking-[-0.04em] text-white md:text-5xl">
+                  {copy.philosophy.title}
+                </h3>
                 <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-50/85">{copy.philosophy.text}</p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -343,7 +398,9 @@ export default function App() {
                   return (
                     <div key={card.title} {...flowCardProps} className="flow-surface rounded-3xl border border-white/10 bg-black/20 p-5 backdrop-blur-sm">
                       <Icon className="flow-child h-5 w-5 text-blue-200" />
-                      <div className="flow-child mt-4 text-lg font-semibold text-white">{card.title}</div>
+                      <div className="flow-child font-display mt-4 text-lg font-semibold tracking-[-0.03em] text-white">
+                        {card.title}
+                      </div>
                       <div className="flow-child mt-2 text-sm leading-6 text-blue-50/75">{card.text}</div>
                     </div>
                   );
@@ -360,7 +417,9 @@ export default function App() {
                 <Mail className="h-3.5 w-3.5" />
                 {copy.contact.eyebrow}
               </div>
-              <h2 className="flow-child mt-5 text-3xl font-semibold tracking-tight text-white md:text-4xl">{copy.contact.title}</h2>
+              <h2 className="flow-child font-display mt-5 text-3xl font-semibold tracking-[-0.04em] text-white md:text-4xl">
+                {copy.contact.title}
+              </h2>
               <p className="flow-child mt-4 max-w-xl leading-7 text-slate-300">{copy.contact.text}</p>
 
               <div className="mt-8 space-y-4">
@@ -384,7 +443,9 @@ export default function App() {
               {...flowPanelProps}
               className="flow-surface rounded-[30px] border border-white/8 bg-[#071120] p-8 shadow-[0_20px_80px_rgba(2,8,23,0.45)]"
             >
-              <div className="flow-child mb-6 text-xl font-semibold text-white">{copy.contact.formTitle}</div>
+              <div className="flow-child font-display mb-6 text-xl font-semibold tracking-[-0.03em] text-white">
+                {copy.contact.formTitle}
+              </div>
               <div className="grid gap-4 md:grid-cols-2">
                 <input
                   type="text"

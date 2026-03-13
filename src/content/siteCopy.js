@@ -15,7 +15,7 @@ export const siteCopy = {
     },
     nav: [
       { label: "Servicios", href: "#services" },
-      { label: "Portafolio", href: "#projects" },
+      { label: "Mis trabajos", href: "#projects" },
       { label: "Proceso", href: "#process" },
       { label: "Contacto", href: "#contact" },
     ],
@@ -136,9 +136,9 @@ export const siteCopy = {
       ],
     },
     projects: {
-      eyebrow: "Portafolio y proyectos",
-      title: "Sitios publicados y sistemas en construccion que reflejan la direccion actual de Digital AM.",
-      text: "Una mezcla de trabajo en vivo y soluciones en desarrollo para negocios locales que necesitan verse mejor, captar mejor y responder mas rapido.",
+      eyebrow: "Mis trabajos",
+      title: "Sitios reales publicados con preview visual y acceso directo.",
+      text: "Estos son trabajos ya en linea para clientes y marcas que necesitaban una presencia mas clara, mas confiable y mejor presentada.",
       linkLabel: "Ver sitio",
       items: [
         {
@@ -156,22 +156,18 @@ export const siteCopy = {
           href: "https://empireautorey.com/",
         },
         {
-          title: "Sistema QR + SMS + resenas",
-          status: "En desarrollo",
-          text: "Solucion enfocada en captar clientes, solicitar resenas y mantener seguimiento con una experiencia mas ordenada y profesional.",
-          tech: ["QR", "SMS", "Lead capture", "Reviews"],
-        },
-        {
-          title: "Automatizacion conversacional",
-          status: "En evolucion",
-          text: "Base para organizar conversaciones, filtrar consultas y escalar despues hacia automatizaciones mas relevantes para el negocio.",
-          tech: ["Automation", "Flows", "Lead routing", "AI-ready"],
-        },
-        {
-          title: "Ecommerce para joyeria",
-          status: "Implementacion activa",
-          text: "Tienda concebida para marcas de joyeria que necesitan elevar su presentacion de producto y ofrecer una experiencia de compra mas cuidada.",
+          title: "V&M Joyeria Original",
+          status: "Sitio publicado",
+          text: "Ecommerce visual para joyeria con una presentacion mas refinada del catalogo y una experiencia mas alineada con una marca de producto premium.",
           tech: ["Ecommerce", "Catalog", "Product UX", "Storefront"],
+          href: "https://v-m-joyeria-original.vercel.app/",
+        },
+        {
+          title: "Fiesta Boom Louisville",
+          status: "Sitio publicado",
+          text: "Sitio promocional para entretenimiento y eventos con una presencia visual mas dinamica, clara y pensada para mostrar la experiencia del servicio.",
+          tech: ["Events", "Brand presence", "Promo site", "Responsive"],
+          href: "https://fiesta-boom-louisville.vercel.app/",
         },
       ],
     },
@@ -273,7 +269,7 @@ export const siteCopy = {
     },
     nav: [
       { label: "Services", href: "#services" },
-      { label: "Portfolio", href: "#projects" },
+      { label: "My work", href: "#projects" },
       { label: "Process", href: "#process" },
       { label: "Contact", href: "#contact" },
     ],
@@ -384,9 +380,9 @@ export const siteCopy = {
       ],
     },
     projects: {
-      eyebrow: "Portfolio and projects",
-      title: "Published sites and systems in progress that reflect the current direction of Digital AM.",
-      text: "A mix of live work and in-progress systems for local businesses that need to look better, capture better and respond faster.",
+      eyebrow: "My work",
+      title: "Published websites with visual previews and direct access.",
+      text: "These are live projects built for brands that needed a clearer, more trusted and more polished digital presence.",
       linkLabel: "Visit site",
       items: [
         {
@@ -404,22 +400,18 @@ export const siteCopy = {
           href: "https://empireautorey.com/",
         },
         {
-          title: "QR + SMS + review system",
-          status: "In development",
-          text: "A solution built to capture customers, request reviews and keep follow-up moving with a more organized and professional experience.",
-          tech: ["QR", "SMS", "Lead capture", "Reviews"],
-        },
-        {
-          title: "Conversational automation",
-          status: "Evolving",
-          text: "A base to organize conversations, filter inquiries and later scale into more relevant automations for the business.",
-          tech: ["Automation", "Flows", "Lead routing", "AI-ready"],
-        },
-        {
-          title: "Jewelry ecommerce",
-          status: "Active implementation",
-          text: "A store conceived for jewelry brands that need to elevate product presentation and offer a more refined shopping experience.",
+          title: "V&M Joyeria Original",
+          status: "Live site",
+          text: "Visual ecommerce for jewelry with a more refined catalog presentation and a storefront experience aligned with a premium product brand.",
           tech: ["Ecommerce", "Catalog", "Product UX", "Storefront"],
+          href: "https://v-m-joyeria-original.vercel.app/",
+        },
+        {
+          title: "Fiesta Boom Louisville",
+          status: "Live site",
+          text: "Promotional website for entertainment and events with a more dynamic visual presence, clear structure and a layout designed to showcase the service experience.",
+          tech: ["Events", "Brand presence", "Promo site", "Responsive"],
+          href: "https://fiesta-boom-louisville.vercel.app/",
         },
       ],
     },
