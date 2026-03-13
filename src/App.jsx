@@ -67,14 +67,17 @@ function ProjectCard({ project, index, linkLabel }) {
   const [previewLoaded, setPreviewLoaded] = useState(false);
 
   return (
-    <motion.article
+    <motion.a
       key={project.title}
+      href={project.href}
+      target="_blank"
+      rel="noreferrer"
       {...flowCardProps}
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.45, delay: index * 0.05 }}
-      className="flow-surface group flex h-full flex-col rounded-[30px] border border-white/8 bg-[#06101d] p-4 sm:p-5"
+      className="flow-surface group flex h-full cursor-pointer flex-col rounded-[30px] border border-white/8 bg-[#06101d] p-4 transition hover:-translate-y-1 hover:border-cyan-300/25 sm:p-5"
     >
       <div className="flow-child relative overflow-hidden rounded-[24px] border border-white/10 bg-[#091426]">
         <div className="flex items-center justify-between border-b border-white/10 bg-black/20 px-4 py-3">
@@ -128,16 +131,13 @@ function ProjectCard({ project, index, linkLabel }) {
         <h3 className="flow-child font-display text-2xl font-semibold tracking-[-0.04em] text-white">{project.title}</h3>
         <p className="flow-child mt-2 text-sm uppercase tracking-[0.2em] text-cyan-200/75">{domain}</p>
         <p className="flow-child mt-4 flex-1 leading-7 text-slate-300">{project.text}</p>
-        <a
-          href={project.href}
-          target="_blank"
-          rel="noreferrer"
+        <span
           {...flowButtonProps}
-          className="flow-button mt-6 inline-flex items-center gap-2 self-start rounded-2xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/30 hover:bg-cyan-300/15"
+          className="flow-button mt-6 inline-flex items-center gap-2 self-start rounded-2xl border border-cyan-300/20 bg-cyan-300/10 px-4 py-3 text-sm font-semibold text-cyan-100 transition group-hover:border-cyan-200/30 group-hover:bg-cyan-300/15"
         >
           {linkLabel}
           <ArrowRight className="h-4 w-4" />
-        </a>
+        </span>
         <div className="mt-6 flex flex-wrap gap-2">
           {project.tech.map((tag) => (
             <span
@@ -149,7 +149,7 @@ function ProjectCard({ project, index, linkLabel }) {
           ))}
         </div>
       </div>
-    </motion.article>
+    </motion.a>
   );
 }
 
