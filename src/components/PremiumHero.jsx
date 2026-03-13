@@ -163,24 +163,28 @@ export default function PremiumHero({ copy, ui }) {
       <div className="hero-noise pointer-events-none absolute inset-0 opacity-80" />
 
       <div className="mx-auto max-w-7xl px-6 pb-18 pt-10 lg:px-8 lg:pb-24 lg:pt-16">
-        <div className="grid min-h-[calc(100vh-7rem)] items-center gap-12 lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="grid min-h-[calc(100vh-7rem)] items-center gap-12 lg:grid-cols-[1.02fr_0.98fr]">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             style={{ y: contentY }}
-            className="relative z-10 max-w-2xl"
+            className="relative z-10 max-w-[46rem]"
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-100">
               <Sparkles className="h-3.5 w-3.5" />
               {copy.badge}
             </div>
 
-            <h1 className="font-display mt-6 max-w-4xl text-4xl font-semibold leading-[0.95] tracking-[-0.04em] text-white sm:text-5xl lg:text-[4.6rem]">
-              {copy.title}
+            <h1 className="font-display mt-6 max-w-[12ch] text-[clamp(3.4rem,7vw,5.15rem)] font-semibold leading-[0.9] tracking-[-0.055em] text-white">
+              {(copy.titleLines ?? [copy.title]).map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">{copy.subtitle}</p>
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">{copy.subtitle}</p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
