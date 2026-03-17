@@ -4,7 +4,7 @@ export const siteCopy = {
     ui: { languageLabel: "Idioma" },
     brand: {
       name: "Digital AM",
-      tagline: "Estudio de sistemas digitales · Louisville, Kentucky",
+      tagline: "Digital systems studio · Louisville, Kentucky",
       headerCta: "Reservar consulta",
     },
     nav: [
@@ -15,25 +15,25 @@ export const siteCopy = {
     hero: {
       eyebrow: "Estudio de sistemas digitales · Louisville, Kentucky",
       title: "Sistemas digitales para negocios modernos",
-      subtitle: "Sitios web, captura de leads e infraestructura de automatización diseñados para convertir atención en clientes.",
+      subtitle: "Sitios web, automatización e infraestructura de leads diseñados para convertir atención en clientes.",
       primaryCta: { label: "Explorar la plataforma", href: "#platform" },
       secondaryCta: { label: "Ver trabajos", href: "#work" },
     },
     system: {
       title: "Un sistema de crecimiento conectado",
       text: "Desde la primera visita hasta el seguimiento, cada paso del recorrido del cliente debe avanzar sin fricción.",
-      flow: ["El tráfico llega", "El sitio genera confianza", "Los leads se capturan", "La automatización responde", "El CRM organiza", "Todo funciona junto"],
+      flow: ["Tráfico", "Sitio web", "Captura de leads", "Automatización", "CRM", "Cliente"],
     },
     problem: {
       title: "La mayoría de los negocios pierden oportunidades antes de que empiece la conversación",
       items: [
         {
           title: "Presencia desactualizada",
-          text: "Cuando un sitio web se ve desactualizado o confuso, la confianza cae antes de que el negocio pueda responder.",
+          text: "Una presencia digital débil reduce la confianza antes de que la conversación siquiera comience.",
         },
         {
           title: "Leads perdidos",
-          text: "Los visitantes muestran interés, pero rutas de contacto poco claras o respuestas lentas hacen desaparecer las oportunidades.",
+          text: "Los visitantes muestran interés, pero las rutas de contacto lentas o poco claras hacen desaparecer las oportunidades.",
         },
         {
           title: "Seguimiento lento",
@@ -47,19 +47,19 @@ export const siteCopy = {
       modules: [
         {
           title: "Website System",
-          text: "Sitios premium construidos para comunicar valor con claridad y generar confianza de inmediato.",
+          text: "Sitios premium construidos para comunicar valor con claridad y generar confianza inmediata.",
         },
         {
           title: "Lead Capture",
-          text: "Formularios inteligentes, rutas de mensajería y contacto sin fricción que convierten visitas en consultas reales.",
+          text: "Formularios inteligentes y rutas de mensajería que convierten visitas en consultas reales.",
         },
         {
           title: "Automatización",
-          text: "SMS y flujos de trabajo inteligentes que responden al instante y avanzan las conversaciones.",
+          text: "Automatización SMS y flujos de trabajo que responden al instante.",
         },
         {
           title: "CRM Structure",
-          text: "Pipelines y dashboards organizados que aseguran que cada oportunidad sea rastreada y avance.",
+          text: "Pipelines organizados que aseguran que cada oportunidad sea rastreada y avance.",
         },
       ],
     },
@@ -70,7 +70,7 @@ export const siteCopy = {
         {
           title: "Empire Auto Rey",
           text: "Sitio automotriz diseñado para presentar el inventario con claridad y facilitar el contacto.",
-          outcomes: ["Mayor percepción de marca", "Experiencia de navegación mejorada", "Flujo de consultas más rápido"],
+          outcomes: ["Mayor percepción de marca", "Experiencia de navegación mejorada", "Mejor flujo de consultas"],
           href: "https://empireautorey.com/",
           status: "Publicado",
         },
@@ -83,7 +83,7 @@ export const siteCopy = {
         },
         {
           title: "Fiesta Boom Louisville",
-          text: "Sitio promocional diseñado para comunicar servicios con claridad y construir una presencia de marca más fuerte.",
+          text: "Sitio promocional diseñado para comunicar servicios con claridad y crear una presencia de marca más fuerte.",
           outcomes: ["Presencia visual dinámica", "Comunicación de servicios más clara", "Experiencia mobile-friendly"],
           href: "https://fiesta-boom-louisville.vercel.app/",
           status: "Publicado",
@@ -93,7 +93,7 @@ export const siteCopy = {
     technology: {
       title: "Tecnología detrás del sistema",
       text: "El objetivo no es tecnología para mostrar. Es tecnología para construir infraestructura digital más rápida, limpia y confiable.",
-      items: ["React", "Next.js", "Automation workflows", "Cloud infrastructure", "Messaging systems", "AI integration"],
+      items: ["React", "Next.js", "Node.js", "Automation workflows", "Cloud infrastructure", "Messaging systems", "AI integration"],
     },
     cta: {
       title: "Construí la base digital que tu negocio necesita",
@@ -103,11 +103,11 @@ export const siteCopy = {
       location: "Louisville, Kentucky",
     },
     contact: {
-      formTitle: "Contanos sobre tu negocio y lo que necesitás mejorar.",
+      formTitle: "Contame sobre tu negocio",
       fields: {
         name: { placeholder: "Nombre" },
         email: { placeholder: "Email" },
-        message: { placeholder: "¿Qué ofrece tu negocio hoy y dónde sentís que se pierden oportunidades?" },
+        message: { placeholder: "¿Qué necesitás resolver?" },
       },
       actions: { submit: "Reservar consulta", submitting: "Enviando...", direct: "Escribirme directo" },
       messages: {
@@ -118,7 +118,7 @@ export const siteCopy = {
       },
     },
     footer: {
-      copyright: "© {year} Digital AM · Sistemas · Automatización · Crecimiento",
+      copyright: "© {year} Digital AM.",
       credit: "Estrategia, diseño y desarrollo por Fernando Martinez.",
     },
   },
@@ -138,36 +138,36 @@ export const siteCopy = {
     ],
     hero: {
       eyebrow: "Digital systems studio · Louisville, Kentucky",
-      title: "Digital systems\nfor modern businesses",
-      subtitle: "Websites, lead capture and automation infrastructure designed to turn attention into customers.",
+      title: "Digital systems for modern businesses",
+      subtitle: "Websites, automation and lead infrastructure designed to convert attention into customers.",
       primaryCta: { label: "Explore the platform", href: "#platform" },
       secondaryCta: { label: "View work", href: "#work" },
     },
     system: {
       title: "One connected growth system",
       text: "From first visit to follow-up, every step of the customer journey should move forward without friction.",
-      flow: ["Traffic arrives", "Website builds trust", "Lead capture converts", "Automation responds", "CRM organizes", "Everything works together"],
+      flow: ["Traffic", "Website", "Lead Capture", "Automation", "CRM", "Customer"],
     },
     problem: {
       title: "Most businesses lose opportunities before the conversation even starts",
       items: [
         {
           title: "Outdated presence",
-          text: "When a website looks outdated or confusing, trust drops before the business even has a chance to respond.",
+          text: "Weak digital presence reduces trust before the conversation even begins.",
         },
         {
           title: "Lost leads",
-          text: "Visitors show interest, but unclear contact routes or slow responses make opportunities disappear.",
+          text: "Visitors show interest but slow or unclear contact routes make opportunities disappear.",
         },
         {
           title: "Slow follow-up",
-          text: "Without automation or structure, warm inquiries often go cold before they receive attention.",
+          text: "Without automation or structure, warm inquiries go cold before receiving attention.",
         },
       ],
     },
     platform: {
       eyebrow: "Digital AM Platform",
-      title: "A digital infrastructure designed to attract, capture and convert.",
+      title: "Digital infrastructure designed to attract, capture and convert.",
       modules: [
         {
           title: "Website System",
@@ -175,15 +175,15 @@ export const siteCopy = {
         },
         {
           title: "Lead Capture",
-          text: "Smart forms, messaging routes and friction-free contact designed to turn visits into real inquiries.",
+          text: "Smart forms and messaging routes that convert visits into real inquiries.",
         },
         {
           title: "Automation",
-          text: "SMS and intelligent workflows that respond instantly and move conversations forward.",
+          text: "SMS and workflow automation that responds instantly and keeps leads moving.",
         },
         {
           title: "CRM Structure",
-          text: "Organized pipelines and dashboards that ensure every opportunity is tracked and followed.",
+          text: "Organized pipelines that ensure every opportunity is tracked and moves forward.",
         },
       ],
     },
@@ -194,7 +194,7 @@ export const siteCopy = {
         {
           title: "Empire Auto Rey",
           text: "Automotive website designed to present inventory clearly and make contact easier.",
-          outcomes: ["Stronger brand perception", "Improved browsing experience", "Faster inquiry flow"],
+          outcomes: ["Stronger brand perception", "Improved browsing experience", "Better inquiry flow"],
           href: "https://empireautorey.com/",
           status: "Live",
         },
@@ -207,7 +207,7 @@ export const siteCopy = {
         },
         {
           title: "Fiesta Boom Louisville",
-          text: "Promotional website designed to communicate services clearly and create a stronger event brand presence.",
+          text: "Promotional website designed to communicate services clearly and create stronger brand presence.",
           outcomes: ["Dynamic visual presence", "Clearer service communication", "Mobile-friendly experience"],
           href: "https://fiesta-boom-louisville.vercel.app/",
           status: "Live",
@@ -216,8 +216,8 @@ export const siteCopy = {
     },
     technology: {
       title: "Technology behind the system",
-      text: "The goal is not technology for show.\nIt is technology used to build faster, cleaner and more reliable digital infrastructure.",
-      items: ["React", "Next.js", "Automation workflows", "Cloud infrastructure", "Messaging systems", "AI integration"],
+      text: "The goal is not technology for show. It is technology used to build faster, cleaner and more reliable digital infrastructure.",
+      items: ["React", "Next.js", "Node.js", "Automation workflows", "Cloud infrastructure", "Messaging systems", "AI integration"],
     },
     cta: {
       title: "Build the digital base your business needs",
@@ -227,11 +227,11 @@ export const siteCopy = {
       location: "Louisville, Kentucky",
     },
     contact: {
-      formTitle: "Tell us about your business and what you need to improve.",
+      formTitle: "Tell us about your business",
       fields: {
         name: { placeholder: "Name" },
         email: { placeholder: "Email" },
-        message: { placeholder: "What does your business offer today and where do you feel opportunities are being lost?" },
+        message: { placeholder: "What do you need to solve?" },
       },
       actions: { submit: "Book a consultation", submitting: "Sending...", direct: "Email me directly" },
       messages: {
@@ -242,7 +242,7 @@ export const siteCopy = {
       },
     },
     footer: {
-      copyright: "© {year} Digital AM · Systems · Automation · Growth",
+      copyright: "© {year} Digital AM.",
       credit: "Strategy, design and development by Fernando Martinez.",
     },
   },
