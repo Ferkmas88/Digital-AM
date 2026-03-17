@@ -157,10 +157,20 @@ export default function App() {
         {/* ══════════════════════════════════════
             1. HERO
         ══════════════════════════════════════ */}
-        <section className="mx-auto max-w-8xl px-6 pt-24 pb-20 lg:px-8 lg:pt-32 lg:pb-28">
-          <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
-            {/* Text */}
-            <div>
+        <section className="relative overflow-hidden min-h-[90vh] flex flex-col justify-center">
+          {/* Background image */}
+          <motion.div initial={{ opacity: 0, scale: 1.04 }} animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0">
+            <img src="/ai-images/hero.png" alt="Digital systems visualization"
+              className="w-full h-full object-cover object-center" />
+            <div className="absolute inset-0" style={{background: 'linear-gradient(180deg, rgba(7,8,9,0.55) 0%, rgba(7,8,9,0.7) 50%, rgba(7,8,9,1) 100%)'}} />
+            <div className="absolute inset-0" style={{background: 'linear-gradient(90deg, rgba(7,8,9,0.85) 0%, rgba(7,8,9,0.4) 60%, rgba(7,8,9,0) 100%)'}} />
+          </motion.div>
+
+          {/* Text content */}
+          <div className="relative z-10 mx-auto max-w-8xl w-full px-6 pt-36 pb-32 lg:px-8 lg:pt-44 lg:pb-40">
+            <div className="max-w-2xl">
               <motion.p {...fadeUp} className="mb-6 text-sm font-medium text-[#9AA3AE]">
                 {copy.hero.eyebrow}
               </motion.p>
@@ -186,20 +196,11 @@ export default function App() {
                 </a>
               </motion.div>
             </div>
-
-            {/* Hero image */}
-            <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="relative overflow-hidden rounded-[24px] border border-white/[0.08]">
-              <img src="/ai-images/hero.png" alt="Digital systems visualization"
-                className="w-full h-[420px] object-cover object-center lg:h-[520px]" />
-              <div className="absolute inset-0" style={{background: 'linear-gradient(180deg, rgba(7,8,9,0.6) 0%, rgba(7,8,9,0.8) 60%, rgba(7,8,9,1) 100%)'}} />
-            </motion.div>
           </div>
 
           {/* Scroll cue */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.6 }}
-            className="mt-20 flex justify-center">
+            className="relative z-10 pb-10 flex justify-center">
             <a href="#system" className="flex flex-col items-center gap-2 text-[#9AA3AE]/50 transition hover:text-[#9AA3AE]">
               <ChevronDown className="h-5 w-5 animate-bounce" />
             </a>
