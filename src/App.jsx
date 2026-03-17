@@ -193,7 +193,7 @@ export default function App() {
               className="relative overflow-hidden rounded-[24px] border border-white/[0.08]">
               <img src="/ai-images/hero.png" alt="Digital systems visualization"
                 className="w-full h-[420px] object-cover object-center lg:h-[520px]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070809]/40 to-transparent" />
+              <div className="absolute inset-0" style={{background: 'linear-gradient(180deg, rgba(7,8,9,0.6) 0%, rgba(7,8,9,0.8) 60%, rgba(7,8,9,1) 100%)'}} />
             </motion.div>
           </div>
 
