@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Digital AM Automation - Automated systems that turn visitors into paying clients. AI-powered lead generation and appointment booking for local businesses.">
+    <title>Digital AM Automation | AI-Powered Client Acquisition Systems</title>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=1.1">
+    <style>
+        /* Language Switcher Styles */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 15px;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 4px;
+            border-radius: 50px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-tertiary);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 4px 10px;
+            border-radius: 50px;
+            transition: all var(--transition-base);
+            text-transform: uppercase;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-500);
+            color: white;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .language-switcher {
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Particles Background -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <div class="nav-logo">
+                    <div class="logo-placeholder">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="12" fill="url(#logoGradient)" />
+                            <path d="M14 14H22L28 34H20L14 14Z" fill="white" fill-opacity="0.9" />
+                            <path d="M26 14H34L28 34H20L26 14Z" fill="white" fill-opacity="0.6" />
+                            <circle cx="24" cy="24" r="3" fill="white" />
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0" y1="0" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#3B82F6" />
+                                    <stop offset="100%" stop-color="#1D4ED8" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span class="logo-text">Digital AM</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <ul class="nav-links">
+                    <li><a href="#services" class="nav-link" data-i18n="nav-services">Services</a></li>
+                    <li><a href="#how-it-works" class="nav-link" data-i18n="nav-how-it-works">How It Works</a></li>
+                    <li><a href="#results" class="nav-link" data-i18n="nav-results">Results</a></li>
+                    <li><a href="#about" class="nav-link" data-i18n="nav-about">About</a></li>
+                </ul>
+
+                <!-- CTA & Language Switcher -->
+                <div class="nav-cta">
+                    <div class="language-switcher">
+                        <button class="lang-btn active" data-lang="es">ES</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <a href="#client-form" class="btn-primary" data-i18n="nav-get-started">Get Started</a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-nav-links">
+                <li><a href="#services" class="mobile-nav-link" data-i18n="nav-services">Services</a></li>
+                <li><a href="#how-it-works" class="mobile-nav-link" data-i18n="nav-how-it-works">How It Works</a></li>
+                <li><a href="#results" class="mobile-nav-link" data-i18n="nav-results">Results</a></li>
+                <li><a href="#about" class="mobile-nav-link" data-i18n="nav-about">About</a></li>
+                <li><a href="#client-form" class="btn-primary mobile-cta" data-i18n="nav-get-started">Get Started</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-label">
+                        <span class="label-icon">🤖</span>
+                        <span data-i18n="hero-label">AI-Powered Automation Systems</span>
+                    </div>
+                    <h1 class="hero-title" data-i18n="hero-title">
+                        Automated Systems That Turn
+                        <span class="gradient-text">Visitors Into Paying Clients</span>
+                    </h1>
+                    <p class="hero-subtitle" data-i18n="hero-subtitle">
+                        We build automated client acquisition systems for local businesses.
+                        Our websites don't just look good — they capture leads, qualify them with AI,
+                        and book appointments automatically.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#client-form" class="btn-primary btn-large" data-i18n="hero-cta-start">Start
+                            Automating</a>
+                        <a href="#how-it-works" class="btn-secondary btn-large" data-i18n="hero-cta-how">See How It
+                            Works</a>
+                    </div>
+                </div>
+
+                <!-- Hero Visual -->
+                <div class="hero-visual">
+                    <div class="hero-visual-placeholder">
+                        <!-- Animated 3D Sphere with Gradient -->
+                        <div class="sphere glow-primary">
+                            <div class="sphere-inner"></div>
+                            <div class="sphere-rings">
+                                <div class="ring ring-1"></div>
+                                <div class="ring ring-2"></div>
+                                <div class="ring ring-3"></div>
+                            </div>
+                        </div>
+                        <!-- Floating Elements -->
+                        <div class="floating-element element-1">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                <rect width="60" height="60" rx="12" fill="url(#gradient1)" fill-opacity="0.8" />
+                                <defs>
+                                    <linearGradient id="gradient1">
+                                        <stop offset="0%" stop-color="#3B82F6" />
+                                        <stop offset="100%" stop-color="#60A5FA" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="floating-element element-2">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <circle cx="20" cy="20" r="20" fill="url(#gradient2)" fill-opacity="0.6" />
+                                <defs>
+                                    <linearGradient id="gradient2">
+                                        <stop offset="0%" stop-color="#60A5FA" />
+                                        <stop offset="100%" stop-color="#3B82F6" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="floating-element element-3">
+                            <svg width="50" height="50" viewBox="0 0 50 50" fill="none">
+                                <polygon points="25,5 45,40 5,40" fill="url(#gradient3)" fill-opacity="0.7" />
+                                <defs>
+                                    <linearGradient id="gradient3">
+                                        <stop offset="0%" stop-color="#1D4ED8" />
+                                        <stop offset="100%" stop-color="#3B82F6" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <p class="social-proof-text" data-i18n="stats-trusted">Trusted by local businesses to automate their growth
+            </p>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="10000">0</h3>
+                    <p class="stat-label" data-i18n="stats-leads">Leads Captured</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="98">0</h3>
+                    <p class="stat-label" data-i18n="stats-response">% Response Rate</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="24">0</h3>
+                    <p class="stat-label" data-i18n="stats-automation">24/7 Automation</p>
+                </div>
+                <div class="stat-item">
+                    <h3 class="stat-number" data-target="50">0</h3>
+                    <p class="stat-label" data-i18n="stats-clients">+ Happy Clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section with Flip Cards -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" data-i18n="services-label">WHAT WE SOLVE</span>
+                <h2 class="section-title" data-i18n="services-title">Stop Losing Clients to <span
+                        class="gradient-text">Manual Chaos</span></h2>
+                <p class="section-subtitle" data-i18n="services-subtitle">
+                    We eliminate missed calls, lost leads, and manual booking chaos.
+                    Your business grows without hiring more staff.
+                </p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1: AI Chatbot -->
+                <div class="service-card-flip">
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="service-image-placeholder service-gradient-1">
+                                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                    <circle cx="40" cy="40" r="38" stroke="url(#serviceGrad1)" stroke-width="4" />
+                                    <path d="M30 35H35V40H30V35Z M45 35H50V40H45V35Z M25 50Q25 50 30 55H50Q55 50 55 50"
+                                        stroke="white" stroke-width="3" stroke-linecap="round" />
+                                    <defs>
+                                        <linearGradient id="serviceGrad1">
+                                            <stop offset="0%" stop-color="#3B82F6" />
+                                            <stop offset="100%" stop-color="#60A5FA" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="service-overlay">
+                                <h3 class="service-title-front" data-i18n="service-1-title">AI Chatbot Systems</h3>
+                            </div>
+                        </div>
+                        <div class="service-card-back glass-card">
+                            <h3 class="service-title-back" data-i18n="service-1-title">AI Chatbot Systems</h3>
+                            <p class="service-description" data-i18n="service-1-desc">
+                                24/7 AI assistant that qualifies leads, answers questions, and books appointments
+                                automatically. Never miss a potential client again.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag" data-i18n="service-1-tag-1">Lead Qualification</span>
+                                <span class="feature-tag" data-i18n="service-1-tag-2">24/7 Support</span>
+                                <span class="feature-tag" data-i18n="service-1-tag-3">Smart Responses</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Lead Capture -->
+                <div class="service-card-flip">
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="service-image-placeholder service-gradient-2">
+                                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                    <rect x="20" y="25" width="40" height="30" rx="4" stroke="url(#serviceGrad2)"
+                                        stroke-width="4" />
+                                    <path d="M30 35H50 M30 42H50 M30 49H45" stroke="white" stroke-width="3"
+                                        stroke-linecap="round" />
+                                    <circle cx="60" cy="30" r="8" fill="#3B82F6" />
+                                    <defs>
+                                        <linearGradient id="serviceGrad2">
+                                            <stop offset="0%" stop-color="#60A5FA" />
+                                            <stop offset="100%" stop-color="#3B82F6" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="service-overlay">
+                                <h3 class="service-title-front" data-i18n="service-2-title">Lead Capture Automation</h3>
+                            </div>
+                        </div>
+                        <div class="service-card-back glass-card">
+                            <h3 class="service-title-back" data-i18n="service-2-title">Lead Capture Automation</h3>
+                            <p class="service-description" data-i18n="service-2-desc">
+                                Smart forms that capture visitor information and immediately route them into your
+                                automated follow-up system. No lead falls through the cracks.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag" data-i18n="service-2-tag-1">Smart Forms</span>
+                                <span class="feature-tag" data-i18n="service-2-tag-2">Auto-Routing</span>
+                                <span class="feature-tag" data-i18n="service-2-tag-3">CRM Sync</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Appointment Booking -->
+                <div class="service-card-flip">
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="service-image-placeholder service-gradient-3">
+                                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                    <rect x="20" y="25" width="40" height="40" rx="4" stroke="url(#serviceGrad3)"
+                                        stroke-width="4" />
+                                    <path d="M30 25V20 M50 25V20 M20 35H60" stroke="white" stroke-width="3"
+                                        stroke-linecap="round" />
+                                    <circle cx="32" cy="45" r="3" fill="#3B82F6" />
+                                    <circle cx="48" cy="45" r="3" fill="#3B82F6" />
+                                    <circle cx="32" cy="55" r="3" fill="#60A5FA" />
+                                    <defs>
+                                        <linearGradient id="serviceGrad3">
+                                            <stop offset="0%" stop-color="#1D4ED8" />
+                                            <stop offset="100%" stop-color="#3B82F6" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="service-overlay">
+                                <h3 class="service-title-front" data-i18n="service-3-title">Appointment Booking</h3>
+                            </div>
+                        </div>
+                        <div class="service-card-back glass-card">
+                            <h3 class="service-title-back" data-i18n="service-3-title">Appointment Booking</h3>
+                            <p class="service-description" data-i18n="service-3-desc">
+                                Automated calendar system that lets clients book appointments directly.
+                                Syncs with your schedule and sends automatic reminders.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag" data-i18n="service-3-tag-1">Calendar Sync</span>
+                                <span class="feature-tag" data-i18n="service-3-tag-2">Reminders</span>
+                                <span class="feature-tag" data-i18n="service-3-tag-3">No-Show Prevention</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: Follow-up Automation -->
+                <div class="service-card-flip">
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="service-image-placeholder service-gradient-4">
+                                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                    <path d="M25 35L40 45L55 35" stroke="url(#serviceGrad4)" stroke-width="4"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <rect x="20" y="30" width="40" height="25" rx="4" stroke="white" stroke-width="3" />
+                                    <circle cx="60" cy="25" r="6" fill="#3B82F6" />
+                                    <circle cx="65" cy="35" r="4" fill="#60A5FA" />
+                                    <defs>
+                                        <linearGradient id="serviceGrad4">
+                                            <stop offset="0%" stop-color="#3B82F6" />
+                                            <stop offset="100%" stop-color="#1D4ED8" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="service-overlay">
+                                <h3 class="service-title-front" data-i18n="service-4-title">Follow-up Automation</h3>
+                            </div>
+                        </div>
+                        <div class="service-card-back glass-card">
+                            <h3 class="service-title-back" data-i18n="service-4-title">Follow-up Automation</h3>
+                            <p class="service-description" data-i18n="service-4-desc">
+                                Intelligent email and SMS sequences that nurture leads automatically.
+                                Your prospects stay engaged without you lifting a finger.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag" data-i18n="service-4-tag-1">Email Sequences</span>
+                                <span class="feature-tag" data-i18n="service-4-tag-2">SMS Campaigns</span>
+                                <span class="feature-tag" data-i18n="service-4-tag-3">Smart Timing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5: CRM Integration -->
+                <div class="service-card-flip">
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="service-image-placeholder service-gradient-5">
+                                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                    <circle cx="40" cy="40" r="12" stroke="url(#serviceGrad5)" stroke-width="4" />
+                                    <circle cx="25" cy="25" r="8" stroke="white" stroke-width="3" />
+                                    <circle cx="55" cy="25" r="8" stroke="white" stroke-width="3" />
+                                    <circle cx="25" cy="55" r="8" stroke="white" stroke-width="3" />
+                                    <circle cx="55" cy="55" r="8" stroke="white" stroke-width="3" />
+                                    <path d="M33 33L28 28 M47 33L52 28 M33 47L28 52 M47 47L52 52" stroke="#3B82F6"
+                                        stroke-width="3" />
+                                    <defs>
+                                        <linearGradient id="serviceGrad5">
+                                            <stop offset="0%" stop-color="#60A5FA" />
+                                            <stop offset="100%" stop-color="#1D4ED8" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="service-overlay">
+                                <h3 class="service-title-front" data-i18n="service-5-title">CRM Integration</h3>
+                            </div>
+                        </div>
+                        <div class="service-card-back glass-card">
+                            <h3 class="service-title-back" data-i18n="service-5-title">CRM Integration</h3>
+                            <p class="service-description" data-i18n="service-5-desc">
+                                Seamless connection with your existing tools. All your customer data
+                                flows automatically between systems without manual data entry.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag" data-i18n="service-5-tag-1">GoHighLevel</span>
+                                <span class="feature-tag" data-i18n="service-5-tag-2">HubSpot</span>
+                                <span class="feature-tag" data-i18n="service-5-tag-3">Custom APIs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 6: Analytics -->
+                <div class="service-card-flip">
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="service-image-placeholder service-gradient-6">
+                                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                    <rect x="20" y="20" width="40" height="40" rx="4" stroke="url(#serviceGrad6)"
+                                        stroke-width="4" />
+                                    <rect x="28" y="45" width="6" height="10" fill="#3B82F6" />
+                                    <rect x="37" y="38" width="6" height="17" fill="#60A5FA" />
+                                    <rect x="46" y="32" width="6" height="23" fill="#3B82F6" />
+                                    <path d="M28 38L37 35L46 30" stroke="white" stroke-width="2" />
+                                    <defs>
+                                        <linearGradient id="serviceGrad6">
+                                            <stop offset="0%" stop-color="#1D4ED8" />
+                                            <stop offset="100%" stop-color="#60A5FA" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="service-overlay">
+                                <h3 class="service-title-front" data-i18n="service-6-title">Analytics & Reporting</h3>
+                            </div>
+                        </div>
+                        <div class="service-card-back glass-card">
+                            <h3 class="service-title-back" data-i18n="service-6-title">Analytics & Reporting</h3>
+                            <p class="service-description" data-i18n="service-6-desc">
+                                Real-time dashboards showing exactly how many leads you're capturing,
+                                conversion rates, and ROI. Know what's working at a glance.
+                            </p>
+                            <div class="service-features">
+                                <span class="feature-tag" data-i18n="service-6-tag-1">Real-Time Data</span>
+                                <span class="feature-tag" data-i18n="service-6-tag-2">ROI Tracking</span>
+                                <span class="feature-tag" data-i18n="service-6-tag-3">Custom Reports</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" data-i18n="process-label">THE PROCESS</span>
+                <h2 class="section-title" data-i18n="process-title">From Setup to <span class="gradient-text">Automated
+                        Growth</span></h2>
+                <p class="section-subtitle" data-i18n="process-subtitle">
+                    We handle everything. You focus on closing deals while we build your automated system.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">01</div>
+                    <div class="timeline-content glass-card">
+                        <h3 data-i18n="process-step-1-title">Discovery Call</h3>
+                        <p data-i18n="process-step-1-desc">We analyze your current process and identify automation
+                            opportunities.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">02</div>
+                    <div class="timeline-content glass-card">
+                        <h3 data-i18n="process-step-2-title">System Design</h3>
+                        <p data-i18n="process-step-2-desc">We map out your custom automation workflow and get your
+                            approval.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">03</div>
+                    <div class="timeline-content glass-card">
+                        <h3 data-i18n="process-step-3-title">Build & Integrate</h3>
+                        <p data-i18n="process-step-3-desc">We build your AI systems and integrate with your existing
+                            tools.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">04</div>
+                    <div class="timeline-number">04</div>
+                    <div class="timeline-content glass-card">
+                        <h3 data-i18n="process-step-4-title">Launch & Optimize</h3>
+                        <p data-i18n="process-step-4-desc">Your system goes live. We monitor, test, and continuously
+                            improve performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results/Testimonials -->
+    <section class="testimonials" id="results">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" data-i18n="results-label">CLIENT RESULTS</span>
+                <h2 class="section-title" data-i18n="results-title">Real Businesses, <span class="gradient-text">Real
+                        Results</span></h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card glass-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text" data-i18n="test-1-text">
+                        "We went from missing 30% of calls to capturing 100% of leads.
+                        The AI chatbot books appointments while we sleep. Game changer."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <span>JD</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>John Davidson</h4>
+                            <p>Owner, Davidson Roofing</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card glass-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text" data-i18n="test-2-text">
+                        "Our lead response time went from 2 hours to 2 minutes.
+                        Conversion rates doubled in the first month."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <span>SM</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Martinez</h4>
+                            <p>Marketing Director, Elite HVAC</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card glass-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text" data-i18n="test-3-text">
+                        "I used to spend 2 hours daily on follow-ups. Now it's completely automated.
+                        I focus on what I do best - servicing clients."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <span>MT</span>
+                        </div>
+                        <div class="author-info">
+                            <h4>Mike Thompson</h4>
+                            <p>Founder, Thompson Plumbing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <div class="about-image-placeholder">
+                        <svg width="100%" height="100%" viewBox="0 0 400 400" fill="none">
+                            <rect width="400" height="400" rx="24" fill="url(#aboutGrad)" />
+                            <circle cx="200" cy="200" r="80" stroke="white" stroke-width="4" opacity="0.3" />
+                            <circle cx="200" cy="200" r="120" stroke="white" stroke-width="3" opacity="0.2" />
+                            <circle cx="200" cy="200" r="160" stroke="white" stroke-width="2" opacity="0.1" />
+                            <path d="M180 180L200 200L220 180" stroke="white" stroke-width="4" stroke-linecap="round" />
+                            <path d="M200 200V240" stroke="white" stroke-width="4" stroke-linecap="round" />
+                            <defs>
+                                <linearGradient id="aboutGrad" x1="0" y1="0" x2="400" y2="400">
+                                    <stop offset="0%" stop-color="#1D4ED8" stop-opacity="0.5" />
+                                    <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.3" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label" data-i18n="about-label">ABOUT US</span>
+                    <h2 class="section-title" data-i18n="about-title">Built by Automation <span
+                            class="gradient-text">Obsessed</span> Experts
+                    </h2>
+                    <p class="about-text" data-i18n="about-p1">
+                        We're not a typical web agency. We're automation specialists who saw local businesses
+                        struggling with the same problems: missed leads, manual chaos, and zero follow-up.
+                    </p>
+                    <p class="about-text" data-i18n="about-p2">
+                        So we built a better way. Using AI, n8n workflows, and smart integrations,
+                        we create systems that work 24/7 to grow your business automatically.
+                    </p>
+                    <p class="about-text" data-i18n="about-p3">
+                        No more hiring VAs. No more missed opportunities. Just automated growth.
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <h3 class="stat-number-large">5+</h3>
+                            <p data-i18n="about-stat-1">Years in Automation</p>
+                        </div>
+                        <div class="about-stat">
+                            <h3 class="stat-number-large">50+</h3>
+                            <p data-i18n="about-stat-2">Businesses Automated</p>
+                        </div>
+                        <div class="about-stat">
+                            <h3 class="stat-number-large">99%</h3>
+                            <p data-i18n="about-stat-3">Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Data Form -->
+    <section class="client-form-section" id="client-form">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label" data-i18n="form-label">EMPECEMOS</span>
+                <h2 class="section-title" data-i18n="form-title">Cuéntanos sobre tu <span
+                        class="gradient-text">Negocio</span></h2>
+                <p class="section-subtitle" data-i18n="form-subtitle">
+                    Completa el formulario y nos pondremos en contacto contigo para diseñar tu sistema de automatización
+                    personalizado.
+                </p>
+            </div>
+
+            <div class="form-container">
+                <form id="clientForm" class="client-form glass-card">
+                    <div class="form-grid">
+                        <!-- Name Field -->
+                        <div class="form-group">
+                            <label for="clientName" class="form-label">
+                                <span class="label-text" data-i18n="form-name-label">Nombre Completo</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <input type="text" id="clientName" name="clientName" class="form-input"
+                                placeholder="Juan Pérez" data-i18n="form-name-placeholder" required>
+                            <span class="form-error" id="nameError"></span>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="form-group">
+                            <label for="clientEmail" class="form-label">
+                                <span class="label-text" data-i18n="form-email-label">Email</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <input type="email" id="clientEmail" name="clientEmail" class="form-input"
+                                placeholder="juan@empresa.com" data-i18n="form-email-placeholder" required>
+                            <span class="form-error" id="emailError"></span>
+                        </div>
+
+                        <!-- Phone Field -->
+                        <div class="form-group">
+                            <label for="clientPhone" class="form-label">
+                                <span class="label-text" data-i18n="form-phone-label">Teléfono</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <input type="tel" id="clientPhone" name="clientPhone" class="form-input"
+                                placeholder="+1 (555) 123-4567" data-i18n="form-phone-placeholder" required>
+                            <span class="form-error" id="phoneError"></span>
+                        </div>
+
+                        <!-- Company Field -->
+                        <div class="form-group">
+                            <label for="clientCompany" class="form-label">
+                                <span class="label-text" data-i18n="form-company-label">Empresa</span>
+                            </label>
+                            <input type="text" id="clientCompany" name="clientCompany" class="form-input"
+                                placeholder="Mi Empresa S.A." data-i18n="form-company-placeholder">
+                        </div>
+
+                        <!-- Service Interest -->
+                        <div class="form-group form-group-full">
+                            <label for="serviceInterest" class="form-label">
+                                <span class="label-text" data-i18n="form-service-label">Servicio de Interés</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <select id="serviceInterest" name="serviceInterest" class="form-select" required>
+                                <option value="" data-i18n="form-service-opt-default">Selecciona un servicio...</option>
+                                <option value="ai-chatbot" data-i18n="form-service-opt-1">AI Chatbot Systems</option>
+                                <option value="lead-capture" data-i18n="form-service-opt-2">Lead Capture Automation
+                                </option>
+                                <option value="appointment-booking" data-i18n="form-service-opt-3">Appointment Booking
+                                </option>
+                                <option value="follow-up" data-i18n="form-service-opt-4">Follow-up Automation</option>
+                                <option value="crm-integration" data-i18n="form-service-opt-5">CRM Integration</option>
+                                <option value="analytics" data-i18n="form-service-opt-6">Analytics & Reporting</option>
+                                <option value="full-package" data-i18n="form-service-opt-full">Paquete Completo</option>
+                            </select>
+                            <span class="form-error" id="serviceError"></span>
+                        </div>
+
+                        <!-- Message Field -->
+                        <div class="form-group form-group-full">
+                            <label for="clientMessage" class="form-label">
+                                <span class="label-text" data-i18n="form-message-label">Cuéntanos sobre tu
+                                    proyecto</span>
+                            </label>
+                            <textarea id="clientMessage" name="clientMessage" class="form-textarea" rows="5"
+                                placeholder="Describe brevemente tu negocio y qué desafíos quieres resolver con automatización..."
+                                data-i18n="form-message-placeholder"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary btn-large form-submit">
+                            <span class="btn-text" data-i18n="form-submit">Enviar Solicitud</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+                        <p class="form-note" data-i18n="form-note">
+                            🔒 Tus datos están seguros. Nunca compartiremos tu información.
+                        </p>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div class="form-success" id="formSuccess">
+                        <div class="success-icon">✓</div>
+                        <h3 data-i18n="form-success-title">¡Solicitud Enviada!</h3>
+                        <p data-i18n="form-success-p">Gracias por tu interés. Nos pondremos en contacto contigo en las
+                            próximas 24 horas.</p>
+                    </div>
+                </form>
+
+                <!-- Form Benefits -->
+                <div class="form-benefits">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⚡</div>
+                        <div class="benefit-content">
+                            <h4 data-i18n="form-benefit-1-title">Respuesta Rápida</h4>
+                            <p data-i18n="form-benefit-1-p">Te contactamos en menos de 24 horas</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎯</div>
+                        <div class="benefit-content">
+                            <h4 data-i18n="form-benefit-2-title">Solución Personalizada</h4>
+                            <p data-i18n="form-benefit-2-p">Diseñamos el sistema perfecto para tu negocio</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <div class="benefit-content">
+                            <h4 data-i18n="form-benefit-3-title">Sin Compromiso</h4>
+                            <p data-i18n="form-benefit-3-p">Consulta gratuita sin obligación de compra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="cta-final" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title" data-i18n="cta-title">Ready to Stop Losing Leads?</h2>
+                <p class="cta-subtitle" data-i18n="cta-subtitle">
+                    Book a free automation audit. We'll show you exactly where you're losing money
+                    and how to fix it.
+                </p>
+                <a href="mailto:contact@digitalamautomation.com" class="btn-primary btn-xl" data-i18n="cta-btn">Book
+                    Your Free Audit</a>
+                <p class="cta-note" data-i18n="cta-note">No commitment. No sales pitch. Just actionable insights.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" rx="12" fill="url(#footerLogoGradient)" />
+                            <path d="M14 14H22L28 34H20L14 14Z" fill="white" fill-opacity="0.9" />
+                            <path d="M26 14H34L28 34H20L26 14Z" fill="white" fill-opacity="0.6" />
+                            <circle cx="24" cy="24" r="3" fill="white" />
+                            <defs>
+                                <linearGradient id="footerLogoGradient" x1="0" y1="0" x2="48" y2="48">
+                                    <stop offset="0%" stop-color="#3B82F6" />
+                                    <stop offset="100%" stop-color="#1D4ED8" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                        <span>Digital AM</span>
+                    </div>
+                    <p class="footer-tagline" data-i18n="footer-tagline">Automated systems that turn visitors into
+                        paying clients.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4 data-i18n="footer-services">Services</h4>
+                    <ul>
+                        <li><a href="#services" data-i18n="service-1-title">AI Chatbots</a></li>
+                        <li><a href="#services" data-i18n="service-2-title">Lead Capture</a></li>
+                        <li><a href="#services" data-i18n="service-3-title">Appointment Booking</a></li>
+                        <li><a href="#services" data-i18n="service-5-title">CRM Integration</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 data-i18n="footer-company">Company</h4>
+                    <ul>
+                        <li><a href="#about" data-i18n="nav-about">About</a></li>
+                        <li><a href="#results" data-i18n="nav-results">Results</a></li>
+                        <li><a href="#how-it-works" data-i18n="nav-how-it-works">How It Works</a></li>
+                        <li><a href="#contact" data-i18n="footer-connect">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 data-i18n="footer-connect">Connect</h4>
+                    <ul>
+                        <li><a href="mailto:contact@digitalamautomation.com" data-i18n="footer-email-us">Email Us</a>
+                        </li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Louisville, KY</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p data-i18n="footer-rights">&copy; 2026 Digital AM Automation. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#" data-i18n="footer-privacy">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="#" data-i18n="footer-terms">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/18304750779" class="whatsapp-float" target="_blank" rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="30" fill="#25D366" />
+            <path
+                d="M30.5 15C22.5 15 16 21.5 16 29.5C16 32.3 16.9 34.9 18.4 37.1L16.2 44.8L24.2 42.6C26.3 43.9 28.8 44.7 31.5 44.7C39.5 44.7 46 38.2 46 30.2C46 22.2 39.5 15 30.5 15ZM39.3 36.8C39 37.7 37.5 38.5 36.7 38.7C36.1 38.8 35.3 38.9 34.4 38.6C33.9 38.4 33.2 38.2 32.3 37.8C28.1 36 25.4 31.9 25.2 31.6C25 31.4 23.5 29.4 23.5 27.3C23.5 25.2 24.6 24.2 24.9 23.9C25.2 23.6 25.6 23.5 25.9 23.5C26.1 23.5 26.3 23.5 26.5 23.5C26.7 23.5 27 23.5 27.2 24C27.5 24.6 28.1 26.2 28.2 26.3C28.3 26.5 28.3 26.7 28.2 26.9C28.1 27.1 28 27.3 27.8 27.5C27.6 27.7 27.4 28 27.2 28.2C27 28.3 26.8 28.5 27 28.8C27.2 29.1 27.9 30.2 29 31.2C30.4 32.4 31.5 32.8 31.9 33C32.2 33.1 32.5 33.1 32.7 32.8C32.9 32.6 33.5 31.9 33.7 31.6C33.9 31.3 34.2 31.4 34.5 31.5C34.8 31.6 36.9 32.6 37.2 32.8C37.5 32.9 37.7 33 37.8 33.2C37.9 33.5 37.9 34.1 37.7 34.8C37.5 35.5 39.6 35.9 39.3 36.8Z"
+                fill="white" />
+        </svg>
+        <span class="whatsapp-tooltip" data-i18n="whatsapp-tooltip">¿Necesitas ayuda? Chatea con nosotros</span>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="translations.js?v=1.1"></script>
+    <script src="script.js?v=1.1"></script>
+</body>
+
+</html>
