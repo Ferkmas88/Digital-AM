@@ -10,6 +10,7 @@ export const siteCopy = {
     nav: [
       { label: "Plataforma", href: "#platform" },
       { label: "Trabajos", href: "#work" },
+      { label: "Blog", href: "/blog" },
       { label: "Contacto", href: "#contact" },
     ],
     hero: {
@@ -134,6 +135,7 @@ export const siteCopy = {
     nav: [
       { label: "Platform", href: "#platform" },
       { label: "Work", href: "#work" },
+      { label: "Blog", href: "/blog" },
       { label: "Contact", href: "#contact" },
     ],
     hero: {
