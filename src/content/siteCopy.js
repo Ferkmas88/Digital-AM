@@ -15,10 +15,10 @@ export const siteCopy = {
     ],
     hero: {
       eyebrow: "Agencia local en Louisville, Kentucky — Hablamos español",
-      title: "Hacemos la página web de tu negocio en Louisville",
-      subtitle: "Páginas web profesionales, marketing digital y automatización para negocios latinos en Louisville, KY. Somos locales, hablamos español y vamos a tu negocio. Primera consulta gratis.",
+      title: "Más clientes para tu negocio en Louisville",
+      subtitle: "Si alguien busca tu servicio en Google y no te encuentra, está llamando a tu competencia. Nosotros lo arreglamos: páginas web, SEO local y automatización para negocios latinos en Louisville. Somos locales, hablamos español y vamos a tu negocio. Primera consulta gratis.",
       primaryCta: { label: "Agenda tu auditoría gratis", href: "#contact" },
-      secondaryCta: { label: "Ver nuestros trabajos", href: "#work" },
+      secondaryCta: { label: "Ver negocios que ayudamos", href: "#work" },
     },
     system: {
       title: "Así conseguimos más clientes para tu negocio",
@@ -26,41 +26,41 @@ export const siteCopy = {
       flow: ["Google te encuentra", "Visitan tu web", "Te contactan", "Seguimiento automático", "Cliente confirmado", "Negocio crece"],
     },
     problem: {
-      title: "¿Por qué tu negocio no está apareciendo cuando la gente busca en Louisville?",
+      title: "Cada día que no apareces en Google, alguien en Louisville llama a tu competencia.",
       items: [
         {
-          title: "Sin página web propia",
-          text: "Facebook e Instagram son terreno prestado. Si Google no te encuentra, estás perdiendo clientes todos los días sin saberlo.",
+          title: "Tu negocio no aparece en Google",
+          text: "Facebook e Instagram son terreno prestado. Si no tienes web propia optimizada, los clientes que buscan tu servicio en Louisville nunca te encuentran.",
         },
         {
-          title: "Sin sistema de contacto",
-          text: "Los clientes buscan, no encuentran cómo contactarte fácil, y se van donde la competencia. Cada consulta perdida es dinero que no entra.",
+          title: "Los clientes no saben cómo contactarte",
+          text: "Llegan a tu perfil, no encuentran cómo contactarte fácil, y se van con quien sí tiene web. Cada visita perdida es dinero que no entra.",
         },
         {
-          title: "Sin seguimiento automático",
-          text: "La mayoría de los negocios no tienen tiempo de responder rápido. Con automatización, tus clientes reciben respuesta inmediata aunque estés ocupado.",
+          title: "Sin respuesta rápida, pierdes la venta",
+          text: "El 78% de los clientes contratan al primero que les responde. Sin automatización, tus clientes se van con la competencia mientras tú estás ocupado trabajando.",
         },
       ],
     },
     platform: {
-      eyebrow: "Servicios Digital AM",
-      title: "Todo lo que necesita tu negocio para conseguir más clientes en Louisville.",
+      eyebrow: "Cómo conseguimos clientes para tu negocio",
+      title: "Un sistema completo para que te encuentren, te contacten y te elijan a ti.",
       modules: [
         {
-          title: "Página Web Profesional",
-          text: "Diseñamos tu sitio web en español e inglés para que aparezcas en Google cuando alguien busca tu servicio en Louisville.",
+          title: "Aparecer en Google cuando te buscan",
+          text: "Diseñamos tu sitio web en español e inglés optimizado para SEO local. Cuando alguien busca tu servicio en Louisville, tu negocio aparece primero.",
         },
         {
-          title: "Más Llamadas y Mensajes",
-          text: "Formularios y botones de WhatsApp que convierten visitas en consultas reales desde el primer día.",
+          title: "Convertir visitas en llamadas reales",
+          text: "Formularios y botones de WhatsApp estratégicamente ubicados para que cada persona que visita tu web se convierta en una consulta real.",
         },
         {
-          title: "Respuestas Automáticas",
-          text: "Tu negocio responde al instante aunque estés ocupado — por SMS, WhatsApp o email — sin que levantes un dedo.",
+          title: "Nunca perder un cliente por no responder",
+          text: "Tu negocio responde automáticamente al instante — por SMS, WhatsApp o email — aunque estés ocupado trabajando.",
         },
         {
-          title: "Control de Clientes",
-          text: "Organizamos todos tus leads en un solo lugar para que nunca se te escape una venta y siempre sepas qué sigue.",
+          title: "Saber exactamente qué cliente sigue",
+          text: "Organizamos todos tus leads en un solo panel para que nunca pierdas una venta y siempre sepas cuál es el siguiente paso.",
         },
       ],
     },
@@ -92,13 +92,13 @@ export const siteCopy = {
       ],
     },
     technology: {
-      title: "La única agencia en Louisville que trabaja con negocios latinos, en español, en persona",
-      text: "No somos de Miami ni de otra ciudad. Estamos aquí en Louisville, hablamos español y podemos ir a tu negocio. Eso es lo que ninguna otra agencia puede ofrecerte.",
-      items: ["Sitios web en español", "SEO local Louisville", "WhatsApp Business", "Google Business", "Tiendas online", "Automatización", "IA incluida"],
+      title: "La única agencia en Louisville que trabaja con negocios latinos, en español y en persona",
+      text: "Las agencias de Miami o de otras ciudades no pueden ir a tu negocio, no entienden el mercado de Louisville y no hablan español. Nosotros sí. Esa es la diferencia que ningún competidor puede copiar.",
+      items: ["Sitios web en español", "SEO local Louisville", "WhatsApp Business", "Google Business Profile", "Tiendas online", "Automatización de seguimiento", "IA incluida"],
     },
     cta: {
-      title: "¿Tu negocio en Louisville necesita más clientes?",
-      text: "Agenda una auditoría digital gratis. En 30 minutos te decimos exactamente qué está faltando y cómo solucionarlo. Sin compromiso, sin costo.",
+      title: "¿Listo para que tu negocio consiga más clientes en Louisville?",
+      text: "Agenda tu auditoría digital gratis. En 30 minutos te decimos exactamente por qué no estás apareciendo en Google y qué necesitas para cambiar eso. Sin compromiso, sin costo.",
       primaryCta: "Agenda tu auditoría gratis",
       email: "ferkmas88@gmail.com",
       location: "Louisville, Kentucky",
