@@ -425,8 +425,8 @@ export default function App() {
               <div className="absolute inset-0 bg-gradient-to-r from-[#0D1117]/85 via-[#0D1117]/30 to-transparent" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117]/60 to-transparent" />
               <div className="absolute left-8 top-1/2 -translate-y-1/2 max-w-sm">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">Mobile-first</p>
-                <p className="mt-2 text-2xl font-semibold text-white">Every inquiry captured, wherever it comes from.</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">{locale === "es" ? "Móvil primero" : "Mobile-first"}</p>
+                <p className="mt-2 text-2xl font-semibold text-white">{locale === "es" ? "Cada consulta capturada, desde donde sea." : "Every inquiry captured, wherever it comes from."}</p>
               </div>
             </motion.div>
           </div>
