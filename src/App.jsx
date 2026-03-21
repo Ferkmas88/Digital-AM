@@ -478,7 +478,7 @@ export default function App() {
                   {submitState === "submitting" ? copy.contact.actions.submitting : copy.contact.actions.submit}
                   <Send className="h-4 w-4" />
                 </button>
-                <a href={locale === "es" ? "https://wa.me/15025551234?text=Hola%2C%20quiero%20una%20auditoría%20gratis%20para%20mi%20negocio" : `mailto:${copy.cta.email}`}
+                <a href={locale === "es" ? "https://wa.me/18304750779?text=Hola%2C%20quiero%20una%20auditoría%20gratis%20para%20mi%20negocio" : `mailto:${copy.cta.email}`}
                   target={locale === "es" ? "_blank" : undefined}
                   rel={locale === "es" ? "noreferrer" : undefined}
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/[0.08] px-6 py-3.5 text-sm font-semibold text-[#9AA3AE] transition hover:border-white/20 hover:text-white">

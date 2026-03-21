@@ -102,7 +102,7 @@ export const siteCopy = {
       primaryCta: "Agenda tu auditoría gratis",
       email: "ferkmas88@gmail.com",
       location: "Louisville, Kentucky",
-      whatsapp: "https://wa.me/15025551234",
+      whatsapp: "https://wa.me/18304750779",
     },
     contact: {
       formTitle: "Cuéntanos sobre tu negocio",
