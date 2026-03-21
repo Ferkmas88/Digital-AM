@@ -16,7 +16,7 @@ const getInitialLocale = () => {
   if (typeof window === "undefined") return "es";
   const stored = window.localStorage.getItem("digital-am-locale");
   if (stored && locales.includes(stored)) return stored;
-  return window.navigator.language?.toLowerCase().startsWith("es") ? "es" : "en";
+  return "es";
 };
 
 const fadeUp = {
@@ -40,6 +40,13 @@ export default function App() {
     window.localStorage.setItem("digital-am-locale", locale);
     document.documentElement.lang = locale;
     document.title = copy.meta.title;
+    // Meta description for SEO
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", locale === "es"
+        ? "Agencia de marketing digital en Louisville KY. Páginas web en español para negocios latinos. Diseño web, SEO local, WhatsApp Business y automatización. Primera consulta gratis."
+        : "Digital marketing agency in Louisville, KY. Professional websites, SEO, automation and lead capture for local businesses. Free audit.");
+    }
   }, [copy.meta.title, locale]);
 
   const handleSubmit = async (e) => {
@@ -471,7 +478,9 @@ export default function App() {
                   {submitState === "submitting" ? copy.contact.actions.submitting : copy.contact.actions.submit}
                   <Send className="h-4 w-4" />
                 </button>
-                <a href={`mailto:${copy.cta.email}`}
+                <a href={locale === "es" ? "https://wa.me/15025551234?text=Hola%2C%20quiero%20una%20auditoría%20gratis%20para%20mi%20negocio" : `mailto:${copy.cta.email}`}
+                  target={locale === "es" ? "_blank" : undefined}
+                  rel={locale === "es" ? "noreferrer" : undefined}
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/[0.08] px-6 py-3.5 text-sm font-semibold text-[#9AA3AE] transition hover:border-white/20 hover:text-white">
                   {copy.contact.actions.direct}
                   <Mail className="h-4 w-4" />
