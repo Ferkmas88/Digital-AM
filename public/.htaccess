@@ -1,4 +1,10 @@
 Options -MultiViews
 RewriteEngine On
+
+# Redirect www to non-www
+RewriteCond %{HTTP_HOST} ^www\.digitalamwebsites\.com [NC]
+RewriteRule ^(.*)$ https://digitalamwebsites.com/$1 [R=301,L]
+
+# SPA fallback
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.html [QSA,L]
