@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check, ChevronDown, Mail, MapPin, Menu, Send, X } from "lucide-react";
 import { siteCopy } from "./content/siteCopy";
 import { getFlowInteractionProps } from "./utils/flowInteractions";
-import ThreeBackground from "./components/ThreeBackground";
-import Cursor from "./components/Cursor";
-import Preloader from "./components/Preloader";
+import ThreeBackground from "./components/ThreeBackground"; // v2
+import Cursor from "./components/Cursor"; // v2
+import Preloader from "./components/Preloader"; // v2
 
 const locales = ["es", "en"];
 const flowCardProps = getFlowInteractionProps({ tilt: 3 });
