@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check, ChevronDown, Mail, MapPin, Menu, Send, X } from "lucide-react";
 import { siteCopy } from "./content/siteCopy";
 import { getFlowInteractionProps } from "./utils/flowInteractions";
+import ThreeBackground from "./components/ThreeBackground";
+import Cursor from "./components/Cursor";
+import Preloader from "./components/Preloader";
 
 const locales = ["es", "en"];
 const flowCardProps = getFlowInteractionProps({ tilt: 3 });
@@ -22,7 +25,7 @@ const getInitialLocale = () => {
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
+  viewport: { once: true, amount: 0, margin: "0px 0px -60px 0px" },
   transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
 };
 
@@ -33,6 +36,7 @@ export default function App() {
   const [submitMessage, setSubmitMessage] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [previewLoaded, setPreviewLoaded] = useState({});
+  const [loaded, setLoaded] = useState(false);
   const currentYear = new Date().getFullYear();
   const copy = siteCopy[locale];
 
@@ -85,7 +89,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070809] font-sans text-[#F5F7FA]">
+    <div className="min-h-screen bg-[#070809] font-sans text-[#F5F7FA]" style={{ cursor: "none" }}>
+      {!loaded && <Preloader onDone={() => setLoaded(true)} />}
+      <Cursor />
+      <ThreeBackground />
       {/* Subtle top glow */}
       <div className="pointer-events-none fixed inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_-10%,rgba(59,130,246,0.06),transparent)]" />
