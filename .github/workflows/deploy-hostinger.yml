@@ -26,13 +26,14 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy via SFTP
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 22
-          source: "dist/*"
-          target: /public_html
-          strip_components: 1
+      - name: Deploy via FTPS
+        run: |
+          sudo apt-get install -y lftp
+          lftp -e "
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            set ssl:verify-certificate false;
+            open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }};
+            mirror -R --delete --verbose dist/ /public_html/;
+            bye
+          "
