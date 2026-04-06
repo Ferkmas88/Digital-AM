@@ -35,4 +35,4 @@ jobs:
           protocol: ftp
           local-dir: ./dist/
           server-dir: /
-          dangerous-clean-slate: false
+          dangerous-clean-slate: true
