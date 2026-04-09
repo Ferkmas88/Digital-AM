@@ -1,0 +1,13 @@
+{
+  "buildCommand": null,
+  "outputDirectory": "dist",
+  "installCommand": null,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "digitalamwebsites.com" }],
+      "destination": "https://www.digitalamwebsites.com/:path*",
+      "permanent": true
+    }
+  ]
+}
