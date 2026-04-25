@@ -50,7 +50,7 @@ export default function SobreMiPage() {
 
                 <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}
                   className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/[0.08] lg:col-span-2">
-                  <img src={f.photo} alt="Fernando Martinez"
+                  <img src={f.photo} alt="Fernando Mastrapa"
                     className="h-full w-full object-cover object-center"
                     onError={(e) => { e.currentTarget.style.display = "none"; }} />
                   <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-blue-500/15 via-transparent to-emerald-500/10">
@@ -58,7 +58,7 @@ export default function SobreMiPage() {
                       <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-3xl font-bold text-blue-300">
                         FM
                       </div>
-                      <p className="mt-4 text-sm font-semibold text-white">Fernando Martinez</p>
+                      <p className="mt-4 text-sm font-semibold text-white">Fernando Mastrapa</p>
                       <p className="text-xs text-[#9AA3AE]">Louisville, Kentucky</p>
                     </div>
                   </div>

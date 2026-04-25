@@ -354,7 +354,7 @@ export const siteCopy = {
     },
     footer: {
       copyright: "© {year} Digital AM — Agencia de marketing digital en Louisville, KY.",
-      credit: "Estrategia, diseño y desarrollo por Fernando Martinez.",
+      credit: "Estrategia, diseño y desarrollo por Fernando Mastrapa.",
     },
   },
 
@@ -712,7 +712,7 @@ export const siteCopy = {
     },
     footer: {
       copyright: "© {year} Digital AM.",
-      credit: "Strategy, design and development by Fernando Martinez.",
+      credit: "Strategy, design and development by Fernando Mastrapa.",
     },
   },
 };
