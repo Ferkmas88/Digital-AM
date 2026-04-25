@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, ChevronDown, Mail, MapPin, Menu, MessageCircle, Send, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { ArrowRight, Check, ChevronDown, ExternalLink, Mail, MapPin, Menu, MessageCircle, Send, Star, X } from "lucide-react";
 import { siteCopy } from "./content/siteCopy";
 import { getFlowInteractionProps } from "./utils/flowInteractions";
-import ThreeBackground from "./components/ThreeBackground"; // v2
+import CountUp from "./components/CountUp";
 
 const locales = ["es", "en"];
 const flowCardProps = getFlowInteractionProps({ tilt: 3 });
@@ -36,6 +37,7 @@ export default function App() {
   const [previewLoaded, setPreviewLoaded] = useState({});
   const currentYear = new Date().getFullYear();
   const copy = siteCopy[locale];
+  const location = useLocation();
 
   useEffect(() => {
     window.localStorage.setItem("digital-am-locale", locale);
@@ -49,6 +51,14 @@ export default function App() {
         : "Digital marketing agency in Louisville, KY. Professional websites, SEO, automation and lead capture for local businesses. Free audit.");
     }
   }, [copy.meta.title, locale]);
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
+    }
+  }, [location]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -87,10 +97,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#070809] font-sans text-[#F5F7FA]">
-      <ThreeBackground />
       {/* Subtle top glow */}
       <div className="pointer-events-none fixed inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_-10%,rgba(59,130,246,0.06),transparent)]" />
+      {/* Branded grid overlay — replaces Three.js stars */}
+      <div className="pointer-events-none fixed inset-0 -z-10 opacity-[0.07]"
+        style={{ backgroundImage: "linear-gradient(rgba(99,179,237,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(99,179,237,0.4) 1px, transparent 1px)", backgroundSize: "64px 64px" }} />
 
       {/* ── HEADER ── */}
       <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#070809]/80 backdrop-blur-xl">
@@ -104,10 +116,17 @@ export default function App() {
 
           <nav className="hidden items-center gap-10 lg:flex">
             {copy.nav.map((item) => (
-              <a key={item.href} href={item.href}
-                className="text-sm font-medium text-[#9AA3AE] transition-colors hover:text-white">
-                {item.label}
-              </a>
+              item.route ? (
+                <Link key={item.href} to={item.href}
+                  className="text-sm font-medium text-[#9AA3AE] transition-colors hover:text-white">
+                  {item.label}
+                </Link>
+              ) : (
+                <a key={item.href} href={item.href}
+                  className="text-sm font-medium text-[#9AA3AE] transition-colors hover:text-white">
+                  {item.label}
+                </a>
+              )
             ))}
           </nav>
 
@@ -146,10 +165,17 @@ export default function App() {
           </div>
           <nav className="flex flex-col gap-1 p-6">
             {copy.nav.map((item) => (
-              <a key={item.href} href={item.href} onClick={() => setMobileMenuOpen(false)}
-                className="rounded-xl px-4 py-4 text-lg font-medium text-[#D3D8E0] transition hover:bg-white/[0.04] hover:text-white">
-                {item.label}
-              </a>
+              item.route ? (
+                <Link key={item.href} to={item.href} onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-xl px-4 py-4 text-lg font-medium text-[#D3D8E0] transition hover:bg-white/[0.04] hover:text-white">
+                  {item.label}
+                </Link>
+              ) : (
+                <a key={item.href} href={item.href} onClick={() => setMobileMenuOpen(false)}
+                  className="rounded-xl px-4 py-4 text-lg font-medium text-[#D3D8E0] transition hover:bg-white/[0.04] hover:text-white">
+                  {item.label}
+                </a>
+              )
             ))}
           </nav>
           <div className="space-y-4 px-6">
@@ -224,6 +250,76 @@ export default function App() {
               <ChevronDown className="h-5 w-5 animate-bounce" />
             </a>
           </motion.div>
+        </section>
+
+        {/* ══════════════════════════════════════
+            METRICS — animated counters
+        ══════════════════════════════════════ */}
+        <section className="relative border-t border-white/[0.06] bg-[#0D1117]">
+          <div className="mx-auto max-w-8xl px-6 py-20 lg:px-8 lg:py-24">
+            <motion.div {...fadeUp} className="max-w-3xl">
+              <h2 className="font-display text-section-sm font-semibold text-white lg:text-section">
+                {copy.metrics.title}
+              </h2>
+              <p className="mt-5 text-lg text-[#9AA3AE]">{copy.metrics.text}</p>
+            </motion.div>
+            <div className="mt-14 grid gap-px overflow-hidden rounded-[24px] border border-white/[0.06] sm:grid-cols-2 lg:grid-cols-4">
+              {copy.metrics.items.map((m, i) => (
+                <motion.div key={m.label} {...fadeUp} transition={{ duration: 0.5, delay: i * 0.07 }}
+                  className="bg-[#0D1117] p-8 lg:p-10">
+                  <p className="font-display text-5xl font-bold text-white lg:text-6xl">
+                    <CountUp value={m.value} suffix={m.suffix} />
+                  </p>
+                  <p className="mt-3 text-sm text-[#9AA3AE]">{m.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════
+            FOUNDER mini — Soy Fernando
+        ══════════════════════════════════════ */}
+        <section className="border-t border-white/[0.06]">
+          <div className="mx-auto grid max-w-8xl gap-12 px-6 py-20 lg:grid-cols-5 lg:items-center lg:px-8 lg:py-28">
+            <motion.div {...fadeUp} className="lg:col-span-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">{copy.founder.eyebrow}</p>
+              <h2 className="font-display mt-4 text-section-sm font-semibold text-white lg:text-section">
+                {copy.founder.title}
+              </h2>
+              <p className="mt-6 text-lg leading-relaxed text-[#9AA3AE]">{copy.founder.text}</p>
+              <ul className="mt-8 space-y-3">
+                {copy.founder.bullets.map((b) => (
+                  <li key={b} className="flex items-start gap-3 text-base text-[#D3D8E0]">
+                    <Check className="mt-1 h-4 w-4 shrink-0 text-emerald-400" />{b}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <a href={copy.founder.cta.href} target="_blank" rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-[#070809] transition hover:bg-emerald-400">
+                  <MessageCircle className="h-4 w-4" /> {copy.founder.cta.label}
+                </a>
+                <Link to="/sobre-mi" className="inline-flex items-center gap-2 text-sm font-semibold text-[#9AA3AE] transition hover:text-white">
+                  Conocé más sobre Fernando <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </motion.div>
+            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/[0.08] lg:col-span-2">
+              <img src={copy.founder.photo} alt="Fernando Martinez"
+                className="h-full w-full object-cover object-center"
+                onError={(e) => { e.currentTarget.style.display = "none"; }} />
+              <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-blue-500/15 via-transparent to-emerald-500/10">
+                <div className="text-center">
+                  <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-3xl font-bold text-blue-300">FM</div>
+                  <p className="mt-4 text-sm font-semibold text-white">Fernando Martinez</p>
+                  <p className="text-xs text-[#9AA3AE]">Louisville, Kentucky</p>
+                </div>
+              </div>
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#070809] to-transparent" />
+            </motion.div>
+          </div>
         </section>
 
         {/* ══════════════════════════════════════
@@ -336,12 +432,15 @@ export default function App() {
               ))}
             </motion.div>
 
-            {/* System image */}
-            <motion.div {...fadeUp} transition={{ duration: 0.7, delay: 0.15 }}
-              className="mt-14 relative overflow-hidden rounded-[24px] border border-white/[0.08]">
-              <img src="/ai-images/system.png" alt="Growth system visualization"
-                className="w-full h-[440px] object-cover object-center" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117] via-transparent to-transparent" />
+            <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.2 }} className="mt-14 flex flex-wrap items-center justify-center gap-4">
+              <a href="https://wa.me/18304750779?text=Hola%2C%20quiero%20que%20mi%20negocio%20entre%20en%20este%20sistema"
+                target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-[#070809] transition hover:bg-white/90">
+                Activar este sistema en mi negocio <ArrowRight className="h-4 w-4" />
+              </a>
+              <Link to="/casos" className="inline-flex items-center gap-2 text-sm font-semibold text-[#9AA3AE] transition hover:text-white">
+                Ver caso real <ArrowRight className="h-4 w-4" />
+              </Link>
             </motion.div>
           </div>
         </section>
@@ -356,14 +455,27 @@ export default function App() {
 
           <div className="mt-16 grid gap-px border border-white/[0.06] rounded-[24px] overflow-hidden md:grid-cols-3">
             {copy.problem.items.map((item, i) => (
-              <motion.div key={item.title} {...fadeUp} transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-[#0D1117] p-8 lg:p-10">
+              <motion.a key={item.title} {...fadeUp} transition={{ duration: 0.5, delay: i * 0.08 }}
+                href={`https://wa.me/18304750779?text=${encodeURIComponent("Hola, quiero resolver: " + item.title)}`}
+                target="_blank" rel="noreferrer"
+                className="group flex flex-col bg-[#0D1117] p-8 lg:p-10 transition hover:bg-[#11161D]">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/60">0{i + 1}</p>
                 <h3 className="mt-4 text-xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-3 leading-7 text-[#9AA3AE]">{item.text}</p>
-              </motion.div>
+                <p className="mt-3 flex-1 leading-7 text-[#9AA3AE]">{item.text}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition group-hover:text-blue-200">
+                  Cómo lo resolvemos <ArrowRight className="h-4 w-4" />
+                </span>
+              </motion.a>
             ))}
           </div>
+
+          <motion.div {...fadeUp} className="mt-12 flex flex-wrap items-center justify-center gap-4">
+            <a href="https://wa.me/18304750779?text=Hola%2C%20quiero%20una%20auditor%C3%ADa%20gratis%20para%20mi%20negocio"
+              target="_blank" rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-[#070809] transition hover:bg-emerald-400">
+              <MessageCircle className="h-4 w-4" /> Auditoría gratis por WhatsApp
+            </a>
+          </motion.div>
         </section>
 
         {/* ══════════════════════════════════════
@@ -380,42 +492,35 @@ export default function App() {
               </h2>
             </motion.div>
 
-            {/* 2×2 grid */}
+            {/* 2×2 grid — clickable modules */}
             <div className="mt-16 grid gap-4 md:grid-cols-2">
               {copy.platform.modules.map((mod, i) => (
-                <motion.div key={mod.title} {...flowCardProps} {...fadeUp}
+                <motion.a key={mod.title} {...flowCardProps} {...fadeUp}
                   transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="flow-surface rounded-[20px] border border-white/[0.07] bg-[#14171C] p-8 lg:p-10">
+                  href={`https://wa.me/18304750779?text=${encodeURIComponent("Hola, me interesa: " + mod.title)}`}
+                  target="_blank" rel="noreferrer"
+                  className="flow-surface group block rounded-[20px] border border-white/[0.07] bg-[#14171C] p-8 transition hover:border-blue-400/40 hover:bg-[#161A22] lg:p-10">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/50">0{i + 1}</p>
                   <h3 className="flow-child mt-4 text-2xl font-semibold text-white">{mod.title}</h3>
                   <p className="flow-child mt-3 text-base leading-7 text-[#9AA3AE]">{mod.text}</p>
-                </motion.div>
+                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition group-hover:text-blue-200">
+                    Quiero esto en mi negocio <ArrowRight className="h-4 w-4" />
+                  </span>
+                </motion.a>
               ))}
             </div>
 
-            {/* Automation + Dashboard visual duo */}
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}
-                className="relative overflow-hidden rounded-[20px] border border-white/[0.07]">
-                <img src="/ai-images/automation.png" alt="Automation"
-                  className="w-full h-[300px] object-cover object-center" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117]/80 to-transparent" />
-                <div className="absolute bottom-6 left-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/70">Automation</p>
-                  <p className="mt-1 text-lg font-semibold text-white">Intelligence that keeps leads moving</p>
-                </div>
-              </motion.div>
-              <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.15 }}
-                className="relative overflow-hidden rounded-[20px] border border-white/[0.07]">
-                <img src="/ai-images/dashboard.png" alt="CRM"
-                  className="w-full h-[300px] object-cover object-center" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117]/80 to-transparent" />
-                <div className="absolute bottom-6 left-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/70">CRM Structure</p>
-                  <p className="mt-1 text-lg font-semibold text-white">Every lead organized, nothing lost</p>
-                </div>
-              </motion.div>
-            </div>
+            {/* Platform CTA */}
+            <motion.div {...fadeUp} className="mt-12 flex flex-wrap items-center justify-center gap-4">
+              <a href="https://wa.me/18304750779?text=Hola%2C%20quiero%20ver%20cu%C3%A1l%20de%20estos%20servicios%20me%20conviene"
+                target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-[#070809] transition hover:bg-white/90">
+                <MessageCircle className="h-4 w-4" /> Auditoría gratis para mi negocio
+              </a>
+              <Link to="/casos" className="inline-flex items-center gap-2 text-sm font-semibold text-[#9AA3AE] transition hover:text-white">
+                Ver caso real <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
           </div>
         </section>
 
@@ -478,45 +583,76 @@ export default function App() {
               );
             })}
           </div>
+
+          <motion.div {...fadeUp} className="mt-12 flex flex-wrap items-center justify-center gap-4">
+            <Link to="/casos"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.02] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/20 hover:bg-white/[0.04]">
+              Ver casos en detalle <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
         </section>
 
         {/* ══════════════════════════════════════
-            6. TECHNOLOGY
+            REVIEWS WALL — preview de /resenas
         ══════════════════════════════════════ */}
         <section className="border-t border-white/[0.06] bg-[#0D1117]">
-          <div className="mx-auto max-w-8xl px-6 py-30 lg:px-8">
-            <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-              <motion.div {...fadeUp}>
-                <h2 className="font-display text-section-sm font-semibold text-white lg:text-section">
-                  {copy.technology.title}
+          <div className="mx-auto max-w-8xl px-6 py-20 lg:px-8 lg:py-28">
+            <motion.div {...fadeUp} className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">{copy.reviews.eyebrow}</p>
+                <h2 className="font-display mt-4 text-section-sm font-semibold text-white lg:text-section">
+                  {copy.reviews.title}
                 </h2>
-                <p className="mt-5 text-lg leading-relaxed text-[#9AA3AE]">{copy.technology.text}</p>
-              </motion.div>
-              <motion.div {...fadeUp} transition={{ duration: 0.6, delay: 0.1 }}
-                className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
-                {copy.technology.items.map((tech) => (
-                  <div key={tech} {...flowCardProps}
-                    className="flow-surface flex items-center justify-center rounded-[16px] border border-white/[0.07] bg-[#14171C] px-4 py-4 text-center text-sm font-semibold text-[#D3D8E0] transition hover:border-white/20 hover:text-white">
-                    {tech}
+                <p className="mt-5 text-lg text-[#9AA3AE]">{copy.reviews.text}</p>
+              </div>
+              <a href={copy.reviews.googleHref} target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 self-start rounded-xl border border-white/[0.08] px-5 py-3 text-sm font-semibold text-white transition hover:border-white/20">
+                <Star className="h-4 w-4 fill-amber-300 text-amber-300" /> {copy.reviews.googleCta}
+              </a>
+            </motion.div>
+
+            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {copy.reviews.items.slice(0, 6).map((r, i) => (
+                <motion.a key={i} {...fadeUp} {...flowCardProps}
+                  transition={{ duration: 0.5, delay: i * 0.06 }}
+                  href={r.sourceHref} target="_blank" rel="noreferrer"
+                  className="flow-surface group flex flex-col rounded-[20px] border border-white/[0.07] bg-[#14171C] p-7 transition hover:-translate-y-1">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, k) => (
+                        <Star key={k} className={`h-4 w-4 ${k < r.rating ? "fill-amber-300 text-amber-300" : "text-white/20"}`} />
+                      ))}
+                    </div>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/60">{r.source}</span>
                   </div>
-                ))}
-              </motion.div>
+                  <p className="mt-5 flex-1 text-[15px] leading-7 text-[#D3D8E0]">"{r.text}"</p>
+                  <div className="mt-6 flex items-center gap-3 border-t border-white/[0.05] pt-5">
+                    <div className="grid h-10 w-10 place-items-center rounded-full bg-blue-500/15 text-sm font-bold text-blue-300">
+                      {r.name.split(" ").map((s) => s[0]).slice(0, 2).join("")}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="truncate text-sm font-semibold text-white">{r.name}</p>
+                      <p className="truncate text-xs text-[#9AA3AE]">{r.business} · {r.city}</p>
+                    </div>
+                    <ExternalLink className="h-4 w-4 text-[#9AA3AE]/40 transition group-hover:text-white" />
+                  </div>
+                </motion.a>
+              ))}
             </div>
 
-            {/* Mobile image */}
-            <motion.div {...fadeUp} transition={{ duration: 0.7, delay: 0.1 }}
-              className="mt-14 relative overflow-hidden rounded-[24px] border border-white/[0.07]">
-              <img src="/ai-images/mobile.png" alt="Mobile lead capture"
-                className="w-full h-[380px] object-cover object-center" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0D1117]/85 via-[#0D1117]/30 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117]/60 to-transparent" />
-              <div className="absolute left-8 top-1/2 -translate-y-1/2 max-w-sm">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-400">{locale === "es" ? "Móvil primero" : "Mobile-first"}</p>
-                <p className="mt-2 text-2xl font-semibold text-white">{locale === "es" ? "Cada consulta capturada, desde donde sea." : "Every inquiry captured, wherever it comes from."}</p>
-              </div>
+            <motion.div {...fadeUp} className="mt-12 flex flex-wrap items-center justify-center gap-4">
+              <Link to="/resenas"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-[#070809] transition hover:bg-white/90">
+                {copy.reviews.seeAllCta} <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/resenas"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#9AA3AE] transition hover:text-white">
+                {copy.reviews.leaveReviewCta} <Star className="h-4 w-4" />
+              </Link>
             </motion.div>
           </div>
         </section>
+
 
         {/* ══════════════════════════════════════
             7. FINAL CTA
