@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, ChevronDown, Mail, MapPin, Menu, Send, X } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, Mail, MapPin, Menu, MessageCircle, Send, X } from "lucide-react";
 import { siteCopy } from "./content/siteCopy";
 import { getFlowInteractionProps } from "./utils/flowInteractions";
 import ThreeBackground from "./components/ThreeBackground"; // v2
-import Cursor from "./components/Cursor"; // v2
-import Preloader from "./components/Preloader"; // v2
 
 const locales = ["es", "en"];
 const flowCardProps = getFlowInteractionProps({ tilt: 3 });
@@ -36,7 +34,6 @@ export default function App() {
   const [submitMessage, setSubmitMessage] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [previewLoaded, setPreviewLoaded] = useState({});
-  const [loaded, setLoaded] = useState(false);
   const currentYear = new Date().getFullYear();
   const copy = siteCopy[locale];
 
@@ -89,9 +86,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070809] font-sans text-[#F5F7FA]" style={{ cursor: "none" }}>
-      {!loaded && <Preloader onDone={() => setLoaded(true)} />}
-      <Cursor />
+    <div className="min-h-screen bg-[#070809] font-sans text-[#F5F7FA]">
       <ThreeBackground />
       {/* Subtle top glow */}
       <div className="pointer-events-none fixed inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
@@ -104,7 +99,7 @@ export default function App() {
             <div className="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/[0.04]">
               <span className="text-xs font-bold tracking-[0.2em] text-blue-300">AM</span>
             </div>
-            <span className="text-[15px] font-semibold text-white">{copy.brand.name}</span>
+            <span className="hidden text-[15px] font-semibold text-white sm:inline">{copy.brand.name}</span>
           </a>
 
           <nav className="hidden items-center gap-10 lg:flex">
@@ -117,7 +112,7 @@ export default function App() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <div className="inline-flex items-center rounded-lg border border-white/8 bg-white/[0.03] p-0.5">
+            <div className="hidden items-center rounded-lg border border-white/8 bg-white/[0.03] p-0.5 sm:inline-flex">
               {locales.map((code) => (
                 <button key={code} type="button" onClick={() => setLocale(code)}
                   className={`rounded-md px-3 py-1.5 text-xs font-semibold uppercase tracking-wider transition ${
@@ -127,8 +122,8 @@ export default function App() {
                 </button>
               ))}
             </div>
-            <a href="#contact" {...flowButtonProps}
-              className="flow-button hidden items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-[#070809] transition hover:bg-white/90 sm:inline-flex">
+            <a href="#pricing" {...flowButtonProps}
+              className="flow-button inline-flex items-center gap-2 whitespace-nowrap rounded-xl bg-white px-3 py-2 text-xs font-semibold text-[#070809] transition hover:bg-white/90 sm:px-4 sm:py-2.5 sm:text-sm">
               {copy.brand.headerCta}
             </a>
             <button type="button" onClick={() => setMobileMenuOpen(true)}
@@ -157,8 +152,18 @@ export default function App() {
               </a>
             ))}
           </nav>
-          <div className="px-6">
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)}
+          <div className="space-y-4 px-6">
+            <div className="inline-flex w-full items-center justify-center rounded-lg border border-white/8 bg-white/[0.03] p-1">
+              {locales.map((code) => (
+                <button key={code} type="button" onClick={() => setLocale(code)}
+                  className={`flex-1 rounded-md px-3 py-2 text-xs font-semibold uppercase tracking-wider transition ${
+                    locale === code ? "bg-white/10 text-white" : "text-[#9AA3AE]"
+                  }`}>
+                  {code}
+                </button>
+              ))}
+            </div>
+            <a href="#pricing" onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center rounded-xl bg-white px-6 py-4 text-base font-semibold text-[#070809]">
               {copy.brand.headerCta}
             </a>
@@ -215,14 +220,88 @@ export default function App() {
           {/* Scroll cue */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.6 }}
             className="relative z-10 pb-10 flex justify-center">
-            <a href="#system" className="flex flex-col items-center gap-2 text-[#9AA3AE]/50 transition hover:text-[#9AA3AE]">
+            <a href="#pricing" className="flex flex-col items-center gap-2 text-[#9AA3AE]/50 transition hover:text-[#9AA3AE]">
               <ChevronDown className="h-5 w-5 animate-bounce" />
             </a>
           </motion.div>
         </section>
 
         {/* ══════════════════════════════════════
-            2. SYSTEM VISUAL
+            2. PRICING
+        ══════════════════════════════════════ */}
+        <section id="pricing" className="relative border-t border-white/[0.06] bg-[#0D1117]">
+          <div className="relative mx-auto max-w-8xl px-6 py-20 lg:px-8 lg:py-24">
+            <motion.div {...fadeUp} className="text-center max-w-3xl mx-auto">
+              <p className="text-sm font-medium uppercase tracking-[0.2em] text-blue-300">{copy.pricing.eyebrow}</p>
+              <h2 className="font-display mt-4 text-section-sm font-semibold text-white lg:text-section">
+                {copy.pricing.title}
+              </h2>
+              <p className="mt-5 text-lg text-[#9AA3AE]">{copy.pricing.text}</p>
+            </motion.div>
+
+            <div className="mt-16 grid gap-6 lg:grid-cols-3">
+              {copy.pricing.plans.map((plan, i) => (
+                <motion.div key={plan.name} {...fadeUp} transition={{ duration: 0.5, delay: i * 0.08 }}
+                  {...flowCardProps}
+                  className={`flow-surface relative flex flex-col rounded-[24px] border p-8 lg:p-10 transition ${
+                    plan.featured
+                      ? "border-blue-400/50 bg-[#0F1A2E]"
+                      : "border-white/[0.07] bg-[#14171C]"
+                  }`}>
+                  {plan.featured && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-400 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[#070809]">
+                      {copy.pricing.featuredBadge}
+                    </span>
+                  )}
+                  <h3 className="text-2xl font-bold text-white">{plan.name}</h3>
+                  <p className="mt-2 text-sm text-[#9AA3AE]">{plan.tagline}</p>
+
+                  <div className="mt-6 flex items-baseline gap-2">
+                    <span className="text-5xl font-bold text-white">{plan.price}</span>
+                    <span className="text-lg text-[#9AA3AE]">{copy.pricing.monthlyLabel}</span>
+                  </div>
+                  <p className="mt-1 text-sm text-[#9AA3AE]/70">{copy.pricing.annualLabel(plan.annual)}</p>
+
+                  <div className="mt-8 mb-2 text-xs font-semibold uppercase tracking-wider text-[#9AA3AE]">
+                    {copy.pricing.includesLabel}
+                  </div>
+                  <ul className="space-y-3 flex-1">
+                    {plan.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2.5 text-sm text-[#D3D8E0]">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a href={plan.whatsapp} target="_blank" rel="noreferrer" {...flowButtonProps}
+                    className={`flow-button mt-8 inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold transition ${
+                      plan.featured
+                        ? "bg-blue-400 text-[#070809] hover:bg-blue-300"
+                        : "bg-white text-[#070809] hover:bg-white/90"
+                    }`}>
+                    <MessageCircle className="h-4 w-4" />
+                    {plan.cta}
+                  </a>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div {...fadeUp} className="mt-12 flex flex-col items-center gap-3 text-center">
+              <p className="text-sm text-[#9AA3AE]">{copy.pricing.guarantee}</p>
+              <p className="text-base text-white">
+                <span className="text-[#9AA3AE]">{copy.pricing.customLabel}</span>{" "}
+                <a href={copy.pricing.customWhatsapp} target="_blank" rel="noreferrer"
+                  className="font-semibold text-blue-300 underline-offset-4 hover:underline">
+                  {copy.pricing.customCta}
+                </a>
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════
+            3. SYSTEM VISUAL
         ══════════════════════════════════════ */}
         <section id="system" className="border-t border-white/[0.06] bg-[#0D1117]">
           <div className="mx-auto max-w-8xl px-6 py-30 lg:px-8">
@@ -500,6 +579,14 @@ export default function App() {
         </section>
 
       </main>
+
+      {/* ── STICKY WHATSAPP ── */}
+      <a href="https://wa.me/18304750779?text=Hola%2C%20quiero%20m%C3%A1s%20info%20sobre%20los%20planes%20de%20Digital%20AM"
+        target="_blank" rel="noreferrer"
+        aria-label="WhatsApp"
+        className="fixed bottom-5 right-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-[0_8px_30px_rgba(16,185,129,0.45)] transition hover:scale-105 hover:bg-emerald-400">
+        <MessageCircle className="h-6 w-6" />
+      </a>
 
       {/* ── FOOTER ── */}
       <footer className="border-t border-white/[0.06]">

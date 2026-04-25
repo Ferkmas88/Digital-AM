@@ -121,7 +121,7 @@ export default function ThreeBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none"
+      className="fixed inset-0 pointer-events-none -z-10"
       style={{ zIndex: 0, opacity: 0.85 }}
     />
   );
