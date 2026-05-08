@@ -109,9 +109,7 @@ export default function App() {
       <header className="sticky top-0 z-50 border-b border-white/[0.06] bg-[#070809]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-8xl items-center justify-between px-6 py-5 lg:px-8">
           <a href="#top" className="flex items-center gap-3">
-            <div className="grid h-9 w-9 place-items-center rounded-xl border border-white/10 bg-white/[0.04]">
-              <span className="text-xs font-bold tracking-[0.2em] text-blue-300">AM</span>
-            </div>
+            <img src="/logo-digital-am.png" alt="Digital AM" className="h-9 w-9 rounded-xl object-cover" />
             <span className="hidden text-[15px] font-semibold text-white sm:inline">{copy.brand.name}</span>
           </a>
 
