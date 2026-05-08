@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 
-export default function CountUp({ value = 0, suffix = "", duration = 1.6 }) {
+export default function CountUp({ value = 0, suffix = "", duration = 1.0 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.4 });
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(value);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || hasAnimated) return;
+    setHasAnimated(true);
+    setDisplay(0);
     let raf;
     const start = performance.now();
     const tick = (t) => {
@@ -18,7 +21,7 @@ export default function CountUp({ value = 0, suffix = "", duration = 1.6 }) {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [inView, value, duration]);
+  }, [inView, value, duration, hasAnimated]);
 
   return (
     <span ref={ref}>
