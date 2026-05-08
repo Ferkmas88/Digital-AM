@@ -71,25 +71,76 @@ export default function SobreMiPage() {
               <div className="mx-auto max-w-8xl px-6 py-20 lg:px-8 lg:py-28">
                 <motion.div {...fadeUp} className="grid gap-12 lg:grid-cols-3">
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/60">Por qué solo latinos</h3>
+                    <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/60">Background</h3>
                     <p className="mt-4 leading-7 text-[#D3D8E0]">
-                      Porque conozco la confianza que cuesta construir cuando recién llegás. Y porque los negocios latinos
-                      en Louisville crecen por boca a boca — un cliente bien atendido te trae 5 más.
+                      Industrial Engineer (B.S. 2017) + 10 años en IT systems administration antes de pasarme full-time
+                      a software. Trabajé en plantas industriales y court systems administrando 50+ endpoints en
+                      ambientes compliance-heavy. Esa disciplina la traigo a cada proyecto.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/60">Por qué part-time</h3>
+                    <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/60">Tech Stack</h3>
                     <p className="mt-4 leading-7 text-[#D3D8E0]">
-                      Trabajo en Home Depot full-time. Eso me permite cobrarte $25-75 al mes en lugar de $500. Sin presión
-                      de vender humo: si tu negocio crece, yo crezco.
+                      Next.js 14 · React · TypeScript · Python · Node.js · PostgreSQL + Prisma · Supabase RLS ·
+                      Anthropic Claude API · Google Gemini · Ollama (local LLMs) · MCP servers · Vercel/Railway ·
+                      GitHub Actions CI/CD. Production-grade desde día uno.
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/60">Cómo trabajo</h3>
+                    <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/60">How I work</h3>
                     <p className="mt-4 leading-7 text-[#D3D8E0]">
-                      Voy a tu negocio en persona la primera vez. Después WhatsApp directo conmigo. Te entrego en 7 días
-                      o te devuelvo la plata. Cada actualización la hago yo, no un equipo en otro país.
+                      Direct work conmigo, no con becarios ni equipo offshore. Bilingüe ES/EN. Delivery 7-14 días según
+                      scope. Sin contratos largos. Si no funciona, te vas. Atención por WhatsApp, llamada o email —
+                      lo que prefieras.
                     </p>
+                  </div>
+                </motion.div>
+
+                <motion.div {...fadeUp} className="mt-16 rounded-[28px] border border-white/[0.07] bg-[#14171C] p-8 lg:p-12">
+                  <h3 className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">Selected Production Work · 2024-2026</h3>
+                  <div className="mt-8 grid gap-8 md:grid-cols-2">
+                    <div>
+                      <h4 className="text-base font-semibold text-white">Bilingual Notary + Immigration Platform</h4>
+                      <p className="mt-2 text-sm leading-6 text-[#9AA3AE]">
+                        Live bilingual platform with Gemini conversational booking agent + Google Calendar Service
+                        Account integration across 4 calendars + WhatsApp bot on Railway. Stack: Next.js 14, TypeScript, PHP, Gemini API.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-base font-semibold text-white">NotaryAI Desktop</h4>
+                      <p className="mt-2 text-sm leading-6 text-[#9AA3AE]">
+                        Privacy-first AI document assistant running entirely on-device. Local Ollama + qwen2.5:3b
+                        with branded Spanish UI, Windows installer. Stack: Ollama, AnythingLLM, SQLite, Python, Inno Setup.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-base font-semibold text-white">Clientes360 — Multi-Tenant CRM SaaS</h4>
+                      <p className="mt-2 text-sm leading-6 text-[#9AA3AE]">
+                        Postgres Row-Level Security + Auth.js tenant isolation enforced at database layer.
+                        Stack: Next.js, PostgreSQL, Prisma, Auth.js, Resend, Vercel.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-base font-semibold text-white">AutoLeadLink — Lead Capture SaaS</h4>
+                      <p className="mt-2 text-sm leading-6 text-[#9AA3AE]">
+                        Dealer-specific link turning Facebook, Instagram, Messenger and WhatsApp conversations
+                        into structured CRM leads. Stack: Next.js, Supabase, Resend, Vercel.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-base font-semibold text-white">Louisville Lead Hunter — Segmentation Pipeline</h4>
+                      <p className="mt-2 text-sm leading-6 text-[#9AA3AE]">
+                        Python scraping + scoring pipeline. 816 raw records → 408 deduped → 147 niche-validated
+                        leads across 6 verticals. Stack: Python, Google Places API, BeautifulSoup, custom scoring.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-base font-semibold text-white">Custom MCP Servers + Claude Agent Crews</h4>
+                      <p className="mt-2 text-sm leading-6 text-[#9AA3AE]">
+                        MCP servers and Claude-agent crews driving day-to-day operations: source ingest, competitor
+                        audits, offer generation, proposal writing — orchestrated from 75+ page knowledge base.
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               </div>
@@ -97,12 +148,15 @@ export default function SobreMiPage() {
 
             <section className="mx-auto max-w-3xl px-6 py-20 text-center lg:py-28">
               <motion.h2 {...fadeUp} className="font-display text-section-sm font-semibold text-white lg:text-section">
-                ¿Hablamos?
+                Let's talk
               </motion.h2>
               <motion.div {...fadeUp} className="mt-8 flex flex-col items-center gap-4 text-[#9AA3AE]">
                 <a href={f.cta.href} target="_blank" rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-[#070809] transition hover:bg-emerald-400">
-                  <MessageCircle className="h-4 w-4" /> WhatsApp directo
+                  <MessageCircle className="h-4 w-4" /> WhatsApp direct
+                </a>
+                <a href="tel:+18304750779" className="inline-flex items-center gap-2 transition hover:text-white">
+                  📞 (830) 475-0779
                 </a>
                 <a href="mailto:ferkmas88@gmail.com" className="inline-flex items-center gap-2 transition hover:text-white">
                   <Mail className="h-4 w-4 text-blue-400" /> ferkmas88@gmail.com

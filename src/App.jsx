@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { ArrowRight, Check, ChevronDown, ExternalLink, Mail, MapPin, Menu, MessageCircle, Send, Star, X } from "lucide-react";
+import { ArrowRight, Check, ChevronDown, ExternalLink, Mail, MapPin, Menu, MessageCircle, Phone, Send, Star, X } from "lucide-react";
 import { siteCopy } from "./content/siteCopy";
 import { getFlowInteractionProps } from "./utils/flowInteractions";
 import CountUp from "./components/CountUp";
@@ -15,10 +15,11 @@ const getProjectDomain = (href) => {
 };
 
 const getInitialLocale = () => {
-  if (typeof window === "undefined") return "es";
+  if (typeof window === "undefined") return "en";
   const stored = window.localStorage.getItem("digital-am-locale");
   if (stored && locales.includes(stored)) return stored;
-  return "es";
+  // Default English — primary language for the site
+  return "en";
 };
 
 const fadeUp = {
@@ -47,8 +48,8 @@ export default function App() {
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.setAttribute("content", locale === "es"
-        ? "Agencia de marketing digital en Louisville KY. Páginas web en español para negocios latinos. Diseño web, SEO local, WhatsApp Business y automatización. Primera consulta gratis."
-        : "Digital marketing agency in Louisville, KY. Professional websites, SEO, automation and lead capture for local businesses. Free audit.");
+        ? "Full-Stack AI Engineer en Louisville KY. Sitios web profesionales, automatización con IA (Claude/Gemini), SaaS multi-tenant, lead capture. 10+ apps en producción. Bilingual ES/EN."
+        : "Full-Stack AI Engineer in Louisville KY. Custom websites, AI automation (Claude/Gemini), multi-tenant SaaS, lead capture. 10+ production apps shipped. Bilingual ES/EN service.");
     }
   }, [copy.meta.title, locale]);
 
@@ -131,6 +132,10 @@ export default function App() {
           </nav>
 
           <div className="flex items-center gap-3">
+            <a href="tel:+18304750779"
+              className="hidden items-center gap-2 text-sm font-semibold text-[#9AA3AE] transition hover:text-white xl:inline-flex">
+              <Phone className="h-4 w-4" /> (830) 475-0779
+            </a>
             <div className="hidden items-center rounded-lg border border-white/8 bg-white/[0.03] p-0.5 sm:inline-flex">
               {locales.map((code) => (
                 <button key={code} type="button" onClick={() => setLocale(code)}
@@ -592,67 +597,7 @@ export default function App() {
           </motion.div>
         </section>
 
-        {/* ══════════════════════════════════════
-            REVIEWS WALL — preview de /resenas
-        ══════════════════════════════════════ */}
-        <section className="border-t border-white/[0.06] bg-[#0D1117]">
-          <div className="mx-auto max-w-8xl px-6 py-20 lg:px-8 lg:py-28">
-            <motion.div {...fadeUp} className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-              <div className="max-w-2xl">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">{copy.reviews.eyebrow}</p>
-                <h2 className="font-display mt-4 text-section-sm font-semibold text-white lg:text-section">
-                  {copy.reviews.title}
-                </h2>
-                <p className="mt-5 text-lg text-[#9AA3AE]">{copy.reviews.text}</p>
-              </div>
-              <a href={copy.reviews.googleHref} target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 self-start rounded-xl border border-white/[0.08] px-5 py-3 text-sm font-semibold text-white transition hover:border-white/20">
-                <Star className="h-4 w-4 fill-amber-300 text-amber-300" /> {copy.reviews.googleCta}
-              </a>
-            </motion.div>
-
-            <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {copy.reviews.items.slice(0, 6).map((r, i) => (
-                <motion.a key={i} {...fadeUp} {...flowCardProps}
-                  transition={{ duration: 0.5, delay: i * 0.06 }}
-                  href={r.sourceHref} target="_blank" rel="noreferrer"
-                  className="flow-surface group flex flex-col rounded-[20px] border border-white/[0.07] bg-[#14171C] p-7 transition hover:-translate-y-1">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-0.5">
-                      {[...Array(5)].map((_, k) => (
-                        <Star key={k} className={`h-4 w-4 ${k < r.rating ? "fill-amber-300 text-amber-300" : "text-white/20"}`} />
-                      ))}
-                    </div>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#9AA3AE]/60">{r.source}</span>
-                  </div>
-                  <p className="mt-5 flex-1 text-[15px] leading-7 text-[#D3D8E0]">"{r.text}"</p>
-                  <div className="mt-6 flex items-center gap-3 border-t border-white/[0.05] pt-5">
-                    <div className="grid h-10 w-10 place-items-center rounded-full bg-blue-500/15 text-sm font-bold text-blue-300">
-                      {r.name.split(" ").map((s) => s[0]).slice(0, 2).join("")}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="truncate text-sm font-semibold text-white">{r.name}</p>
-                      <p className="truncate text-xs text-[#9AA3AE]">{r.business} · {r.city}</p>
-                    </div>
-                    <ExternalLink className="h-4 w-4 text-[#9AA3AE]/40 transition group-hover:text-white" />
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            <motion.div {...fadeUp} className="mt-12 flex flex-wrap items-center justify-center gap-4">
-              <Link to="/resenas"
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-[#070809] transition hover:bg-white/90">
-                {copy.reviews.seeAllCta} <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/resenas"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[#9AA3AE] transition hover:text-white">
-                {copy.reviews.leaveReviewCta} <Star className="h-4 w-4" />
-              </Link>
-            </motion.div>
-          </div>
-        </section>
-
+        {/* Reviews section removed — pending real reviews */}
 
         {/* ══════════════════════════════════════
             7. FINAL CTA
@@ -667,6 +612,13 @@ export default function App() {
               </h2>
               <p className="mt-6 max-w-md text-lg leading-relaxed text-[#9AA3AE]">{copy.cta.text}</p>
               <div className="mt-10 space-y-4">
+                {copy.cta.phone && (
+                  <a href={copy.cta.phoneHref || `tel:+18304750779`}
+                    className="flex items-center gap-3 text-[#9AA3AE] transition hover:text-white">
+                    <Phone className="h-4 w-4 text-blue-400" />
+                    {copy.cta.phone}
+                  </a>
+                )}
                 <a href={`mailto:${copy.cta.email}`}
                   className="flex items-center gap-3 text-[#9AA3AE] transition hover:text-white">
                   <Mail className="h-4 w-4 text-blue-400" />
