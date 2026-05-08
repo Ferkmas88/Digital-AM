@@ -219,7 +219,7 @@ export default function App() {
           </motion.div>
 
           {/* Text content */}
-          <div className="relative z-10 mx-auto max-w-8xl w-full px-6 pt-36 pb-32 lg:px-8 lg:pt-44 lg:pb-40">
+          <div className="relative z-10 mx-auto max-w-8xl w-full px-6 pt-16 pb-24 lg:px-8 lg:pt-20 lg:pb-32">
             <div className="max-w-2xl">
               <motion.p {...fadeUp} className="mb-6 text-sm font-medium text-[#9AA3AE]">
                 {copy.hero.eyebrow}
@@ -314,15 +314,19 @@ export default function App() {
               className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/[0.08] lg:col-span-2">
               <img src={copy.founder.photo} alt="Fernando Mastrapa"
                 className="h-full w-full object-cover object-center"
-                onError={(e) => { e.currentTarget.style.display = "none"; }} />
-              <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-blue-500/15 via-transparent to-emerald-500/10">
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                  const fb = e.currentTarget.nextElementSibling;
+                  if (fb) fb.style.display = "grid";
+                }} />
+              <div className="absolute inset-0 hidden place-items-center bg-gradient-to-br from-blue-500/15 via-transparent to-emerald-500/10">
                 <div className="text-center">
                   <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-3xl font-bold text-blue-300">FM</div>
                   <p className="mt-4 text-sm font-semibold text-white">Fernando Mastrapa</p>
                   <p className="text-xs text-[#9AA3AE]">Louisville, Kentucky</p>
                 </div>
               </div>
-              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#070809] to-transparent" />
+              <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#070809] to-transparent pointer-events-none" />
             </motion.div>
           </div>
         </section>
@@ -441,10 +445,10 @@ export default function App() {
               <a href="https://wa.me/18304750779?text=Hola%2C%20quiero%20que%20mi%20negocio%20entre%20en%20este%20sistema"
                 target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-[#070809] transition hover:bg-white/90">
-                Activar este sistema en mi negocio <ArrowRight className="h-4 w-4" />
+                {locale === "es" ? "Activar este sistema en mi negocio" : "Activate this system for my business"} <ArrowRight className="h-4 w-4" />
               </a>
               <Link to="/casos" className="inline-flex items-center gap-2 text-sm font-semibold text-[#9AA3AE] transition hover:text-white">
-                Ver caso real <ArrowRight className="h-4 w-4" />
+                {locale === "es" ? "Ver caso real" : "See real case"} <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>
           </div>
@@ -468,7 +472,7 @@ export default function App() {
                 <h3 className="mt-4 text-xl font-semibold text-white">{item.title}</h3>
                 <p className="mt-3 flex-1 leading-7 text-[#9AA3AE]">{item.text}</p>
                 <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition group-hover:text-blue-200">
-                  Cómo lo resolvemos <ArrowRight className="h-4 w-4" />
+                  {locale === "es" ? "Cómo lo resolvemos" : "How I solve it"} <ArrowRight className="h-4 w-4" />
                 </span>
               </motion.a>
             ))}
@@ -478,7 +482,7 @@ export default function App() {
             <a href="https://wa.me/18304750779?text=Hola%2C%20quiero%20una%20auditor%C3%ADa%20gratis%20para%20mi%20negocio"
               target="_blank" rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 text-sm font-semibold text-[#070809] transition hover:bg-emerald-400">
-              <MessageCircle className="h-4 w-4" /> Auditoría gratis por WhatsApp
+              <MessageCircle className="h-4 w-4" /> {locale === "es" ? "Auditoría gratis" : "Free audit"}
             </a>
           </motion.div>
         </section>
@@ -509,7 +513,7 @@ export default function App() {
                   <h3 className="flow-child mt-4 text-2xl font-semibold text-white">{mod.title}</h3>
                   <p className="flow-child mt-3 text-base leading-7 text-[#9AA3AE]">{mod.text}</p>
                   <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition group-hover:text-blue-200">
-                    Quiero esto en mi negocio <ArrowRight className="h-4 w-4" />
+                    {locale === "es" ? "Quiero esto en mi negocio" : "I want this for my business"} <ArrowRight className="h-4 w-4" />
                   </span>
                 </motion.a>
               ))}
@@ -520,10 +524,10 @@ export default function App() {
               <a href="https://wa.me/18304750779?text=Hola%2C%20quiero%20ver%20cu%C3%A1l%20de%20estos%20servicios%20me%20conviene"
                 target="_blank" rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-[#070809] transition hover:bg-white/90">
-                <MessageCircle className="h-4 w-4" /> Auditoría gratis para mi negocio
+                <MessageCircle className="h-4 w-4" /> {locale === "es" ? "Auditoría gratis para mi negocio" : "Free audit for my business"}
               </a>
               <Link to="/casos" className="inline-flex items-center gap-2 text-sm font-semibold text-[#9AA3AE] transition hover:text-white">
-                Ver caso real <ArrowRight className="h-4 w-4" />
+                {locale === "es" ? "Ver caso real" : "See real case"} <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>
           </div>
@@ -592,7 +596,7 @@ export default function App() {
           <motion.div {...fadeUp} className="mt-12 flex flex-wrap items-center justify-center gap-4">
             <Link to="/casos"
               className="inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.02] px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/20 hover:bg-white/[0.04]">
-              Ver casos en detalle <ArrowRight className="h-4 w-4" />
+              {locale === "es" ? "Ver casos en detalle" : "See detailed cases"} <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>
         </section>
@@ -669,9 +673,9 @@ export default function App() {
       </main>
 
       {/* ── STICKY WHATSAPP ── */}
-      <a href="https://wa.me/18304750779?text=Hola%2C%20quiero%20m%C3%A1s%20info%20sobre%20los%20planes%20de%20Digital%20AM"
+      <a href={locale === "es" ? "https://wa.me/18304750779?text=Hola%2C%20quiero%20m%C3%A1s%20info%20sobre%20los%20planes%20de%20Digital%20AM" : "https://wa.me/18304750779?text=Hi%2C%20I%27d%20like%20more%20info%20about%20your%20plans"}
         target="_blank" rel="noreferrer"
-        aria-label="WhatsApp"
+        aria-label={locale === "es" ? "Enviar mensaje" : "Send message"}
         className="fixed bottom-5 right-5 z-40 inline-flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-[0_8px_30px_rgba(16,185,129,0.45)] transition hover:scale-105 hover:bg-emerald-400">
         <MessageCircle className="h-6 w-6" />
       </a>

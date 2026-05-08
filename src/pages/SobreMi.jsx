@@ -52,8 +52,12 @@ export default function SobreMiPage() {
                   className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/[0.08] lg:col-span-2">
                   <img src={f.photo} alt="Fernando Mastrapa"
                     className="h-full w-full object-cover object-center"
-                    onError={(e) => { e.currentTarget.style.display = "none"; }} />
-                  <div className="absolute inset-0 grid place-items-center bg-gradient-to-br from-blue-500/15 via-transparent to-emerald-500/10">
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                      const fb = e.currentTarget.nextElementSibling;
+                      if (fb) fb.style.display = "grid";
+                    }} />
+                  <div className="absolute inset-0 hidden place-items-center bg-gradient-to-br from-blue-500/15 via-transparent to-emerald-500/10">
                     <div className="text-center">
                       <div className="mx-auto grid h-24 w-24 place-items-center rounded-full border border-white/15 bg-white/[0.04] text-3xl font-bold text-blue-300">
                         FM
@@ -62,7 +66,7 @@ export default function SobreMiPage() {
                       <p className="text-xs text-[#9AA3AE]">Louisville, Kentucky</p>
                     </div>
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#070809] to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#070809] to-transparent pointer-events-none" />
                 </motion.div>
               </div>
             </section>
