@@ -4,7 +4,6 @@ import { Link, useLocation } from "react-router-dom";
 import { ArrowRight, Check, ChevronDown, ExternalLink, Mail, MapPin, Menu, MessageCircle, Phone, Send, Star, X } from "lucide-react";
 import { siteCopy } from "./content/siteCopy";
 import { getFlowInteractionProps } from "./utils/flowInteractions";
-import CountUp from "./components/CountUp";
 
 const locales = ["es", "en"];
 const flowCardProps = getFlowInteractionProps({ tilt: 3 });
@@ -48,8 +47,8 @@ export default function App() {
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.setAttribute("content", locale === "es"
-        ? "Full-Stack AI Engineer en Louisville KY. Sitios web profesionales, automatización con IA (Claude/Gemini), SaaS multi-tenant, lead capture. 10+ apps en producción. Bilingual ES/EN."
-        : "Full-Stack AI Engineer in Louisville KY. Custom websites, AI automation (Claude/Gemini), multi-tenant SaaS, lead capture. 10+ production apps shipped. Bilingual ES/EN service.");
+        ? "Sistemas de captación automática para negocios latinos en Louisville, KY. Anuncios, landing page, agente AI en WhatsApp y seguimiento automático. Habla directamente con Fernando."
+        : "Automated lead generation systems for Latino businesses in Louisville, KY. Ads, landing page, AI agent on WhatsApp, and automated follow-up. Talk directly with Fernando.");
     }
   }, [copy.meta.title, locale]);
 
@@ -144,7 +143,7 @@ export default function App() {
                 </button>
               ))}
             </div>
-            <a href="#pricing" {...flowButtonProps}
+            <a href="#contact" {...flowButtonProps}
               className="flow-button inline-flex items-center gap-2 whitespace-nowrap rounded-xl bg-white px-3 py-2 text-xs font-semibold text-[#070809] transition hover:bg-white/90 sm:px-4 sm:py-2.5 sm:text-sm">
               {copy.brand.headerCta}
             </a>
@@ -192,7 +191,7 @@ export default function App() {
                 </button>
               ))}
             </div>
-            <a href="#pricing" onClick={() => setMobileMenuOpen(false)}
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center rounded-xl bg-white px-6 py-4 text-base font-semibold text-[#070809]">
               {copy.brand.headerCta}
             </a>
@@ -249,35 +248,10 @@ export default function App() {
           {/* Scroll cue */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8, duration: 0.6 }}
             className="relative z-10 pb-10 flex justify-center">
-            <a href="#pricing" className="flex flex-col items-center gap-2 text-[#9AA3AE]/50 transition hover:text-[#9AA3AE]">
+            <a href="#contact" className="flex flex-col items-center gap-2 text-[#9AA3AE]/50 transition hover:text-[#9AA3AE]">
               <ChevronDown className="h-5 w-5 animate-bounce" />
             </a>
           </motion.div>
-        </section>
-
-        {/* ══════════════════════════════════════
-            METRICS — animated counters
-        ══════════════════════════════════════ */}
-        <section className="relative border-t border-white/[0.06] bg-[#0D1117]">
-          <div className="mx-auto max-w-8xl px-6 py-20 lg:px-8 lg:py-24">
-            <motion.div {...fadeUp} className="max-w-3xl">
-              <h2 className="font-display text-section-sm font-semibold text-white lg:text-section">
-                {copy.metrics.title}
-              </h2>
-              <p className="mt-5 text-lg text-[#9AA3AE]">{copy.metrics.text}</p>
-            </motion.div>
-            <div className="mt-14 grid gap-px overflow-hidden rounded-[24px] border border-white/[0.06] sm:grid-cols-2 lg:grid-cols-4">
-              {copy.metrics.items.map((m, i) => (
-                <motion.div key={m.label} {...fadeUp} transition={{ duration: 0.5, delay: i * 0.07 }}
-                  className="bg-[#0D1117] p-8 lg:p-10">
-                  <p className="font-display text-5xl font-bold text-white lg:text-6xl">
-                    <CountUp value={m.value} suffix={m.suffix} />
-                  </p>
-                  <p className="mt-3 text-sm text-[#9AA3AE]">{m.label}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
         </section>
 
         {/* ══════════════════════════════════════
@@ -304,7 +278,7 @@ export default function App() {
                   <MessageCircle className="h-4 w-4" /> {copy.founder.cta.label}
                 </a>
                 <Link to="/sobre-mi" className="inline-flex items-center gap-2 text-sm font-semibold text-[#9AA3AE] transition hover:text-white">
-                  Conocé más sobre Fernando <ArrowRight className="h-4 w-4" />
+                  Conoce más sobre Fernando <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </motion.div>
@@ -329,79 +303,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════
-            2. PRICING
-        ══════════════════════════════════════ */}
-        <section id="pricing" className="relative border-t border-white/[0.06] bg-[#0D1117]">
-          <div className="relative mx-auto max-w-8xl px-6 py-20 lg:px-8 lg:py-24">
-            <motion.div {...fadeUp} className="text-center max-w-3xl mx-auto">
-              <p className="text-sm font-medium uppercase tracking-[0.2em] text-blue-300">{copy.pricing.eyebrow}</p>
-              <h2 className="font-display mt-4 text-section-sm font-semibold text-white lg:text-section">
-                {copy.pricing.title}
-              </h2>
-              <p className="mt-5 text-lg text-[#9AA3AE]">{copy.pricing.text}</p>
-            </motion.div>
-
-            <div className="mt-16 grid gap-6 lg:grid-cols-3">
-              {copy.pricing.plans.map((plan, i) => (
-                <motion.div key={plan.name} {...fadeUp} transition={{ duration: 0.5, delay: i * 0.08 }}
-                  {...flowCardProps}
-                  className={`flow-surface relative flex flex-col rounded-[24px] border p-8 lg:p-10 transition ${
-                    plan.featured
-                      ? "border-blue-400/50 bg-[#0F1A2E]"
-                      : "border-white/[0.07] bg-[#14171C]"
-                  }`}>
-                  {plan.featured && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-400 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[#070809]">
-                      {copy.pricing.featuredBadge}
-                    </span>
-                  )}
-                  <h3 className="text-2xl font-bold text-white">{plan.name}</h3>
-                  <p className="mt-2 text-sm text-[#9AA3AE]">{plan.tagline}</p>
-
-                  <div className="mt-6 flex items-baseline gap-2">
-                    <span className="text-5xl font-bold text-white">{plan.price}</span>
-                    <span className="text-lg text-[#9AA3AE]">{copy.pricing.monthlyLabel}</span>
-                  </div>
-                  <p className="mt-1 text-sm text-[#9AA3AE]/70">{copy.pricing.annualLabel(plan.annual)}</p>
-
-                  <div className="mt-8 mb-2 text-xs font-semibold uppercase tracking-wider text-[#9AA3AE]">
-                    {copy.pricing.includesLabel}
-                  </div>
-                  <ul className="space-y-3 flex-1">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5 text-sm text-[#D3D8E0]">
-                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a href={plan.whatsapp} target="_blank" rel="noreferrer" {...flowButtonProps}
-                    className={`flow-button mt-8 inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold transition ${
-                      plan.featured
-                        ? "bg-blue-400 text-[#070809] hover:bg-blue-300"
-                        : "bg-white text-[#070809] hover:bg-white/90"
-                    }`}>
-                    <MessageCircle className="h-4 w-4" />
-                    {plan.cta}
-                  </a>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div {...fadeUp} className="mt-12 flex flex-col items-center gap-3 text-center">
-              <p className="text-sm text-[#9AA3AE]">{copy.pricing.guarantee}</p>
-              <p className="text-base text-white">
-                <span className="text-[#9AA3AE]">{copy.pricing.customLabel}</span>{" "}
-                <a href={copy.pricing.customWhatsapp} target="_blank" rel="noreferrer"
-                  className="font-semibold text-blue-300 underline-offset-4 hover:underline">
-                  {copy.pricing.customCta}
-                </a>
-              </p>
-            </motion.div>
-          </div>
-        </section>
+        {/* PRICING SECTION — hidden by request. Data remains in siteCopy.js */}
 
         {/* ══════════════════════════════════════
             3. SYSTEM VISUAL
@@ -694,3 +596,4 @@ export default function App() {
     </div>
   );
 }
+       
